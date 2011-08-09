@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite errors="0" failures="0" hostname="erich-note" name="br.com.caelum.validacao.DateRangeValidatorTest" tests="10" time="0.348" timestamp="2011-08-09T18:38:28">
+  <properties />
+  <testcase classname="br.com.caelum.validacao.DateRangeValidatorTest" name="shouldBeValidIfUsageIsWrong" time="0.019" />
+  <testcase classname="br.com.caelum.validacao.DateRangeValidatorTest" name="shouldBeValidIfFieldValuesAreNull" time="0.015" />
+  <testcase classname="br.com.caelum.validacao.DateRangeValidatorTest" name="shouldBeValidIfDateRangeIsEqualChosenDateRange" time="0.0030" />
+  <testcase classname="br.com.caelum.validacao.DateRangeValidatorTest" name="shouldBeValidIfDateRangeIsGreaterThanChosenDateRange" time="0.0020" />
+  <testcase classname="br.com.caelum.validacao.DateRangeValidatorTest" name="shouldNotBeValidIfDateIntervalIsLessThanChosenDateInterval" time="0.223" />
+  <testcase classname="br.com.caelum.validacao.DateRangeValidatorTest" name="shouldBeValidIfDateIntervalIsGreaterThanOrEqualChosenDateIntervalForPairsOfDates" time="0.0010" />
+  <testcase classname="br.com.caelum.validacao.DateRangeValidatorTest" name="shouldNotBeValidIfDateIntervalIsSmallerThanChosenDateIntervalForOneOfThePairsOfDates" time="0.0020" />
+  <testcase classname="br.com.caelum.validacao.DateRangeValidatorTest" name="shouldBeValidIfDateIntervalIsValidFor3FieldsAnd2Ranges" time="0.0030" />
+  <testcase classname="br.com.caelum.validacao.DateRangeValidatorTest" name="shouldNotBeValidIfOnDateIntervalIsInvalidFor3FieldsAnd2Ranges" time="0.0010" />
+  <testcase classname="br.com.caelum.validacao.DateRangeValidatorTest" name="shouldBeValidIfIdFromStartDateAndEndDateAnnotationsUsageIsWrong" time="0.0030" />
+  <system-out><![CDATA[Invalid range between dates
+]]></system-out>
+  <system-err><![CDATA[log4j:WARN No appenders could be found for logger (org.hibernate.validator.util.Version).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+]]></system-err>
+</testsuite>

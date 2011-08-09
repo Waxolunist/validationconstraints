@@ -1,0 +1,4 @@
+Playing with Hibernate Validator.
+
+This validator would not be necessary if the entities had an Embbeded attribute
+with two date attributes.
