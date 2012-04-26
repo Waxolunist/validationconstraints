@@ -1,0 +1,84 @@
+<!-- This file is part of DateRangeValidator. DateRangeValidator is free 
+	software: you can redistribute it and/or modify it under the terms of the 
+	GNU General Public License as published by the Free Software Foundation, 
+	either version 3 of the License, or (at your option) any later version. DateRangeValidator 
+	is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
+	without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR 
+	PURPOSE. See the GNU General Public License for more details. You should 
+	have received a copy of the GNU General Public License along with Foobar. 
+	If not, see <http://www.gnu.org/licenses/>. -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.vcollaborate</groupId>
+	<artifactId>validation.daterange</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>JSR-303 DateRange Validator</name>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.2.2</version>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>2.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>1.0.0.GA</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.10</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>4.2.0.Final</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>1.6.4</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<scm>
+		<connection>scm:git:git@github.com:Waxolunist/dateRangeValidator.git</connection>
+		<url>scm:git:git@github.com:Waxolunist/dateRangeValidator.git</url>
+		<developerConnection>scm:git:git@github.com:Waxolunist/dateRangeValidator.git</developerConnection>
+	</scm>
+	<organization>
+		<name>V-Collaborate.com</name>
+		<url>http://www.v-collaborate.com</url>
+	</organization>
+</project>
