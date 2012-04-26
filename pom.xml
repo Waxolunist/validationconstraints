@@ -12,7 +12,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.vcollaborate</groupId>
 	<artifactId>validation.daterange</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>JSR-303 DateRange Validator</name>
 
 	<properties>
