@@ -51,9 +51,16 @@ public class AllowedValuesValidatorTest {
     @Data
     private class ClassWithAllowedIntegers {
 
+        @AllowedIntegers({ 0, 10, 20 })
+        private Integer value;
+    }
+
+    @Data
+    private class ClassWithAllowedIntegersNotNull {
+
         @NotNull
-        @AllowedIntegers({0,10,20})
-        private int value;
+        @AllowedIntegers(value = { 0, 10, 20 }, nullAllowed = false)
+        private Integer value;
     }
 
     @Test
@@ -69,6 +76,36 @@ public class AllowedValuesValidatorTest {
         }
 
         Assert.assertTrue(errors.isEmpty());
+    }
+
+    @Test
+    public void testAllowedNullValue() {
+        log.info("testAllowedNullValue");
+        ClassWithAllowedIntegers instance = new ClassWithAllowedIntegers();
+        instance.setValue(null);
+
+        Set<ConstraintViolation<ClassWithAllowedIntegers>> errors = validator.validate(instance);
+
+        for (ConstraintViolation<ClassWithAllowedIntegers> error : errors) {
+            log.info("{}: {}", error.getPropertyPath(), error.getMessage());
+        }
+
+        Assert.assertTrue(errors.isEmpty());
+    }
+
+    @Test
+    public void testNotAllowedNullValue() {
+        log.info("testNotAllowedNullValue");
+        ClassWithAllowedIntegersNotNull instance = new ClassWithAllowedIntegersNotNull();
+        instance.setValue(null);
+
+        Set<ConstraintViolation<ClassWithAllowedIntegersNotNull>> errors = validator.validate(instance);
+
+        for (ConstraintViolation<ClassWithAllowedIntegersNotNull> error : errors) {
+            log.info("{}: {}", error.getPropertyPath(), error.getMessage());
+        }
+
+        Assert.assertFalse(errors.isEmpty());
     }
 
     @Test

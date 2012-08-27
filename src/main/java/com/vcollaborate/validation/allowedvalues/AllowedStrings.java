@@ -27,17 +27,17 @@ import javax.validation.Payload;
 /**
  * @author Christian Sterzl
  */
-@Constraint(validatedBy = AllowdIntegersValidator.class)
+@Constraint(validatedBy = AllowdStringsValidator.class)
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface AllowedIntegers {
+public @interface AllowedStrings {
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
 
     String message() default "Invalid value";
 
-    int[] value();
+    String[] value();
 
     boolean nullAllowed() default true;
 }

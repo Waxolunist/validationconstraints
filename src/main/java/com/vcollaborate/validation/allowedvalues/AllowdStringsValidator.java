@@ -22,17 +22,17 @@ import java.util.List;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-public class AllowdIntegersValidator implements ConstraintValidator<AllowedIntegers, Object> {
+public class AllowdStringsValidator implements ConstraintValidator<AllowedStrings, Object> {
 
-    private List<Integer> allowedValues;
+    private List<String> allowedValues;
 
     private boolean nullAllowed = true;
 
     /* (non-Javadoc)
      * @see javax.validation.ConstraintValidator#initialize(java.lang.annotation.Annotation)
      */
-    public void initialize(AllowedIntegers constraintAnnotation) {
-        allowedValues = new ArrayList<Integer>();
+    public void initialize(AllowedStrings constraintAnnotation) {
+        allowedValues = new ArrayList<String>();
         for (int index = 0; index < constraintAnnotation.value().length; index++)
         {
             allowedValues.add(constraintAnnotation.value()[index]);
@@ -51,7 +51,7 @@ public class AllowdIntegersValidator implements ConstraintValidator<AllowedInteg
             return true;
         }
 
-        if(value instanceof Integer) {
+        if(value instanceof String) {
             valid = allowedValues.contains(value);
         }
 
