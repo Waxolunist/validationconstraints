@@ -8,9 +8,9 @@
     <language>en-us</language>
     <copyright>&#169;2012 V-Collaborate.com</copyright>
     <item>
-      <title>File: 10,
-             Errors: 186,
-             Warnings: 0,
+      <title>File: 11,
+             Errors: 0,
+             Warnings: 73,
              Infos: 0
       </title>
             <link>https://github.com/Waxolunist/validationconstraints/checkstyle.html</link>
@@ -35,10 +35,10 @@
                   0
                 </td>
                 <td>
-                  0
+                  5
                 </td>
                 <td>
-                  10
+                  0
                 </td>
               </tr>
                           <tr>
@@ -49,10 +49,10 @@
                   0
                 </td>
                 <td>
-                  0
+                  6
                 </td>
                 <td>
-                  12
+                  0
                 </td>
               </tr>
                           <tr>
@@ -63,10 +63,24 @@
                   0
                 </td>
                 <td>
+                  4
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/Waxolunist/validationconstraints/checkstyle.html#com.vcollaborate.validation.allowedvalues.package-info.java">com/vcollaborate/validation/allowedvalues/package-info.java</a>
+                </td>
+                <td>
                   0
                 </td>
                 <td>
-                  19
+                  0
+                </td>
+                <td>
+                  0
                 </td>
               </tr>
                           <tr>
@@ -77,10 +91,10 @@
                   0
                 </td>
                 <td>
-                  0
+                  10
                 </td>
                 <td>
-                  15
+                  0
                 </td>
               </tr>
                           <tr>
@@ -91,10 +105,10 @@
                   0
                 </td>
                 <td>
-                  0
+                  30
                 </td>
                 <td>
-                  55
+                  0
                 </td>
               </tr>
                           <tr>
@@ -108,7 +122,7 @@
                   0
                 </td>
                 <td>
-                  20
+                  0
                 </td>
               </tr>
                           <tr>
@@ -119,10 +133,10 @@
                   0
                 </td>
                 <td>
-                  0
+                  6
                 </td>
                 <td>
-                  26
+                  0
                 </td>
               </tr>
                           <tr>
@@ -133,10 +147,10 @@
                   0
                 </td>
                 <td>
-                  0
+                  1
                 </td>
                 <td>
-                  4
+                  0
                 </td>
               </tr>
                           <tr>
@@ -147,10 +161,10 @@
                   0
                 </td>
                 <td>
-                  0
+                  7
                 </td>
                 <td>
-                  10
+                  0
                 </td>
               </tr>
                           <tr>
@@ -161,10 +175,10 @@
                   0
                 </td>
                 <td>
-                  0
+                  4
                 </td>
                 <td>
-                  15
+                  0
                 </td>
               </tr>
                       </tbody>
