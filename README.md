@@ -35,3 +35,10 @@ Siehe die GNU General Public License für weitere Details.
 Sie sollten eine Kopie der GNU General Public License zusammen mit diesem
 Programm erhalten haben. Wenn nicht, siehe <http://www.gnu.org/licenses/>.
 
+#Maven Commands
+
+##Signing
+For signing your build with gpg use the profile -Prelease-sign-artifacts
+
+##Deployment
+mvn clean deploy
