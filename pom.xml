@@ -11,7 +11,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.vcollaborate</groupId>
-	<artifactId>validation.daterange</artifactId>
+	<artifactId>validation.constraints</artifactId>
 	<version>1.2.3-SNAPSHOT</version>
 	<name>JSR-303 DateRange Validator</name>
 
@@ -188,20 +188,20 @@
 	</dependencies>
 
 	<issueManagement>
-		<url>https://github.com/Waxolunist/dateRangeValidator/issues</url>
+		<url>https://github.com/Waxolunist/validationconstraints/issues</url>
 		<system>GitHub Issues</system>
 	</issueManagement>
 	<scm>
-		<connection>scm:git:git@github.com:Waxolunist/dateRangeValidator.git</connection>
-		<url>scm:git:git@github.com:Waxolunist/dateRangeValidator.git</url>
-		<developerConnection>scm:git:git@github.com:Waxolunist/dateRangeValidator.git</developerConnection>
+		<connection>scm:git:git@github.com:Waxolunist/validationconstraints.git</connection>
+		<url>scm:git:git@github.com:Waxolunist/validationconstraints.git</url>
+		<developerConnection>scm:git:git@github.com:Waxolunist/validationconstraints.git</developerConnection>
 	</scm>
 	<organization>
 		<name>V-Collaborate.com</name>
 		<url>http://www.v-collaborate.com</url>
 	</organization>
-	<url>https://github.com/Waxolunist/dateRangeValidator</url>
-	<description>JSR-303 Validator to validate a Daterange.</description>
+	<url>https://github.com/Waxolunist/validationconstraints</url>
+	<description>JSR-303 Validator to validate a Daterange and other range constraints.</description>
 	<licenses>
 		<license>
 			<name>GNU GENERAL PUBLIC LICENSE, Version 3</name>
