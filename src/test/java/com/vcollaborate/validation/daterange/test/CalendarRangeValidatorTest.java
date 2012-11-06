@@ -38,235 +38,325 @@ import com.vcollaborate.validation.daterange.StartDate;
  */
 public class CalendarRangeValidatorTest {
 
+    private static Calendar getCalendar(int year, int month, int day) {
+        Calendar dataInicio = Calendar.getInstance();
+        dataInicio.set(year, month, day);
+        return dataInicio;
+    }
+
+    private static Calendar[] datesToTest = {
+            getCalendar(2011, 1, 27),
+            getCalendar(2011, 3, 25),
+            getCalendar(2011, 10, 28)
+    };
+
     @Test
     public void shouldBeValidIfUsageIsWrong() throws Exception {
-	NoEndDateCase wrongUsageInstance = new NoEndDateCase();
+        NoEndDateCase wrongUsageInstance = new NoEndDateCase();
 
-	Assert.assertTrue(isValid(wrongUsageInstance));
-	Assert.assertTrue(isValidAccordingToBeanValidation(wrongUsageInstance));
+        Assert.assertTrue(isValid(wrongUsageInstance));
+        Assert.assertTrue(isValidAccordingToBeanValidation(wrongUsageInstance));
     }
 
     @Test
     public void shouldBeValidIfFieldValuesAreNull() throws Exception {
-	StantardCaseDaysRangeEquals5 standartCaseWithNullValuesInstance = new StantardCaseDaysRangeEquals5(null, null);
+        StantardCaseDaysRangeEquals5 standartCaseWithNullValuesInstance = new StantardCaseDaysRangeEquals5(null, null);
 
-	Assert.assertTrue(isValid(standartCaseWithNullValuesInstance));
-	Assert.assertTrue(isValidAccordingToBeanValidation(standartCaseWithNullValuesInstance));
+        Assert.assertTrue(isValid(standartCaseWithNullValuesInstance));
+        Assert.assertTrue(isValidAccordingToBeanValidation(standartCaseWithNullValuesInstance));
     }
 
     @Test
     public void shouldBeValidIfDateRangeIsEqualChosenDateRange() throws Exception {
-	Calendar startDate = startDate();
-	Calendar fiveDaysAfter = daysAfter(startDate, 5);
+        for (int i = 0; i < datesToTest.length; i++) {
+            Calendar startDate = datesToTest[i];
+            Calendar fiveDaysAfter = daysAfter(startDate, 5);
 
-	StantardCaseDaysRangeEquals5 fiveDaysAfterCaseWhereIntervalEquals5 = new StantardCaseDaysRangeEquals5(startDate, fiveDaysAfter);
+            StantardCaseDaysRangeEquals5 fiveDaysAfterCaseWhereIntervalEquals5 = new StantardCaseDaysRangeEquals5(startDate, fiveDaysAfter);
 
-	Assert.assertTrue(isValid(fiveDaysAfterCaseWhereIntervalEquals5));
-	Assert.assertTrue(isValidAccordingToBeanValidation(fiveDaysAfterCaseWhereIntervalEquals5));
+            Assert.assertTrue(isValid(fiveDaysAfterCaseWhereIntervalEquals5));
+            Assert.assertTrue(isValidAccordingToBeanValidation(fiveDaysAfterCaseWhereIntervalEquals5));
+        }
     }
 
     @Test
     public void shouldBeValidIfDateRangeIsGreaterThanChosenDateRange() throws Exception {
-	Calendar startDate = startDate();
-	Calendar sixDaysAfter = daysAfter(startDate, 6);
+        for (int i = 0; i < datesToTest.length; i++) {
+            Calendar startDate = datesToTest[i];
+            Calendar sixDaysAfter = daysAfter(startDate, 6);
 
-	StantardCaseDaysRangeEquals5 sixDaysAfterCaseWhereIntervalEquals5 = new StantardCaseDaysRangeEquals5(startDate, sixDaysAfter);
+            StantardCaseDaysRangeEquals5 sixDaysAfterCaseWhereIntervalEquals5 = new StantardCaseDaysRangeEquals5(startDate, sixDaysAfter);
 
-	Assert.assertTrue(isValid(sixDaysAfterCaseWhereIntervalEquals5));
-	Assert.assertTrue(isValidAccordingToBeanValidation(sixDaysAfterCaseWhereIntervalEquals5));
+            Assert.assertTrue(isValid(sixDaysAfterCaseWhereIntervalEquals5));
+            Assert.assertTrue(isValidAccordingToBeanValidation(sixDaysAfterCaseWhereIntervalEquals5));
+        }
     }
 
     @Test
     public void shouldNotBeValidIfDateIntervalIsLessThanChosenDateInterval() throws Exception {
-	Calendar startDate = startDate();
-	Calendar threeDaysAfter = daysAfter(startDate, 3);
+        for (int i = 0; i < datesToTest.length; i++) {
+            Calendar startDate = datesToTest[i];
+            Calendar threeDaysAfter = daysAfter(startDate, 3);
 
-	StantardCaseDaysRangeEquals5 instanceIntervalEquals5 = new StantardCaseDaysRangeEquals5(startDate, threeDaysAfter);
+            StantardCaseDaysRangeEquals5 instanceIntervalEquals5 = new StantardCaseDaysRangeEquals5(startDate, threeDaysAfter);
 
-	Assert.assertFalse(isValid(instanceIntervalEquals5));
-	Assert.assertFalse(isValidAccordingToBeanValidation(instanceIntervalEquals5));
+            Assert.assertFalse(isValid(instanceIntervalEquals5));
+            Assert.assertFalse(isValidAccordingToBeanValidation(instanceIntervalEquals5));
+        }
     }
 
     @Test
     public void shouldBeValidIfDateIntervalIsGreaterThanOrEqualChosenDateIntervalForPairsOfDates() throws Exception {
-	Calendar startDate = startDate();
-	Calendar threeDaysAfter = daysAfter(startDate, 3);
-	Calendar sixDaysAfter = daysAfter(startDate, 6);
+        for (int i = 0; i < datesToTest.length; i++) {
+            Calendar startDate = datesToTest[i];
+            Calendar threeDaysAfter = daysAfter(startDate, 3);
+            Calendar sixDaysAfter = daysAfter(startDate, 6);
 
-	FourFieldsFirstRange3DaysMinimumSecondRange2DaysMinimum twoValidPairsOfDates = new FourFieldsFirstRange3DaysMinimumSecondRange2DaysMinimum(
-		startDate, threeDaysAfter, startDate, sixDaysAfter);
+            FourFieldsFirstRange3DaysMinimumSecondRange2DaysMinimum twoValidPairsOfDates = new FourFieldsFirstRange3DaysMinimumSecondRange2DaysMinimum(
+                    startDate, threeDaysAfter, startDate, sixDaysAfter);
 
-	Assert.assertTrue(isValid(twoValidPairsOfDates));
-	Assert.assertTrue(isValidAccordingToBeanValidation(twoValidPairsOfDates));
+            Assert.assertTrue(isValid(twoValidPairsOfDates));
+            Assert.assertTrue(isValidAccordingToBeanValidation(twoValidPairsOfDates));
+        }
     }
 
     @Test
     public void shouldNotBeValidIfDateIntervalIsSmallerThanChosenDateIntervalForOneOfThePairsOfDates() throws Exception {
-	Calendar startDate = startDate();
-	Calendar threeDaysAfter = daysAfter(startDate, 3);
-	Calendar sixDaysBefore = daysBefore(startDate, 6);
+        for (int i = 0; i < datesToTest.length; i++) {
+            Calendar startDate = datesToTest[i];
+            Calendar threeDaysAfter = daysAfter(startDate, 3);
+            Calendar sixDaysBefore = daysBefore(startDate, 6);
 
-	FourFieldsFirstRange3DaysMinimumSecondRange2DaysMinimum twoValidPairsOfDates = new FourFieldsFirstRange3DaysMinimumSecondRange2DaysMinimum(
-		startDate, threeDaysAfter, startDate, sixDaysBefore);
+            FourFieldsFirstRange3DaysMinimumSecondRange2DaysMinimum twoValidPairsOfDates = new FourFieldsFirstRange3DaysMinimumSecondRange2DaysMinimum(
+                    startDate, threeDaysAfter, startDate, sixDaysBefore);
 
-	Assert.assertFalse(isValid(twoValidPairsOfDates));
-	Assert.assertFalse(isValidAccordingToBeanValidation(twoValidPairsOfDates));
+            Assert.assertFalse(isValid(twoValidPairsOfDates));
+            Assert.assertFalse(isValidAccordingToBeanValidation(twoValidPairsOfDates));
+        }
     }
 
     @Test
     public void shouldBeValidIfDateIntervalIsValidFor3FieldsAnd2Ranges() throws Exception {
-	Calendar startDateRangeOne = startDate();
-	Calendar endDateRageOneStartDateRangeTwo = daysAfter(startDateRangeOne, 3);
-	Calendar endDateRangeTwo = daysAfter(endDateRageOneStartDateRangeTwo, 2);
+        for (int i = 0; i < datesToTest.length; i++) {
+            Calendar startDate = datesToTest[i];
+            Calendar endDateRageOneStartDateRangeTwo = daysAfter(startDate, 3);
+            Calendar endDateRangeTwo = daysAfter(endDateRageOneStartDateRangeTwo, 2);
 
-	ThreeFieldsFirstRange2DaysMinimumSecondRange1DayMinimum validThreeFieldsAndTwoRangesInstance = new ThreeFieldsFirstRange2DaysMinimumSecondRange1DayMinimum(
-		startDateRangeOne, endDateRageOneStartDateRangeTwo, endDateRangeTwo);
+            ThreeFieldsFirstRange2DaysMinimumSecondRange1DayMinimum validThreeFieldsAndTwoRangesInstance = new ThreeFieldsFirstRange2DaysMinimumSecondRange1DayMinimum(
+                    startDate, endDateRageOneStartDateRangeTwo, endDateRangeTwo);
 
-	Assert.assertTrue(isValid(validThreeFieldsAndTwoRangesInstance));
-	Assert.assertTrue(isValidAccordingToBeanValidation(validThreeFieldsAndTwoRangesInstance));
+            Assert.assertTrue(isValid(validThreeFieldsAndTwoRangesInstance));
+            Assert.assertTrue(isValidAccordingToBeanValidation(validThreeFieldsAndTwoRangesInstance));
+        }
     }
 
     @Test
     public void shouldNotBeValidIfOnDateIntervalIsInvalidFor3FieldsAnd2Ranges() throws Exception {
-	Calendar startDateRangeOne = startDate();
-	Calendar endDateRageOneStartDateRangeTwo = daysAfter(startDateRangeOne, 3);
-	Calendar endDateRangeTwo = daysBefore(endDateRageOneStartDateRangeTwo, 1);
+        for (int i = 0; i < datesToTest.length; i++) {
+            Calendar startDate = datesToTest[i];
+            Calendar endDateRageOneStartDateRangeTwo = daysAfter(startDate, 3);
+            Calendar endDateRangeTwo = daysBefore(endDateRageOneStartDateRangeTwo, 1);
 
-	ThreeFieldsFirstRange2DaysMinimumSecondRange1DayMinimum validThreeFieldsAndTwoRangesInstance = new ThreeFieldsFirstRange2DaysMinimumSecondRange1DayMinimum(
-		startDateRangeOne, endDateRageOneStartDateRangeTwo, endDateRangeTwo);
+            ThreeFieldsFirstRange2DaysMinimumSecondRange1DayMinimum validThreeFieldsAndTwoRangesInstance = new ThreeFieldsFirstRange2DaysMinimumSecondRange1DayMinimum(
+                    startDate, endDateRageOneStartDateRangeTwo, endDateRangeTwo);
 
-	Assert.assertFalse(isValid(validThreeFieldsAndTwoRangesInstance));
-	Assert.assertFalse(isValidAccordingToBeanValidation(validThreeFieldsAndTwoRangesInstance));
+            Assert.assertFalse(isValid(validThreeFieldsAndTwoRangesInstance));
+            Assert.assertFalse(isValidAccordingToBeanValidation(validThreeFieldsAndTwoRangesInstance));
+        }
     }
 
     @Test
     public void shouldBeValidIfIdFromStartDateAndEndDateAnnotationsUsageIsWrong() throws Exception {
-	Calendar startDateRangeOne = startDate();
-	Calendar endDateRageOneStartDateRangeTwo = daysAfter(startDateRangeOne, 3);
-	Calendar endDateRangeTwo = daysBefore(endDateRageOneStartDateRangeTwo, 6);
+        for (int i = 0; i < datesToTest.length; i++) {
+            Calendar startDate = datesToTest[i];
+            Calendar endDateRageOneStartDateRangeTwo = daysAfter(startDate, 3);
+            Calendar endDateRangeTwo = daysBefore(endDateRageOneStartDateRangeTwo, 6);
 
-	TwoDateIntervalsThreeFieldsWrongUsage threeFieldsAndTwoRangesWrongUsageInstance = new TwoDateIntervalsThreeFieldsWrongUsage(
-		startDateRangeOne, endDateRageOneStartDateRangeTwo, endDateRangeTwo);
+            TwoDateIntervalsThreeFieldsWrongUsage threeFieldsAndTwoRangesWrongUsageInstance = new TwoDateIntervalsThreeFieldsWrongUsage(
+                    startDate, endDateRageOneStartDateRangeTwo, endDateRangeTwo);
 
-	Assert.assertTrue(isValid(threeFieldsAndTwoRangesWrongUsageInstance));
-	Assert.assertTrue(isValidAccordingToBeanValidation(threeFieldsAndTwoRangesWrongUsageInstance));
+            Assert.assertTrue(isValid(threeFieldsAndTwoRangesWrongUsageInstance));
+            Assert.assertTrue(isValidAccordingToBeanValidation(threeFieldsAndTwoRangesWrongUsageInstance));
+        }
+    }
+    
+    @Test
+    public void shouldBeValidAllowedRanges() throws Exception {
+        for (int i = 0; i < datesToTest.length; i++) {
+            Calendar startDate = datesToTest[i];
+            Calendar endDate = daysAfter(startDate, 10);
+
+            AllowedIntervalsStandardCase allowedIntervalsStandardCase = new AllowedIntervalsStandardCase(
+                    startDate, endDate);
+
+            Assert.assertTrue(isValid(allowedIntervalsStandardCase));
+            Assert.assertTrue(isValidAccordingToBeanValidation(allowedIntervalsStandardCase));
+        }
+        
+        for (int i = 0; i < datesToTest.length; i++) {
+            Calendar startDate = datesToTest[i];
+            Calendar endDate = daysAfter(startDate, 15);
+
+            AllowedIntervalsStandardCase allowedIntervalsStandardCase = new AllowedIntervalsStandardCase(
+                    startDate, endDate);
+
+            Assert.assertTrue(isValid(allowedIntervalsStandardCase));
+            Assert.assertTrue(isValidAccordingToBeanValidation(allowedIntervalsStandardCase));
+        }
+        
+        for (int i = 0; i < datesToTest.length; i++) {
+            Calendar startDate = datesToTest[i];
+            Calendar endDate = daysAfter(startDate, 20);
+
+            AllowedIntervalsStandardCase allowedIntervalsStandardCase = new AllowedIntervalsStandardCase(
+                    startDate, endDate);
+
+            Assert.assertTrue(isValid(allowedIntervalsStandardCase));
+            Assert.assertTrue(isValidAccordingToBeanValidation(allowedIntervalsStandardCase));
+        }
+        
+        for (int i = 0; i < datesToTest.length; i++) {
+            Calendar startDate = datesToTest[i];
+            Calendar endDate = daysAfter(startDate, 25);
+
+            AllowedIntervalsStandardCase allowedIntervalsStandardCase = new AllowedIntervalsStandardCase(
+                    startDate, endDate);
+
+            Assert.assertFalse(isValid(allowedIntervalsStandardCase));
+            Assert.assertFalse(isValidAccordingToBeanValidation(allowedIntervalsStandardCase));
+        }
+        
+        for (int i = 0; i < datesToTest.length; i++) {
+            Calendar startDate = datesToTest[i];
+            Calendar endDate = daysBefore(startDate, 10);
+
+            AllowedIntervalsStandardCase allowedIntervalsStandardCase = new AllowedIntervalsStandardCase(
+                    startDate, endDate);
+
+            Assert.assertFalse(isValid(allowedIntervalsStandardCase));
+            Assert.assertFalse(isValidAccordingToBeanValidation(allowedIntervalsStandardCase));
+        }
     }
 
     @DateRange
     class NoEndDateCase {
-	@StartDate
-	Calendar data;
+        @StartDate
+        Calendar data;
     }
 
-    @SuppressWarnings("unused")
     @DateRange
     private class StantardCaseDaysRangeEquals5 {
-	@StartDate
-	Calendar starDate;
+        @StartDate
+        Calendar starDate;
 
-	@EndDate(minimumDaysRange = 5)
-	Calendar endDate;
+        @EndDate(minimumDaysRange = 5)
+        Calendar endDate;
 
-	public StantardCaseDaysRangeEquals5(Calendar starDate, Calendar endDate) {
-	    this.starDate = starDate;
-	    this.endDate = endDate;
-	}
+        public StantardCaseDaysRangeEquals5(Calendar starDate, Calendar endDate) {
+            this.starDate = starDate;
+            this.endDate = endDate;
+        }
     }
 
-    @SuppressWarnings("unused")
     @DateRange
     private class FourFieldsFirstRange3DaysMinimumSecondRange2DaysMinimum {
-	@StartDate
-	private Calendar firstRangeStartDate;
+        @StartDate
+        private Calendar firstRangeStartDate;
 
-	@EndDate(minimumDaysRange = 3)
-	private Calendar firstRangeEndDate;
+        @EndDate(minimumDaysRange = 3)
+        private Calendar firstRangeEndDate;
 
-	@StartDate(id = 1)
-	private Calendar secondPairDate1;
+        @StartDate(id = 1)
+        private Calendar secondPairDate1;
 
-	@EndDate(minimumDaysRange = 2, id = 1)
-	private Calendar secondPairDate2;
+        @EndDate(minimumDaysRange = 2, id = 1)
+        private Calendar secondPairDate2;
 
-	public FourFieldsFirstRange3DaysMinimumSecondRange2DaysMinimum(Calendar firstPairDate1, Calendar firstPairDate2, Calendar secondPairDate1,
-		Calendar secondPairDate2) {
+        public FourFieldsFirstRange3DaysMinimumSecondRange2DaysMinimum(Calendar firstPairDate1, Calendar firstPairDate2, Calendar secondPairDate1,
+                Calendar secondPairDate2) {
 
-	    this.firstRangeStartDate = firstPairDate1;
-	    this.firstRangeEndDate = firstPairDate2;
-	    this.secondPairDate1 = secondPairDate1;
-	    this.secondPairDate2 = secondPairDate2;
-	}
+            this.firstRangeStartDate = firstPairDate1;
+            this.firstRangeEndDate = firstPairDate2;
+            this.secondPairDate1 = secondPairDate1;
+            this.secondPairDate2 = secondPairDate2;
+        }
     }
 
-    @SuppressWarnings("unused")
     @DateRange
     private class ThreeFieldsFirstRange2DaysMinimumSecondRange1DayMinimum {
-	@StartDate
-	private Calendar startDateRangeOne;
+        @StartDate
+        private Calendar startDateRangeOne;
 
-	@EndDate(minimumDaysRange = 2)
-	@StartDate(id = 2)
-	private Calendar endDateRangeOneAndStartDateRangeTwo;
+        @EndDate(minimumDaysRange = 2)
+        @StartDate(id = 2)
+        private Calendar endDateRangeOneAndStartDateRangeTwo;
 
-	@EndDate(minimumDaysRange = 1, id = 2)
-	private Calendar endDateRangeTwo;
+        @EndDate(minimumDaysRange = 1, id = 2)
+        private Calendar endDateRangeTwo;
 
-	public ThreeFieldsFirstRange2DaysMinimumSecondRange1DayMinimum(Calendar date1, Calendar date2, Calendar date3) {
-	    this.startDateRangeOne = date1;
-	    this.endDateRangeOneAndStartDateRangeTwo = date2;
-	    this.endDateRangeTwo = date3;
-	}
+        public ThreeFieldsFirstRange2DaysMinimumSecondRange1DayMinimum(Calendar date1, Calendar date2, Calendar date3) {
+            this.startDateRangeOne = date1;
+            this.endDateRangeOneAndStartDateRangeTwo = date2;
+            this.endDateRangeTwo = date3;
+        }
     }
 
-    @SuppressWarnings("unused")
     @DateRange
     private class TwoDateIntervalsThreeFieldsWrongUsage {
-	@StartDate
-	private Calendar startDateRangeOne;
+        @StartDate
+        private Calendar startDateRangeOne;
 
-	@EndDate(minimumDaysRange = 2)
-	@StartDate(id = 2)
-	private Calendar endDateRangeOneAndStartDateRangeTwo;
+        @EndDate(minimumDaysRange = 2)
+        @StartDate(id = 2)
+        private Calendar endDateRangeOneAndStartDateRangeTwo;
 
-	@EndDate(minimumDaysRange = 1)
-	private Calendar endDateRangeTwo;
+        @EndDate(minimumDaysRange = 1)
+        private Calendar endDateRangeTwo;
 
-	public TwoDateIntervalsThreeFieldsWrongUsage(Calendar date1, Calendar date2, Calendar date3) {
-	    this.startDateRangeOne = date1;
-	    this.endDateRangeOneAndStartDateRangeTwo = date2;
-	    this.endDateRangeTwo = date3;
-	}
+        public TwoDateIntervalsThreeFieldsWrongUsage(Calendar date1, Calendar date2, Calendar date3) {
+            this.startDateRangeOne = date1;
+            this.endDateRangeOneAndStartDateRangeTwo = date2;
+            this.endDateRangeTwo = date3;
+        }
+    }
+    
+    @DateRange
+    private class AllowedIntervalsStandardCase {
+        @StartDate
+        private Calendar startDate;
+
+        @EndDate(allowedDayRanges = {10, 15, 20})
+        private Calendar endDate;
+
+        public AllowedIntervalsStandardCase(Calendar date1, Calendar date2) {
+            this.startDate = date1;
+            this.endDate = date2;
+        }
     }
 
     private boolean isValid(Object instance) {
-	return new DateRangeValidator().isValid(instance, null);
-    }
-
-    private Calendar startDate() {
-	Calendar dataInicio = Calendar.getInstance();
-	dataInicio.set(2011, 1, 27);
-	return dataInicio;
+        return new DateRangeValidator().isValid(instance, null);
     }
 
     private Calendar daysBefore(Calendar date, int days) {
-	return daysAfter(date, -days);
+        return daysAfter(date, -days);
     }
 
     private Calendar daysAfter(Calendar date, int days) {
-	Calendar dateAfter = (Calendar) date.clone();
-	dateAfter.add(Calendar.DAY_OF_MONTH, days);
-	return dateAfter;
+        Calendar dateAfter = (Calendar) date.clone();
+        dateAfter.add(Calendar.DAY_OF_MONTH, days);
+        return dateAfter;
     }
 
     // For integration tests:
     private boolean isValidAccordingToBeanValidation(Object instance) {
-	ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-	Validator validator = factory.getValidator();
-	Set<ConstraintViolation<Object>> errors = validator.validate(instance);
+        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+        Validator validator = factory.getValidator();
+        Set<ConstraintViolation<Object>> errors = validator.validate(instance);
 
-	for (ConstraintViolation<Object> error : errors) {
-	    System.out.println(error.getMessage());
-	}
-	return errors.isEmpty();
+        for (ConstraintViolation<Object> error : errors) {
+            System.out.println(error.getMessage());
+        }
+        return errors.isEmpty();
     }
 }

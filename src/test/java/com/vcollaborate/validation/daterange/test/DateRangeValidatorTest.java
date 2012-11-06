@@ -39,13 +39,18 @@ import com.vcollaborate.validation.daterange.StartDate;
  */
 public class DateRangeValidatorTest {
 
+    private static DateTime[] datesToTest = {
+            new DateTime(2011, 1, 27, 0, 0, 0, 0),
+            new DateTime(2011, 3, 25, 0, 0, 0, 0),
+            new DateTime(2011, 10, 28, 0, 0, 0, 0)
+    };
+
     @Test
     public void shouldBeValidIfUsageIsWrong() throws Exception {
         NoEndDateCase wrongUsageInstance = new NoEndDateCase();
 
         Assert.assertTrue(isValid(wrongUsageInstance));
         Assert.assertTrue(isValidAccordingToBeanValidation(wrongUsageInstance));
-
     }
 
     @Test
@@ -58,144 +63,176 @@ public class DateRangeValidatorTest {
 
     @Test
     public void shouldBeValidIfDateRangeIsEqualChosenDateRange() throws Exception {
-        DateTime startDate = startDate();
-        DateTime fiveDaysAfter = startDate.plusDays(5);
+        for (int i = 0; i < datesToTest.length; i++) {
+            DateTime startDate = datesToTest[i];
+            DateTime fiveDaysAfter = startDate.plusDays(5);
 
-        StantardCaseDaysRangeEquals5 fiveDaysAfterCaseWhereIntervalEquals5 = new StantardCaseDaysRangeEquals5(startDate.toDate(),
-                fiveDaysAfter.toDate());
+            StantardCaseDaysRangeEquals5 fiveDaysAfterCaseWhereIntervalEquals5 = new StantardCaseDaysRangeEquals5(startDate.toDate(),
+                    fiveDaysAfter.toDate());
 
-        Assert.assertTrue(isValid(fiveDaysAfterCaseWhereIntervalEquals5));
-        Assert.assertTrue(isValidAccordingToBeanValidation(fiveDaysAfterCaseWhereIntervalEquals5));
-
-        //With DST
-        DateTime startDateWithDST = startDateOneDayBeforeDST();
-        DateTime fiveDaysAfterWithDST =startDateWithDST.plusDays(5);
-
-        StantardCaseDaysRangeEquals5 fiveDaysAfterCaseWhereIntervalEquals5WithDST = new StantardCaseDaysRangeEquals5(startDateWithDST.toDate(),
-                fiveDaysAfterWithDST.toDate());
-
-        Assert.assertTrue(isValid(fiveDaysAfterCaseWhereIntervalEquals5WithDST));
-        Assert.assertTrue(isValidAccordingToBeanValidation(fiveDaysAfterCaseWhereIntervalEquals5WithDST));
+            Assert.assertTrue(isValid(fiveDaysAfterCaseWhereIntervalEquals5));
+            Assert.assertTrue(isValidAccordingToBeanValidation(fiveDaysAfterCaseWhereIntervalEquals5));
+        }
     }
 
     @Test
     public void shouldBeValidIfDateRangeIsGreaterThanChosenDateRange() throws Exception {
-        DateTime startDate = startDate();
-        DateTime sixDaysAfter = startDate.plusDays(6);
+        for (int i = 0; i < datesToTest.length; i++) {
+            DateTime startDate = datesToTest[i];
+            DateTime sixDaysAfter = startDate.plusDays(6);
 
-        StantardCaseDaysRangeEquals5 sixDaysAfterCaseWhereIntervalEquals5 = new StantardCaseDaysRangeEquals5(startDate.toDate(),
-                sixDaysAfter.toDate());
+            StantardCaseDaysRangeEquals5 sixDaysAfterCaseWhereIntervalEquals5 = new StantardCaseDaysRangeEquals5(startDate.toDate(),
+                    sixDaysAfter.toDate());
 
-        Assert.assertTrue(isValid(sixDaysAfterCaseWhereIntervalEquals5));
-        Assert.assertTrue(isValidAccordingToBeanValidation(sixDaysAfterCaseWhereIntervalEquals5));
+            Assert.assertTrue(isValid(sixDaysAfterCaseWhereIntervalEquals5));
+            Assert.assertTrue(isValidAccordingToBeanValidation(sixDaysAfterCaseWhereIntervalEquals5));
+        }
     }
 
     @Test
     public void shouldNotBeValidIfDateIntervalIsLessThanChosenDateInterval() throws Exception {
-        DateTime startDate = startDate();
-        DateTime threeDaysAfter = startDate.plusDays(3);
+        for (int i = 0; i < datesToTest.length; i++) {
+            DateTime startDate = datesToTest[i];
+            DateTime threeDaysAfter = startDate.plusDays(3);
 
-        StantardCaseDaysRangeEquals5 instanceIntervalEquals5 = new StantardCaseDaysRangeEquals5(startDate.toDate(), threeDaysAfter.toDate());
+            StantardCaseDaysRangeEquals5 instanceIntervalEquals5 = new StantardCaseDaysRangeEquals5(startDate.toDate(), threeDaysAfter.toDate());
 
-        Assert.assertFalse(isValid(instanceIntervalEquals5));
-        Assert.assertFalse(isValidAccordingToBeanValidation(instanceIntervalEquals5));
-        
-        //With DST
-        DateTime startDateWithDST = startDateOneDayBeforeDST();
-        DateTime threeDaysAfterWithDST = startDateWithDST.plusDays(3);
-
-        StantardCaseDaysRangeEquals5 instanceIntervalEquals5WithDST = new StantardCaseDaysRangeEquals5(startDateWithDST.toDate(), threeDaysAfterWithDST.toDate());
-
-        Assert.assertFalse(isValid(instanceIntervalEquals5WithDST));
-        Assert.assertFalse(isValidAccordingToBeanValidation(instanceIntervalEquals5WithDST));
+            Assert.assertFalse(isValid(instanceIntervalEquals5));
+            Assert.assertFalse(isValidAccordingToBeanValidation(instanceIntervalEquals5));
+        }
     }
 
     @Test
     public void shouldBeValidIfDateIntervalIsGreaterThanOrEqualChosenDateIntervalForPairsOfDates() throws Exception {
-        DateTime startDate = startDate();
-        DateTime threeDaysAfter = startDate.plusDays(3);
-        DateTime sixDaysAfter = startDate.plusDays(6);
+        for (int i = 0; i < datesToTest.length; i++) {
+            DateTime startDate = datesToTest[i];
+            DateTime threeDaysAfter = startDate.plusDays(3);
+            DateTime sixDaysAfter = startDate.plusDays(6);
 
-        FourFieldsFirstRange3DaysMinimumSecondRange2DaysMinimum twoValidPairsOfDates = new FourFieldsFirstRange3DaysMinimumSecondRange2DaysMinimum(
-                startDate.toDate(), threeDaysAfter.toDate(), startDate.toDate(), sixDaysAfter.toDate());
+            FourFieldsFirstRange3DaysMinimumSecondRange2DaysMinimum twoValidPairsOfDates = new FourFieldsFirstRange3DaysMinimumSecondRange2DaysMinimum(
+                    startDate.toDate(), threeDaysAfter.toDate(), startDate.toDate(), sixDaysAfter.toDate());
 
-        Assert.assertTrue(isValid(twoValidPairsOfDates));
-        Assert.assertTrue(isValidAccordingToBeanValidation(twoValidPairsOfDates));
-
-        //With DST
-        DateTime startDateWithDST = startDateOneDayBeforeDST();
-        DateTime threeDaysAfterWithDST = startDateWithDST.plusDays(3);
-        DateTime sixDaysAfterWithDST = startDateWithDST.plusDays(6);
-
-        FourFieldsFirstRange3DaysMinimumSecondRange2DaysMinimum twoValidPairsOfDatesWithDST = new FourFieldsFirstRange3DaysMinimumSecondRange2DaysMinimum(
-                startDateWithDST.toDate(), threeDaysAfterWithDST.toDate(), startDateWithDST.toDate(), sixDaysAfterWithDST.toDate());
-
-        Assert.assertTrue(isValid(twoValidPairsOfDatesWithDST));
-        Assert.assertTrue(isValidAccordingToBeanValidation(twoValidPairsOfDatesWithDST));
+            Assert.assertTrue(isValid(twoValidPairsOfDates));
+            Assert.assertTrue(isValidAccordingToBeanValidation(twoValidPairsOfDates));
+        }
     }
 
     @Test
     public void shouldNotBeValidIfDateIntervalIsSmallerThanChosenDateIntervalForOneOfThePairsOfDates() throws Exception {
-        DateTime startDate = startDate();
-        DateTime threeDaysAfter = startDate.plusDays(3);
-        DateTime sixDaysBefore = startDate.minusDays(6);
+        for (int i = 0; i < datesToTest.length; i++) {
+            DateTime startDate = datesToTest[i];
+            DateTime threeDaysAfter = startDate.plusDays(3);
+            DateTime sixDaysBefore = startDate.minusDays(6);
 
-        FourFieldsFirstRange3DaysMinimumSecondRange2DaysMinimum twoValidPairsOfDates = new FourFieldsFirstRange3DaysMinimumSecondRange2DaysMinimum(
-                startDate.toDate(), threeDaysAfter.toDate(), startDate.toDate(), sixDaysBefore.toDate());
+            FourFieldsFirstRange3DaysMinimumSecondRange2DaysMinimum twoValidPairsOfDates = new FourFieldsFirstRange3DaysMinimumSecondRange2DaysMinimum(
+                    startDate.toDate(), threeDaysAfter.toDate(), startDate.toDate(), sixDaysBefore.toDate());
 
-        Assert.assertFalse(isValid(twoValidPairsOfDates));
-        Assert.assertFalse(isValidAccordingToBeanValidation(twoValidPairsOfDates));
+            Assert.assertFalse(isValid(twoValidPairsOfDates));
+            Assert.assertFalse(isValidAccordingToBeanValidation(twoValidPairsOfDates));
+        }
     }
 
     @Test
     public void shouldBeValidIfDateIntervalIsValidFor3FieldsAnd2Ranges() throws Exception {
-        DateTime startDateRangeOne = startDate();
-        DateTime endDateRageOneStartDateRangeTwo = startDateRangeOne.plusDays(3);
-        DateTime endDateRangeTwo = endDateRageOneStartDateRangeTwo.plusDays(2);
+        for (int i = 0; i < datesToTest.length; i++) {
+            DateTime startDate = datesToTest[i];
+            DateTime endDateRageOneStartDateRangeTwo = startDate.plusDays(3);
+            DateTime endDateRangeTwo = endDateRageOneStartDateRangeTwo.plusDays(2);
 
-        ThreeFieldsFirstRange2DaysMinimumSecondRange1DayMinimum validThreeFieldsAndTwoRangesInstance = new ThreeFieldsFirstRange2DaysMinimumSecondRange1DayMinimum(
-                startDateRangeOne.toDate(), endDateRageOneStartDateRangeTwo.toDate(), endDateRangeTwo.toDate());
+            ThreeFieldsFirstRange2DaysMinimumSecondRange1DayMinimum validThreeFieldsAndTwoRangesInstance = new ThreeFieldsFirstRange2DaysMinimumSecondRange1DayMinimum(
+                    startDate.toDate(), endDateRageOneStartDateRangeTwo.toDate(), endDateRangeTwo.toDate());
 
-        Assert.assertTrue(isValid(validThreeFieldsAndTwoRangesInstance));
-        Assert.assertTrue(isValidAccordingToBeanValidation(validThreeFieldsAndTwoRangesInstance));
-        
-        
-        //With DST
-        DateTime startDateRangeOneWithDST = startDateOneDayBeforeDST();
-        DateTime endDateRageOneStartDateRangeTwoWithDST = startDateRangeOneWithDST.plusDays(3);
-        DateTime endDateRangeTwoWithDST = endDateRageOneStartDateRangeTwoWithDST.plusDays(2);
-
-        ThreeFieldsFirstRange2DaysMinimumSecondRange1DayMinimum validThreeFieldsAndTwoRangesInstanceWithDST = new ThreeFieldsFirstRange2DaysMinimumSecondRange1DayMinimum(
-                startDateRangeOneWithDST.toDate(), endDateRageOneStartDateRangeTwoWithDST.toDate(), endDateRangeTwoWithDST.toDate());
-
-        Assert.assertTrue(isValid(validThreeFieldsAndTwoRangesInstanceWithDST));
-        Assert.assertTrue(isValidAccordingToBeanValidation(validThreeFieldsAndTwoRangesInstanceWithDST));
+            Assert.assertTrue(isValid(validThreeFieldsAndTwoRangesInstance));
+            Assert.assertTrue(isValidAccordingToBeanValidation(validThreeFieldsAndTwoRangesInstance));
+        }
     }
 
     @Test
     public void shouldNotBeValidIfOnDateIntervalIsInvalidFor3FieldsAnd2Ranges() throws Exception {
-        DateTime startDateRangeOne = startDate();
-        DateTime endDateRageOneStartDateRangeTwo = startDateRangeOne.plusDays(3);
-        DateTime endDateRangeTwo = endDateRageOneStartDateRangeTwo.minusDays(1);
+        for (int i = 0; i < datesToTest.length; i++) {
+            DateTime startDate = datesToTest[i];
+            DateTime endDateRageOneStartDateRangeTwo = startDate.plusDays(3);
+            DateTime endDateRangeTwo = endDateRageOneStartDateRangeTwo.minusDays(1);
 
-        ThreeFieldsFirstRange2DaysMinimumSecondRange1DayMinimum validThreeFieldsAndTwoRangesInstance = new ThreeFieldsFirstRange2DaysMinimumSecondRange1DayMinimum(
-                startDateRangeOne.toDate(), endDateRageOneStartDateRangeTwo.toDate(), endDateRangeTwo.toDate());
+            ThreeFieldsFirstRange2DaysMinimumSecondRange1DayMinimum validThreeFieldsAndTwoRangesInstance = new ThreeFieldsFirstRange2DaysMinimumSecondRange1DayMinimum(
+                    startDate.toDate(), endDateRageOneStartDateRangeTwo.toDate(), endDateRangeTwo.toDate());
 
-        Assert.assertFalse(isValid(validThreeFieldsAndTwoRangesInstance));
-        Assert.assertFalse(isValidAccordingToBeanValidation(validThreeFieldsAndTwoRangesInstance));
+            Assert.assertFalse(isValid(validThreeFieldsAndTwoRangesInstance));
+            Assert.assertFalse(isValidAccordingToBeanValidation(validThreeFieldsAndTwoRangesInstance));
+        }
     }
 
     @Test
     public void shouldBeValidIfIdFromStartDateAndEndDateAnnotationsUsageIsWrong() throws Exception {
-        DateTime startDateRangeOne = startDate();
-        DateTime endDateRageOneStartDateRangeTwo = startDateRangeOne.plusDays(3);
-        DateTime endDateRangeTwo = endDateRageOneStartDateRangeTwo.minusDays(6);
+        for (int i = 0; i < datesToTest.length; i++) {
+            DateTime startDate = datesToTest[i];
+            DateTime endDateRageOneStartDateRangeTwo = startDate.plusDays(3);
+            DateTime endDateRangeTwo = endDateRageOneStartDateRangeTwo.minusDays(6);
 
-        TwoDateIntervalsThreeFieldsWrongUsage threeFieldsAndTwoRangesWrongUsageInstance = new TwoDateIntervalsThreeFieldsWrongUsage(
-                startDateRangeOne.toDate(), endDateRageOneStartDateRangeTwo.toDate(), endDateRangeTwo.toDate());
+            TwoDateIntervalsThreeFieldsWrongUsage threeFieldsAndTwoRangesWrongUsageInstance = new TwoDateIntervalsThreeFieldsWrongUsage(
+                    startDate.toDate(), endDateRageOneStartDateRangeTwo.toDate(), endDateRangeTwo.toDate());
 
-        Assert.assertTrue(isValid(threeFieldsAndTwoRangesWrongUsageInstance));
-        Assert.assertTrue(isValidAccordingToBeanValidation(threeFieldsAndTwoRangesWrongUsageInstance));
+            Assert.assertTrue(isValid(threeFieldsAndTwoRangesWrongUsageInstance));
+            Assert.assertTrue(isValidAccordingToBeanValidation(threeFieldsAndTwoRangesWrongUsageInstance));
+        }
+    }
+    
+    @Test
+    public void shouldBeValidAllowedRanges() throws Exception {
+        for (int i = 0; i < datesToTest.length; i++) {
+            DateTime startDate = datesToTest[i];
+            DateTime endDate = startDate.plusDays(10);
+
+            AllowedIntervalsStandardCase allowedIntervalsStandardCase = new AllowedIntervalsStandardCase(
+                    startDate.toDate(), endDate.toDate());
+
+            Assert.assertTrue(isValid(allowedIntervalsStandardCase));
+            Assert.assertTrue(isValidAccordingToBeanValidation(allowedIntervalsStandardCase));
+        }
+        
+        for (int i = 0; i < datesToTest.length; i++) {
+            DateTime startDate = datesToTest[i];
+            DateTime endDate = startDate.plusDays(15);
+
+            AllowedIntervalsStandardCase allowedIntervalsStandardCase = new AllowedIntervalsStandardCase(
+                    startDate.toDate(), endDate.toDate());
+
+            Assert.assertTrue(isValid(allowedIntervalsStandardCase));
+            Assert.assertTrue(isValidAccordingToBeanValidation(allowedIntervalsStandardCase));
+        }
+        
+        for (int i = 0; i < datesToTest.length; i++) {
+            DateTime startDate = datesToTest[i];
+            DateTime endDate = startDate.plusDays(20);
+
+            AllowedIntervalsStandardCase allowedIntervalsStandardCase = new AllowedIntervalsStandardCase(
+                    startDate.toDate(), endDate.toDate());
+
+            Assert.assertTrue(isValid(allowedIntervalsStandardCase));
+            Assert.assertTrue(isValidAccordingToBeanValidation(allowedIntervalsStandardCase));
+        }
+        
+        for (int i = 0; i < datesToTest.length; i++) {
+            DateTime startDate = datesToTest[i];
+            DateTime endDate = startDate.plusDays(25);
+
+            AllowedIntervalsStandardCase allowedIntervalsStandardCase = new AllowedIntervalsStandardCase(
+                    startDate.toDate(), endDate.toDate());
+
+            Assert.assertFalse(isValid(allowedIntervalsStandardCase));
+            Assert.assertFalse(isValidAccordingToBeanValidation(allowedIntervalsStandardCase));
+        }
+        
+        for (int i = 0; i < datesToTest.length; i++) {
+            DateTime startDate = datesToTest[i];
+            DateTime endDate = startDate.plusDays(-5);
+
+            AllowedIntervalsStandardCase allowedIntervalsStandardCase = new AllowedIntervalsStandardCase(
+                    startDate.toDate(), endDate.toDate());
+
+            Assert.assertFalse(isValid(allowedIntervalsStandardCase));
+            Assert.assertFalse(isValidAccordingToBeanValidation(allowedIntervalsStandardCase));
+        }
     }
 
     @DateRange
@@ -279,17 +316,24 @@ public class DateRangeValidatorTest {
             this.endDateRangeTwo = date3;
         }
     }
+    
+    @DateRange
+    private class AllowedIntervalsStandardCase {
+        @StartDate
+        private Date startDate;
+
+        @EndDate(allowedDayRanges = {10, 15, 20})
+        private Date endDate;
+
+        public AllowedIntervalsStandardCase(Date date1, Date date2) {
+            this.startDate = date1;
+            this.endDate = date2;
+        }
+    }
+
 
     private boolean isValid(Object instance) {
         return new DateRangeValidator().isValid(instance, null);
-    }
-
-    private DateTime startDate() {
-        return new DateTime(2011, 1, 27, 0, 0, 0, 0);
-    }
-
-    private DateTime startDateOneDayBeforeDST() {
-        return new DateTime(2011, 3, 30, 0, 0, 0, 0);
     }
 
     // For integration tests:

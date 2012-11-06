@@ -30,5 +30,7 @@ public @interface EndDate {
 	
 	int id() default 0;
 	
-	long minimumDaysRange();
+	long minimumDaysRange() default Long.MAX_VALUE;
+	
+	long[] allowedDayRanges() default {};
 }

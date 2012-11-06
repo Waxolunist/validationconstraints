@@ -12,7 +12,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.vcollaborate</groupId>
 	<artifactId>validation.daterange</artifactId>
-	<version>1.2.2</version>
+	<version>1.2.3-SNAPSHOT</version>
 	<name>JSR-303 DateRange Validator</name>
 
 	<properties>
@@ -148,7 +148,7 @@
 		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
-			<version>2.1</version>
+			<version>1.2.1</version>
 		</dependency>
 
 		<dependency>
