@@ -12,7 +12,7 @@
 	<groupId>com.vcollaborate</groupId>
 	<artifactId>validation.constraints</artifactId>
 	<version>1.2.4-SNAPSHOT</version>
-	<name>JSR-303 DateRange Validator</name>
+	<name>JSR-303 validation constraints</name>
 
   <parent>
     <groupId>org.sonatype.oss</groupId>
