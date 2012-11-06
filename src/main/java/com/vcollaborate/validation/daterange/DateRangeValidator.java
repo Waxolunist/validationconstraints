@@ -27,6 +27,9 @@ import javax.validation.ConstraintValidatorContext;
 
 import org.joda.time.DateTime;
 import org.joda.time.Duration;
+import org.joda.time.Period;
+import org.joda.time.PeriodType;
+import org.joda.time.ReadableDuration;
 
 /**
  * @author Christian Sterzl
@@ -89,7 +92,12 @@ public class DateRangeValidator implements
 				return true;
 			}
 			Duration duration = new Duration(startDate, endDate);
-			return duration.getStandardDays() >= expectedDaysInterval;
+			return duration.getMillis()
+			        / 1000 // millis
+			        / 60 // sec
+			        / 60 // min
+			        / 24 //hour
+			        >= expectedDaysInterval;
 		}
 
 		public void intervalLimitInformation(Object endDate,
