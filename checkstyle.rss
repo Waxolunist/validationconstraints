@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<rss version="0.91">
+  <channel>
+    <title>JSR-303 DateRange Validator - Checkstyle report</title>
+    <link>https://github.com/Waxolunist/validationconstraints</link>
+    <description>JSR-303 DateRange Validator - Checkstyle report</description>
+    <language>en-us</language>
+    <copyright>&#169;2012 V-Collaborate.com</copyright>
+    <item>
+      <title>File: 10,
+             Errors: 186,
+             Warnings: 0,
+             Infos: 0
+      </title>
+            <link>https://github.com/Waxolunist/validationconstraints/checkstyle.html</link>
+      <description>
+        <p>Click <a href="https://github.com/Waxolunist/validationconstraints/checkstyle.html">here</a> for the full Checkstyle report.</p>
+
+        <table summary="Files" boder="1">
+          <thead>
+            <tr>
+              <th>Files</th>
+              <th style="width:30px;"><abbr title="Info">I</abbr></th>
+              <th style="width:30px;"><abbr title="Warning">W</abbr></th>
+              <th style="width:30px;"><abbr title="Error">E</abbr></th>
+            </tr>
+          </thead>
+          <tbody>
+                          <tr>
+                <td>
+                  <a href="https://github.com/Waxolunist/validationconstraints/checkstyle.html#com.vcollaborate.validation.allowedvalues.AllowedIntegers.java">com/vcollaborate/validation/allowedvalues/AllowedIntegers.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  10
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/Waxolunist/validationconstraints/checkstyle.html#com.vcollaborate.validation.daterange.DateRange.java">com/vcollaborate/validation/daterange/DateRange.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  12
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/Waxolunist/validationconstraints/checkstyle.html#com.vcollaborate.validation.allowedvalues.AllowdStringsValidator.java">com/vcollaborate/validation/allowedvalues/AllowdStringsValidator.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  19
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/Waxolunist/validationconstraints/checkstyle.html#com.vcollaborate.validation.nested.Nested.java">com/vcollaborate/validation/nested/Nested.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  15
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/Waxolunist/validationconstraints/checkstyle.html#com.vcollaborate.validation.daterange.DateRangeValidator.java">com/vcollaborate/validation/daterange/DateRangeValidator.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  55
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/Waxolunist/validationconstraints/checkstyle.html#com.vcollaborate.validation.allowedvalues.AllowdIntegersValidator.java">com/vcollaborate/validation/allowedvalues/AllowdIntegersValidator.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  20
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/Waxolunist/validationconstraints/checkstyle.html#com.vcollaborate.validation.nested.NestedValidator.java">com/vcollaborate/validation/nested/NestedValidator.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  26
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/Waxolunist/validationconstraints/checkstyle.html#com.vcollaborate.validation.daterange.StartDate.java">com/vcollaborate/validation/daterange/StartDate.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  4
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/Waxolunist/validationconstraints/checkstyle.html#com.vcollaborate.validation.allowedvalues.AllowedStrings.java">com/vcollaborate/validation/allowedvalues/AllowedStrings.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  10
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/Waxolunist/validationconstraints/checkstyle.html#com.vcollaborate.validation.daterange.EndDate.java">com/vcollaborate/validation/daterange/EndDate.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  15
+                </td>
+              </tr>
+                      </tbody>
+        </table>
+        
+      </description>
+    </item>
+  </channel>
+</rss>
+
