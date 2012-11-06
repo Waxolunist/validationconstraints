@@ -31,13 +31,13 @@ import javax.validation.Payload;
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface AllowedStrings {
-    Class<?>[] groups() default {};
+	Class<?>[] groups() default {};
 
-    Class<? extends Payload>[] payload() default {};
+	Class<? extends Payload>[] payload() default {};
 
-    String message() default "Invalid value";
+	String message() default "Invalid value";
 
-    String[] value();
+	String[] value();
 
-    boolean nullAllowed() default true;
+	boolean nullAllowed() default true;
 }

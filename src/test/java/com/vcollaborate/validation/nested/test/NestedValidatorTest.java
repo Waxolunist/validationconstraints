@@ -143,7 +143,8 @@ public class NestedValidatorTest {
         instance.setBegin(dt.plusDays(10).toDate());
         instance.setEnd(dt.plusDays(10 + 9).toDate());
 
-        Set<ConstraintViolation<ClassWithNestedDateRange>> errors = validator.validateProperty(instance, "nestedDateRange");
+        Set<ConstraintViolation<ClassWithNestedDateRange>> errors = validator.validateProperty(instance,
+                "nestedDateRange");
 
         for (ConstraintViolation<ClassWithNestedDateRange> error : errors) {
             log.info("{}: {}", error.getPropertyPath(), error.getMessage());
@@ -158,7 +159,8 @@ public class NestedValidatorTest {
         ClassWithNestedDateRange instance = new ClassWithNestedDateRange();
         Assert.assertNotNull(instance.getNestedDateRange());
 
-        Set<ConstraintViolation<ClassWithNestedDateRange>> errors = validator.validateProperty(instance, "nestedDateRange");
+        Set<ConstraintViolation<ClassWithNestedDateRange>> errors = validator.validateProperty(instance,
+                "nestedDateRange");
 
         for (ConstraintViolation<ClassWithNestedDateRange> error : errors) {
             log.info("{}: {}", error.getPropertyPath(), error.getMessage());
@@ -173,7 +175,8 @@ public class NestedValidatorTest {
         ClassWithNestedDateRange2 instance = new ClassWithNestedDateRange2();
         Assert.assertNotNull(instance.getNestedDateRange());
 
-        Set<ConstraintViolation<ClassWithNestedDateRange2>> errors = validator.validateProperty(instance, "nestedDateRange");
+        Set<ConstraintViolation<ClassWithNestedDateRange2>> errors = validator.validateProperty(instance,
+                "nestedDateRange");
 
         for (ConstraintViolation<ClassWithNestedDateRange2> error : errors) {
             log.info("{}: {}", error.getPropertyPath(), error.getMessage());

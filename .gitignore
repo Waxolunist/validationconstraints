@@ -5,3 +5,4 @@ target
 .externalToolBuilders
 release.properties
 *.releaseBackup
+.checkstyle

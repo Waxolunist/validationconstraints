@@ -45,3 +45,7 @@ mvn clean deploy
 
 ##Upload to Github
 mvn clean install ghDownloads:upload
+
+##Generate site and upload to github
+mvn site
+mvn site -Pupload-github-site

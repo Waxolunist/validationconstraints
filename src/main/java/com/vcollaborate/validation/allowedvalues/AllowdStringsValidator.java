@@ -22,39 +22,46 @@ import java.util.List;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-public class AllowdStringsValidator implements ConstraintValidator<AllowedStrings, Object> {
+public class AllowdStringsValidator implements
+		ConstraintValidator<AllowedStrings, Object> {
 
-    private List<String> allowedValues;
+	private List<String> allowedValues;
 
-    private boolean nullAllowed = true;
+	private boolean nullAllowed = true;
 
-    /* (non-Javadoc)
-     * @see javax.validation.ConstraintValidator#initialize(java.lang.annotation.Annotation)
-     */
-    public void initialize(AllowedStrings constraintAnnotation) {
-        allowedValues = new ArrayList<String>();
-        for (int index = 0; index < constraintAnnotation.value().length; index++)
-        {
-            allowedValues.add(constraintAnnotation.value()[index]);
-        }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * javax.validation.ConstraintValidator#initialize(java.lang.annotation.
+	 * Annotation)
+	 */
+	public void initialize(AllowedStrings constraintAnnotation) {
+		allowedValues = new ArrayList<String>();
+		for (int index = 0; index < constraintAnnotation.value().length; index++) {
+			allowedValues.add(constraintAnnotation.value()[index]);
+		}
 
-        nullAllowed = constraintAnnotation.nullAllowed();
-    }
+		nullAllowed = constraintAnnotation.nullAllowed();
+	}
 
-    /* (non-Javadoc)
-     * @see javax.validation.ConstraintValidator#isValid(java.lang.Object, javax.validation.ConstraintValidatorContext)
-     */
-    public boolean isValid(Object value, ConstraintValidatorContext context) {
-        boolean valid = false;
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see javax.validation.ConstraintValidator#isValid(java.lang.Object,
+	 * javax.validation.ConstraintValidatorContext)
+	 */
+	public boolean isValid(final Object value, final ConstraintValidatorContext context) {
+		boolean valid = false;
 
-        if(nullAllowed && value == null) {
-            return true;
-        }
+		if (nullAllowed && value == null) {
+			return true;
+		}
 
-        if(value instanceof String) {
-            valid = allowedValues.contains(value);
-        }
+		if (value instanceof String) {
+			valid = allowedValues.contains(value);
+		}
 
-        return valid;
-    }
+		return valid;
+	}
 }
