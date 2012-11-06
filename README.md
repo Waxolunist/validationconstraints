@@ -42,3 +42,6 @@ For signing your build with gpg use the profile -Prelease-sign-artifacts
 
 ##Deployment
 mvn clean deploy
+
+##Upload to Github
+mvn clean install ghDownloads:upload

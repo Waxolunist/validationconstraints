@@ -4,3 +4,4 @@ target
 .settings
 .externalToolBuilders
 release.properties
+*.releaseBackup
