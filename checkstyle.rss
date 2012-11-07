@@ -3,19 +3,19 @@
 <rss version="0.91">
   <channel>
     <title>JSR-303 validation constraints - Checkstyle report</title>
-    <link>https://github.com/Waxolunist/validationconstraints</link>
+    <link>http://waxolunist.github.com/validationconstraints</link>
     <description>JSR-303 validation constraints - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2012 V-Collaborate.com</copyright>
+    <copyright>&#169;2012 Christian Sterzl</copyright>
     <item>
       <title>File: 11,
              Errors: 0,
-             Warnings: 73,
+             Warnings: 57,
              Infos: 0
       </title>
-            <link>https://github.com/Waxolunist/validationconstraints/checkstyle.html</link>
+            <link>http://waxolunist.github.com/validationconstraints/checkstyle.html</link>
       <description>
-        <p>Click <a href="https://github.com/Waxolunist/validationconstraints/checkstyle.html">here</a> for the full Checkstyle report.</p>
+        <p>Click <a href="http://waxolunist.github.com/validationconstraints/checkstyle.html">here</a> for the full Checkstyle report.</p>
 
         <table summary="Files" boder="1">
           <thead>
@@ -29,7 +29,7 @@
           <tbody>
                           <tr>
                 <td>
-                  <a href="https://github.com/Waxolunist/validationconstraints/checkstyle.html#com.vcollaborate.validation.allowedvalues.AllowedIntegers.java">com/vcollaborate/validation/allowedvalues/AllowedIntegers.java</a>
+                  <a href="http://waxolunist.github.com/validationconstraints/checkstyle.html#com.vcollaborate.validation.allowedvalues.AllowedIntegers.java">com/vcollaborate/validation/allowedvalues/AllowedIntegers.java</a>
                 </td>
                 <td>
                   0
@@ -43,7 +43,7 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/Waxolunist/validationconstraints/checkstyle.html#com.vcollaborate.validation.daterange.DateRange.java">com/vcollaborate/validation/daterange/DateRange.java</a>
+                  <a href="http://waxolunist.github.com/validationconstraints/checkstyle.html#com.vcollaborate.validation.daterange.DateRange.java">com/vcollaborate/validation/daterange/DateRange.java</a>
                 </td>
                 <td>
                   0
@@ -57,27 +57,13 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/Waxolunist/validationconstraints/checkstyle.html#com.vcollaborate.validation.allowedvalues.AllowdStringsValidator.java">com/vcollaborate/validation/allowedvalues/AllowdStringsValidator.java</a>
+                  <a href="http://waxolunist.github.com/validationconstraints/checkstyle.html#com.vcollaborate.validation.allowedvalues.AllowdStringsValidator.java">com/vcollaborate/validation/allowedvalues/AllowdStringsValidator.java</a>
                 </td>
                 <td>
                   0
                 </td>
                 <td>
-                  4
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/Waxolunist/validationconstraints/checkstyle.html#com.vcollaborate.validation.allowedvalues.package-info.java">com/vcollaborate/validation/allowedvalues/package-info.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
+                  3
                 </td>
                 <td>
                   0
@@ -85,7 +71,21 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/Waxolunist/validationconstraints/checkstyle.html#com.vcollaborate.validation.nested.Nested.java">com/vcollaborate/validation/nested/Nested.java</a>
+                  <a href="http://waxolunist.github.com/validationconstraints/checkstyle.html#com.vcollaborate.validation.allowedvalues.package-info.java">com/vcollaborate/validation/allowedvalues/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://waxolunist.github.com/validationconstraints/checkstyle.html#com.vcollaborate.validation.nested.Nested.java">com/vcollaborate/validation/nested/Nested.java</a>
                 </td>
                 <td>
                   0
@@ -99,27 +99,13 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/Waxolunist/validationconstraints/checkstyle.html#com.vcollaborate.validation.daterange.DateRangeValidator.java">com/vcollaborate/validation/daterange/DateRangeValidator.java</a>
+                  <a href="http://waxolunist.github.com/validationconstraints/checkstyle.html#com.vcollaborate.validation.daterange.DateRangeValidator.java">com/vcollaborate/validation/daterange/DateRangeValidator.java</a>
                 </td>
                 <td>
                   0
                 </td>
                 <td>
-                  30
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/Waxolunist/validationconstraints/checkstyle.html#com.vcollaborate.validation.allowedvalues.AllowdIntegersValidator.java">com/vcollaborate/validation/allowedvalues/AllowdIntegersValidator.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
+                  17
                 </td>
                 <td>
                   0
@@ -127,13 +113,13 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/Waxolunist/validationconstraints/checkstyle.html#com.vcollaborate.validation.nested.NestedValidator.java">com/vcollaborate/validation/nested/NestedValidator.java</a>
+                  <a href="http://waxolunist.github.com/validationconstraints/checkstyle.html#com.vcollaborate.validation.allowedvalues.AllowdIntegersValidator.java">com/vcollaborate/validation/allowedvalues/AllowdIntegersValidator.java</a>
                 </td>
                 <td>
                   0
                 </td>
                 <td>
-                  6
+                  0
                 </td>
                 <td>
                   0
@@ -141,7 +127,21 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/Waxolunist/validationconstraints/checkstyle.html#com.vcollaborate.validation.daterange.StartDate.java">com/vcollaborate/validation/daterange/StartDate.java</a>
+                  <a href="http://waxolunist.github.com/validationconstraints/checkstyle.html#com.vcollaborate.validation.nested.NestedValidator.java">com/vcollaborate/validation/nested/NestedValidator.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  4
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://waxolunist.github.com/validationconstraints/checkstyle.html#com.vcollaborate.validation.daterange.StartDate.java">com/vcollaborate/validation/daterange/StartDate.java</a>
                 </td>
                 <td>
                   0
@@ -155,7 +155,7 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/Waxolunist/validationconstraints/checkstyle.html#com.vcollaborate.validation.allowedvalues.AllowedStrings.java">com/vcollaborate/validation/allowedvalues/AllowedStrings.java</a>
+                  <a href="http://waxolunist.github.com/validationconstraints/checkstyle.html#com.vcollaborate.validation.allowedvalues.AllowedStrings.java">com/vcollaborate/validation/allowedvalues/AllowedStrings.java</a>
                 </td>
                 <td>
                   0
@@ -169,7 +169,7 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/Waxolunist/validationconstraints/checkstyle.html#com.vcollaborate.validation.daterange.EndDate.java">com/vcollaborate/validation/daterange/EndDate.java</a>
+                  <a href="http://waxolunist.github.com/validationconstraints/checkstyle.html#com.vcollaborate.validation.daterange.EndDate.java">com/vcollaborate/validation/daterange/EndDate.java</a>
                 </td>
                 <td>
                   0
