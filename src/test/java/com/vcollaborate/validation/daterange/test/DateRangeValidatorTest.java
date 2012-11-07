@@ -39,11 +39,8 @@ import com.vcollaborate.validation.daterange.StartDate;
  */
 public class DateRangeValidatorTest {
 
-    private static DateTime[] datesToTest = {
-            new DateTime(2011, 1, 27, 0, 0, 0, 0),
-            new DateTime(2011, 3, 25, 0, 0, 0, 0),
-            new DateTime(2011, 10, 28, 0, 0, 0, 0)
-    };
+    private static DateTime[] datesToTest = { new DateTime(2011, 1, 27, 0, 0, 0, 0),
+            new DateTime(2011, 3, 25, 0, 0, 0, 0), new DateTime(2011, 10, 28, 0, 0, 0, 0) };
 
     @Test
     public void shouldBeValidIfUsageIsWrong() throws Exception {
@@ -67,8 +64,8 @@ public class DateRangeValidatorTest {
             DateTime startDate = datesToTest[i];
             DateTime fiveDaysAfter = startDate.plusDays(5);
 
-            StantardCaseDaysRangeEquals5 fiveDaysAfterCaseWhereIntervalEquals5 = new StantardCaseDaysRangeEquals5(startDate.toDate(),
-                    fiveDaysAfter.toDate());
+            StantardCaseDaysRangeEquals5 fiveDaysAfterCaseWhereIntervalEquals5 = new StantardCaseDaysRangeEquals5(
+                    startDate.toDate(), fiveDaysAfter.toDate());
 
             Assert.assertTrue(isValid(fiveDaysAfterCaseWhereIntervalEquals5));
             Assert.assertTrue(isValidAccordingToBeanValidation(fiveDaysAfterCaseWhereIntervalEquals5));
@@ -81,8 +78,8 @@ public class DateRangeValidatorTest {
             DateTime startDate = datesToTest[i];
             DateTime sixDaysAfter = startDate.plusDays(6);
 
-            StantardCaseDaysRangeEquals5 sixDaysAfterCaseWhereIntervalEquals5 = new StantardCaseDaysRangeEquals5(startDate.toDate(),
-                    sixDaysAfter.toDate());
+            StantardCaseDaysRangeEquals5 sixDaysAfterCaseWhereIntervalEquals5 = new StantardCaseDaysRangeEquals5(
+                    startDate.toDate(), sixDaysAfter.toDate());
 
             Assert.assertTrue(isValid(sixDaysAfterCaseWhereIntervalEquals5));
             Assert.assertTrue(isValidAccordingToBeanValidation(sixDaysAfterCaseWhereIntervalEquals5));
@@ -95,7 +92,8 @@ public class DateRangeValidatorTest {
             DateTime startDate = datesToTest[i];
             DateTime threeDaysAfter = startDate.plusDays(3);
 
-            StantardCaseDaysRangeEquals5 instanceIntervalEquals5 = new StantardCaseDaysRangeEquals5(startDate.toDate(), threeDaysAfter.toDate());
+            StantardCaseDaysRangeEquals5 instanceIntervalEquals5 = new StantardCaseDaysRangeEquals5(startDate.toDate(),
+                    threeDaysAfter.toDate());
 
             Assert.assertFalse(isValid(instanceIntervalEquals5));
             Assert.assertFalse(isValidAccordingToBeanValidation(instanceIntervalEquals5));
@@ -176,7 +174,7 @@ public class DateRangeValidatorTest {
             Assert.assertTrue(isValidAccordingToBeanValidation(threeFieldsAndTwoRangesWrongUsageInstance));
         }
     }
-    
+
     @Test
     public void shouldBeValidAllowedRanges() throws Exception {
         for (int i = 0; i < datesToTest.length; i++) {
@@ -189,7 +187,7 @@ public class DateRangeValidatorTest {
             Assert.assertTrue(isValid(allowedIntervalsStandardCase));
             Assert.assertTrue(isValidAccordingToBeanValidation(allowedIntervalsStandardCase));
         }
-        
+
         for (int i = 0; i < datesToTest.length; i++) {
             DateTime startDate = datesToTest[i];
             DateTime endDate = startDate.plusDays(15);
@@ -200,7 +198,7 @@ public class DateRangeValidatorTest {
             Assert.assertTrue(isValid(allowedIntervalsStandardCase));
             Assert.assertTrue(isValidAccordingToBeanValidation(allowedIntervalsStandardCase));
         }
-        
+
         for (int i = 0; i < datesToTest.length; i++) {
             DateTime startDate = datesToTest[i];
             DateTime endDate = startDate.plusDays(20);
@@ -211,7 +209,7 @@ public class DateRangeValidatorTest {
             Assert.assertTrue(isValid(allowedIntervalsStandardCase));
             Assert.assertTrue(isValidAccordingToBeanValidation(allowedIntervalsStandardCase));
         }
-        
+
         for (int i = 0; i < datesToTest.length; i++) {
             DateTime startDate = datesToTest[i];
             DateTime endDate = startDate.plusDays(25);
@@ -222,7 +220,7 @@ public class DateRangeValidatorTest {
             Assert.assertFalse(isValid(allowedIntervalsStandardCase));
             Assert.assertFalse(isValidAccordingToBeanValidation(allowedIntervalsStandardCase));
         }
-        
+
         for (int i = 0; i < datesToTest.length; i++) {
             DateTime startDate = datesToTest[i];
             DateTime endDate = startDate.plusDays(-5);
@@ -269,8 +267,8 @@ public class DateRangeValidatorTest {
         @EndDate(minimumDaysRange = 2, id = 1)
         private Date secondPairDate2;
 
-        public FourFieldsFirstRange3DaysMinimumSecondRange2DaysMinimum(Date firstPairDate1, Date firstPairDate2, Date secondPairDate1,
-                Date secondPairDate2) {
+        public FourFieldsFirstRange3DaysMinimumSecondRange2DaysMinimum(Date firstPairDate1, Date firstPairDate2,
+                Date secondPairDate1, Date secondPairDate2) {
 
             this.firstRangeStartDate = firstPairDate1;
             this.firstRangeEndDate = firstPairDate2;
@@ -316,13 +314,13 @@ public class DateRangeValidatorTest {
             this.endDateRangeTwo = date3;
         }
     }
-    
+
     @DateRange
     private class AllowedIntervalsStandardCase {
         @StartDate
         private Date startDate;
 
-        @EndDate(allowedDayRanges = {10, 15, 20})
+        @EndDate(allowedDayRanges = { 10, 15, 20 })
         private Date endDate;
 
         public AllowedIntervalsStandardCase(Date date1, Date date2) {
@@ -330,7 +328,6 @@ public class DateRangeValidatorTest {
             this.endDate = date2;
         }
     }
-
 
     private boolean isValid(Object instance) {
         return new DateRangeValidator().isValid(instance, null);

@@ -26,49 +26,59 @@ import javax.validation.Validation;
 import javax.validation.ValidatorFactory;
 
 public class NestedValidator implements ConstraintValidator<Nested, Object> {
-   
-    private Class<?> classToValidate;
 
-    private static ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-    private transient javax.validation.Validator validator;
+	private Class<?> classToValidate;
 
-    /* (non-Javadoc)
-     * @see javax.validation.ConstraintValidator#initialize(java.lang.annotation.Annotation)
-     */
-    public void initialize(Nested constraintAnnotation) {
-        classToValidate = constraintAnnotation.value();
-        validator = factory.getValidator();
-    }
+	private static ValidatorFactory factory = Validation
+			.buildDefaultValidatorFactory();
+	private transient javax.validation.Validator validator;
 
-    /* (non-Javadoc)
-     * @see javax.validation.ConstraintValidator#isValid(java.lang.Object, javax.validation.ConstraintValidatorContext)
-     */
-    public boolean isValid(Object value, ConstraintValidatorContext context) {
-        boolean valid = true;
-       
-        if(value instanceof Iterable) {
-            Iterator<?> iterator = ((Iterable<?>) value).iterator();
-            while(iterator.hasNext()) {
-                Object validatee = iterator.next();
-                valid = valid && validate(validatee);
-                if(!valid) {
-                    break;
-                }
-            }
-        } else {
-            valid = validate(value);
-        }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * javax.validation.ConstraintValidator#initialize(java.lang.annotation.
+	 * Annotation)
+	 */
+	public void initialize(Nested constraintAnnotation) {
+		classToValidate = constraintAnnotation.value();
+		validator = factory.getValidator();
+	}
 
-        return valid;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see javax.validation.ConstraintValidator#isValid(java.lang.Object,
+	 * javax.validation.ConstraintValidatorContext)
+	 */
+	public boolean isValid(final Object value,
+			final ConstraintValidatorContext context) {
+		boolean valid = true;
 
-    private boolean validate(Object validatee) {
-        if(validatee.getClass().isAssignableFrom(classToValidate)) {
-            Set<ConstraintViolation<Object>> violations = validator.validate(validatee);
-            return (violations.size() == 0);
-        } else {
-            return false;
-        }
-    }
+		if (value instanceof Iterable) {
+			Iterator<?> iterator = ((Iterable<?>) value).iterator();
+			while (iterator.hasNext()) {
+				Object validatee = iterator.next();
+				valid = valid && validate(validatee);
+				if (!valid) {
+					break;
+				}
+			}
+		} else {
+			valid = validate(value);
+		}
+
+		return valid;
+	}
+
+	private boolean validate(Object validatee) {
+		if (validatee.getClass().isAssignableFrom(classToValidate)) {
+			Set<ConstraintViolation<Object>> violations = validator
+					.validate(validatee);
+			return (violations.size() == 0);
+		} else {
+			return false;
+		}
+	}
 
 }

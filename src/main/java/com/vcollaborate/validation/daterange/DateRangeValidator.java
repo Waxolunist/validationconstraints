@@ -32,133 +32,139 @@ import org.joda.time.Duration;
  * @author Christian Sterzl
  */
 public class DateRangeValidator implements
-        ConstraintValidator<DateRange, Object> {
+		ConstraintValidator<DateRange, Object> {
 
-    public boolean isValid(Object instance, ConstraintValidatorContext ctx) {
-        List<Field> startDateFields = new ArrayList<Field>();
-        List<Field> endDateFields = new ArrayList<Field>();
+	private static long MILLILSPERDAY = 86400000L;
 
-        annotatedFields(instance, startDateFields, endDateFields);
+	public boolean isValid(Object instance, ConstraintValidatorContext ctx) {
+		List<Field> startDateFields = new ArrayList<Field>();
+		List<Field> endDateFields = new ArrayList<Field>();
 
-        if (startDateFields.isEmpty() || endDateFields.isEmpty()) {
-            return true;
-        }
+		annotatedFields(instance, startDateFields, endDateFields);
 
-        HashMap<Integer, Interval> intervals = new HashMap<Integer, Interval>();
+		if (startDateFields.isEmpty() || endDateFields.isEmpty()) {
+			return true;
+		}
 
-        try {
-            for (Field field : startDateFields) {
-                int idAnnotated = idFromStartDate(field);
-                intervals.put(idAnnotated, new Interval(calendarInstanceFromField(instance, field)));
-            }
+		HashMap<Integer, Interval> intervals = new HashMap<Integer, Interval>();
 
-            for (Field field : endDateFields) {
-                int idAnnotated = idFromEndDate(field);
-                long expectedInterval = field.getAnnotation(EndDate.class).minimumDaysRange();
-                long[] allowedRanges = field.getAnnotation(EndDate.class).allowedDayRanges();
-                Interval intervalWithStartDate = intervals.get(idAnnotated);
+		try {
+			for (Field field : startDateFields) {
+				int idAnnotated = idFromStartDate(field);
+				intervals.put(idAnnotated, new Interval(
+						calendarInstanceFromField(instance, field)));
+			}
 
-                intervalWithStartDate.intervalLimitInformation(calendarInstanceFromField(instance, field), expectedInterval, allowedRanges);
-            }
-        } catch (IllegalAccessException e) {
-            return true;
-        }
+			for (Field field : endDateFields) {
+				int idAnnotated = idFromEndDate(field);
+				long expectedInterval = field.getAnnotation(EndDate.class)
+						.minimumDaysRange();
+				long[] allowedRanges = field.getAnnotation(EndDate.class)
+						.allowedDayRanges();
+				Interval intervalWithStartDate = intervals.get(idAnnotated);
 
-        for (Interval interval : intervals.values()) {
-            if (!interval.isValid()) {
-                return false;
-            }
-        }
+				intervalWithStartDate.intervalLimitInformation(
+						calendarInstanceFromField(instance, field),
+						expectedInterval, allowedRanges);
+			}
+		} catch (IllegalAccessException e) {
+			return true;
+		}
 
-        return true;
-    }
+		for (Interval interval : intervals.values()) {
+			if (!interval.isValid()) {
+				return false;
+			}
+		}
 
-    private void annotatedFields(Object instance, List<Field> startDateFields,
-            List<Field> endDateFields) {
-        Field[] allModelFields = instance.getClass().getDeclaredFields();
-        for (Field field : allModelFields) {
-            if (containsAnnotation(field, StartDate.class)) {
-                startDateFields.add(field);
-            }
-            if (containsAnnotation(field, EndDate.class)) {
-                endDateFields.add(field);
-            }
-        }
-    }
+		return true;
+	}
 
-    private int idFromStartDate(Field field) {
-        return field.getAnnotation(StartDate.class).id();
-    }
+	private void annotatedFields(Object instance, List<Field> startDateFields,
+			List<Field> endDateFields) {
+		Field[] allModelFields = instance.getClass().getDeclaredFields();
+		for (Field field : allModelFields) {
+			if (containsAnnotation(field, StartDate.class)) {
+				startDateFields.add(field);
+			}
+			if (containsAnnotation(field, EndDate.class)) {
+				endDateFields.add(field);
+			}
+		}
+	}
 
-    private int idFromEndDate(Field field) {
-        return field.getAnnotation(EndDate.class).id();
-    }
+	private int idFromStartDate(Field field) {
+		return field.getAnnotation(StartDate.class).id();
+	}
 
-    private Object calendarInstanceFromField(Object instance, Field field) throws IllegalAccessException {
-        field.setAccessible(true);
-        return field.get(instance);
-    }
+	private int idFromEndDate(Field field) {
+		return field.getAnnotation(EndDate.class).id();
+	}
 
-    private boolean containsAnnotation(Field field, Class<? extends Annotation> annotation) {
-        return field.getAnnotation(annotation) != null;
-    }
+	private Object calendarInstanceFromField(Object instance, Field field)
+			throws IllegalAccessException {
+		field.setAccessible(true);
+		return field.get(instance);
+	}
 
-    public void initialize(DateRange annotation) {
+	private boolean containsAnnotation(Field field,
+			Class<? extends Annotation> annotation) {
+		return field.getAnnotation(annotation) != null;
+	}
 
-    }
+	public void initialize(DateRange annotation) {
 
-    private class Interval {
-        private DateTime startDate;
-        private DateTime endDate;
-        private long expectedDaysInterval;
-        private long[] allowedRanges = {};
-        private boolean duplicatedEndDate;
+	}
 
-        public Interval(Object startDate) {
-            if (startDate != null)
-                this.startDate = new DateTime(startDate);
-        }
+	private class Interval {
+		private DateTime startDate;
+		private DateTime endDate;
+		private long expectedDaysInterval;
+		private long[] allowedRanges = {};
+		private boolean duplicatedEndDate;
 
-        public boolean isValid() {
-            if (duplicatedEndDate || endDate == null || startDate == null) {
-                return true;
-            }
-            Duration duration = new Duration(startDate, endDate);
+		public Interval(Object startDate) {
+			if (startDate != null)
+				this.startDate = new DateTime(startDate);
+		}
 
-            // Rounding fixes #1
-            long durationInDays = Math.round(duration.getMillis()
-                    / 1000.0 // millis
-                    / 60.0 // sec
-                    / 60.0 // min
-                    / 24.0 // hour
-            );
-            
-            if(this.allowedRanges.length == 0) {
-                return durationInDays >= expectedDaysInterval;
-            } else {
-                for(int i = 0; i < this.allowedRanges.length; i++) {
-                    if(this.allowedRanges[i] == durationInDays) {
-                        return true;
-                    }
-                }
-                return false;
-            }
-        }
+		public boolean isValid() {
+			if (duplicatedEndDate || endDate == null || startDate == null) {
+				return true;
+			}
+			Duration duration = new Duration(startDate, endDate);
 
-        public void intervalLimitInformation(Object endDate, long expectedDaysInterval, long[] allowedRanges) {
+			// Rounding fixes #1
+			long durationInDays = Math.round(duration.getMillis()
+					/ MILLILSPERDAY);
 
-            if (this.endDate == null) {
-                if (endDate != null) {
-                    this.endDate = new DateTime(endDate);
-                }
-                if (allowedRanges.length == 0) {
-                    this.expectedDaysInterval = expectedDaysInterval;
-                } else {
-                    this.allowedRanges = allowedRanges;
-                }
-            } else {
-                duplicatedEndDate = true;
-            }
-        }
-    }
+			if (this.allowedRanges.length == 0) {
+				return durationInDays >= expectedDaysInterval;
+			} else {
+				for (int i = 0; i < this.allowedRanges.length; i++) {
+					if (this.allowedRanges[i] == durationInDays) {
+						return true;
+					}
+				}
+				return false;
+			}
+		}
+
+		public void intervalLimitInformation(final Object endDate,
+				final long expectedDaysInterval, final long[] allowedRanges) {
+
+			if (this.endDate == null) {
+				if (endDate != null) {
+					this.endDate = new DateTime(endDate);
+				}
+				if (allowedRanges.length == 0) {
+					this.expectedDaysInterval = expectedDaysInterval;
+				} else {
+					this.allowedRanges = allowedRanges;
+				}
+			} else {
+				duplicatedEndDate = true;
+			}
+		}
+	}
 }

@@ -14,30 +14,11 @@
  *  You should have received a copy of the GNU General Public License
  *  along with ValidationConstraints.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.vcollaborate.validation.nested;
 
-import static java.lang.annotation.ElementType.*;
-import static java.lang.annotation.RetentionPolicy.*;
-
-import java.lang.annotation.Documented;
-import java.lang.annotation.Retention;
-import java.lang.annotation.Target;
-
-import javax.validation.Constraint;
-import javax.validation.Payload;
-
-@Target({ METHOD, FIELD, ANNOTATION_TYPE })
-@Retention(RUNTIME)
-@Constraint(validatedBy = NestedValidator.class)
-@Documented
-public @interface Nested {
-
-	String message() default "{invalid.nested}";
-
-	Class<?>[] groups() default {};
-
-	Class<? extends Payload>[] payload() default {};
-
-	Class<?> value();
-
-}
+/**
+ * This package contains classes to check for allowed values.
+ * 
+ * @author Christian Sterzl
+ * @since 1.0
+ */
+package com.vcollaborate.validation.allowedvalues;

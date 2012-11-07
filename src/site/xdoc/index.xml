@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+    <properties>
+        <author>Christian Sterzl</author>
+        <title>JSR-303 validation constraints</title>
+    </properties>
+    <meta name="keyword" content="beanvalidation, java, jsr303"/>
+    <body>
+        <section name="About">
+        	<p>
+        	JSR-303 Validators to validate a daterange and other constraints.
+        	</p>
+        </section>
+    </body>
+</document>

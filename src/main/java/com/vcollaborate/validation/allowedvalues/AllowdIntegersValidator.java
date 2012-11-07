@@ -22,36 +22,50 @@ import java.util.List;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
+/**
+ * Validates an integer value against an array of allowed values.
+ * 
+ * @author Christian Sterzl
+ * @since 1.0
+ * 
+ */
 public class AllowdIntegersValidator implements ConstraintValidator<AllowedIntegers, Object> {
 
     private List<Integer> allowedValues;
 
     private boolean nullAllowed = true;
 
-    /* (non-Javadoc)
+    /**
+     * {@inheritDoc}
+     * 
      * @see javax.validation.ConstraintValidator#initialize(java.lang.annotation.Annotation)
      */
-    public void initialize(AllowedIntegers constraintAnnotation) {
+    public void initialize(final AllowedIntegers constraintAnnotation) {
         allowedValues = new ArrayList<Integer>();
-        for (int index = 0; index < constraintAnnotation.value().length; index++)
-        {
+        for (int index = 0; index < constraintAnnotation.value().length; index++) {
             allowedValues.add(constraintAnnotation.value()[index]);
         }
 
         nullAllowed = constraintAnnotation.nullAllowed();
     }
 
-    /* (non-Javadoc)
-     * @see javax.validation.ConstraintValidator#isValid(java.lang.Object, javax.validation.ConstraintValidatorContext)
+    /**
+     * {@inheritDoc}
+     * 
+     * Test, if null is allowed ({@link AllowedIntegers#nullAllowed()}), if the value is 
+     * contained in the array {@link AllowedIntegers#value()}.
+     * 
+     * @see javax.validation.ConstraintValidator#isValid(java.lang.Object,
+     * javax.validation.ConstraintValidatorContext)
      */
-    public boolean isValid(Object value, ConstraintValidatorContext context) {
+    public boolean isValid(final Object value, final ConstraintValidatorContext context) {
         boolean valid = false;
 
-        if(nullAllowed && value == null) {
+        if (nullAllowed && value == null) {
             return true;
         }
 
-        if(value instanceof Integer) {
+        if (value instanceof Integer) {
             valid = allowedValues.contains(value);
         }
 
