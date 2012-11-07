@@ -34,7 +34,7 @@ import org.joda.time.Duration;
 public class DateRangeValidator implements
 		ConstraintValidator<DateRange, Object> {
 
-	private static long MILLILSPERDAY = 86400000L;
+	private static double MILLILSPERDAY = 86400000.0;
 
 	public boolean isValid(Object instance, ConstraintValidatorContext ctx) {
 		List<Field> startDateFields = new ArrayList<Field>();
