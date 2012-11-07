@@ -16,6 +16,8 @@
  */
 
 /**
+ * This package contains classes to check for allowed values.
+ * 
  * @author Christian Sterzl
  * @since 1.0
  */

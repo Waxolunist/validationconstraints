@@ -49,7 +49,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-site-plugin</artifactId>
-				<version>3.0</version>
+				<version>3.2</version>
 				<configuration>
 					<reportPlugins>
 						<plugin>
@@ -192,12 +192,13 @@
 		<name>V-Collaborate.com</name>
 		<url>http://www.v-collaborate.com</url>
 	</organization>
-	<url>https://github.com/Waxolunist/validationconstraints</url>
+	<url>http://waxolunist.github.com/validationconstraints</url>
 	<description>JSR-303 Validator to validate a Daterange and other range constraints.</description>
 	<licenses>
 		<license>
 			<name>GNU GENERAL PUBLIC LICENSE, Version 3</name>
-			<url>http://www.gnu.org/licenses/gpl.html</url>
+			<url>http://www.gnu.org/licenses/gpl.txt</url>
+			<comments>If another licensing model is needed, please write me an email.</comments>
 			<distribution>repo</distribution>
 		</license>
 	</licenses>
