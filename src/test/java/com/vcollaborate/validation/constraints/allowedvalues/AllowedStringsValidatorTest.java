@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with ValidationConstraints.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.vcollaborate.validation.allowedvalues;
+package com.vcollaborate.validation.constraints.allowedvalues;
 
 import java.util.Set;
 
@@ -32,6 +32,8 @@ import lombok.extern.slf4j.Slf4j;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import com.vcollaborate.validation.constraints.allowedvalues.AllowedStrings;
 
 @Slf4j
 public class AllowedStringsValidatorTest {

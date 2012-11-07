@@ -16,26 +16,11 @@
  * You should have received a copy of the GNU General Public License
  * along with ValidationConstraints.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.vcollaborate.validation.daterange;
-
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-import javax.validation.Constraint;
-import javax.validation.Payload;
 
 /**
+ * This package contains classes to check for allowed values.
+ * 
  * @author Christian Sterzl
+ * @since 1.0
  */
-@Constraint(validatedBy = DateRangeValidator.class)
-@Target(ElementType.TYPE)
-@Retention(RetentionPolicy.RUNTIME)
-public @interface DateRange {
-	Class<?>[] groups() default {};
-
-	Class<? extends Payload>[] payload() default {};
-
-	String message() default "Invalid range between dates";
-}
+package com.vcollaborate.validation.constraints.allowedvalues;

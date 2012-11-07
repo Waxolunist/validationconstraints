@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with ValidationConstraints.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.vcollaborate.validation.allowedvalues;
+package com.vcollaborate.validation.constraints.allowedvalues;
 
 import java.util.ArrayList;
 import java.util.List;

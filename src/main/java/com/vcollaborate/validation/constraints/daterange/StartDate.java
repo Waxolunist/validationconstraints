@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with ValidationConstraints.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.vcollaborate.validation.daterange;
+package com.vcollaborate.validation.constraints.daterange;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -28,11 +28,6 @@ import java.lang.annotation.Target;
  */
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface EndDate {
-	
+public @interface StartDate {
 	int id() default 0;
-	
-	long minimumDaysRange() default Long.MAX_VALUE;
-	
-	long[] allowedDayRanges() default {};
 }

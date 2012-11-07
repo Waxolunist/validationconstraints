@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with ValidationConstraints.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.vcollaborate.validation.nested;
+package com.vcollaborate.validation.constraints.nested;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -39,9 +39,10 @@ import org.joda.time.DateTime;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.vcollaborate.validation.daterange.DateRange;
-import com.vcollaborate.validation.daterange.EndDate;
-import com.vcollaborate.validation.daterange.StartDate;
+import com.vcollaborate.validation.constraints.daterange.DateRange;
+import com.vcollaborate.validation.constraints.daterange.EndDate;
+import com.vcollaborate.validation.constraints.daterange.StartDate;
+import com.vcollaborate.validation.constraints.nested.Nested;
 
 @Slf4j
 public class NestedValidatorTest {

@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with ValidationConstraints.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.vcollaborate.validation.daterange;
+package com.vcollaborate.validation.constraints.daterange;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;

@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with ValidationConstraints.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.vcollaborate.validation.allowedvalues;
+package com.vcollaborate.validation.constraints.allowedvalues;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -29,17 +29,17 @@ import javax.validation.Payload;
 /**
  * @author Christian Sterzl
  */
-@Constraint(validatedBy = AllowdStringsValidator.class)
+@Constraint(validatedBy = AllowdIntegersValidator.class)
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface AllowedStrings {
-	Class<?>[] groups() default {};
+public @interface AllowedIntegers {
+    Class<?>[] groups() default { };
 
-	Class<? extends Payload>[] payload() default {};
+    Class<? extends Payload>[] payload() default { };
 
-	String message() default "Invalid value";
+    String message() default "Invalid value";
 
-	String[] value();
+    int[] value();
 
-	boolean nullAllowed() default true;
+    boolean nullAllowed() default true;
 }
