@@ -1,22 +1,26 @@
 /**
+ * Copyright (C) 2012 Christian Sterzl <christian.sterzl@gmail.com>
+ *
  * This file is part of ValidationConstraints.
  *
- *  ValidationConstraints is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
+ * ValidationConstraints is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *  ValidationConstraints is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
+ * ValidationConstraints is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
  *
- *  You should have received a copy of the GNU General Public License
- *  along with ValidationConstraints.  If not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License
+ * along with ValidationConstraints.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.vcollaborate.validation.nested.test;
+package com.vcollaborate.validation.nested;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
@@ -38,7 +42,6 @@ import org.junit.Test;
 import com.vcollaborate.validation.daterange.DateRange;
 import com.vcollaborate.validation.daterange.EndDate;
 import com.vcollaborate.validation.daterange.StartDate;
-import com.vcollaborate.validation.nested.Nested;
 
 @Slf4j
 public class NestedValidatorTest {
@@ -56,7 +59,6 @@ public class NestedValidatorTest {
     }
 
     @Data
-    @SuppressWarnings("unused")
     private class ClassWithNestedDateRange {
 
         @NotNull
@@ -66,7 +68,15 @@ public class NestedValidatorTest {
     }
 
     @Data
-    @SuppressWarnings("unused")
+    private class ClassWithListOfNestedDateRanges {
+
+        @NotNull
+        @Nested(value = NestedDateRange.class, message = "{invalid.daterange}")
+        @Delegate
+        private List<NestedDateRange> nestedDateRangeList = new ArrayList<NestedDateRange>();
+    }
+
+    @Data
     private class ClassWithNestedDateRange2 {
 
         @Nested(value = NestedDateRangeNullAllowed.class, message = "{invalid.daterange}")
@@ -183,6 +193,53 @@ public class NestedValidatorTest {
         }
 
         Assert.assertTrue(errors.isEmpty());
+    }
+
+    /**
+     * This tests fills a list of objects to validate. The first 5 are valid, the next 5 are invalid.
+     * After the first invalid object the validation stops and returns false.
+     * The error list has thus a size of 1.
+     */
+    @Test
+    public void testNestedList() {
+        ClassWithListOfNestedDateRanges instance = new ClassWithListOfNestedDateRanges();
+
+        DateTime dt = new DateTime();
+        for (int i = 0; i < 5; i++) {
+            NestedDateRange nestedDateRange = new NestedDateRange();
+            nestedDateRange.setBegin(dt.plusDays(10).toDate());
+            nestedDateRange.setEnd(dt.plusDays(10 + 10).toDate());
+            
+            instance.add(nestedDateRange);
+        }
+        
+        Set<ConstraintViolation<ClassWithListOfNestedDateRanges>> errors1 = validator.validateProperty(instance,
+                "nestedDateRangeList");
+
+        for (ConstraintViolation<ClassWithListOfNestedDateRanges> error : errors1) {
+            log.info("{}: {}", error.getPropertyPath(), error.getMessage());
+        }
+        
+        Assert.assertTrue(errors1.isEmpty());
+        Assert.assertTrue(errors1.size() == 0);
+        
+        for (int i = 0; i < 5; i++) {
+            NestedDateRange nestedDateRange = new NestedDateRange();
+            nestedDateRange.setBegin(dt.plusDays(10).toDate());
+            nestedDateRange.setEnd(dt.plusDays(10 + 5).toDate());
+            
+            instance.add(nestedDateRange);
+        }
+
+        Set<ConstraintViolation<ClassWithListOfNestedDateRanges>> errors2 = validator.validateProperty(instance,
+                "nestedDateRangeList");
+
+        for (ConstraintViolation<ClassWithListOfNestedDateRanges> error : errors2) {
+            log.info("{}: {}", error.getPropertyPath(), error.getMessage());
+        }
+
+        Assert.assertFalse(errors2.isEmpty());
+        Assert.assertTrue(errors2.size() == 1);
     }
 
 }

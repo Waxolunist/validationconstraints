@@ -1,18 +1,20 @@
 /**
+ * Copyright (C) 2012 Christian Sterzl <christian.sterzl@gmail.com>
+ *
  * This file is part of ValidationConstraints.
  *
- *  ValidationConstraints is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
+ * ValidationConstraints is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *  ValidationConstraints is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
+ * ValidationConstraints is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
  *
- *  You should have received a copy of the GNU General Public License
- *  along with ValidationConstraints.  If not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License
+ * along with ValidationConstraints.  If not, see <http://www.gnu.org/licenses/>.
  */
 package com.vcollaborate.validation.nested;
 
@@ -29,8 +31,7 @@ public class NestedValidator implements ConstraintValidator<Nested, Object> {
 
 	private Class<?> classToValidate;
 
-	private static ValidatorFactory factory = Validation
-			.buildDefaultValidatorFactory();
+	private static ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 	private transient javax.validation.Validator validator;
 
 	/*
@@ -40,7 +41,7 @@ public class NestedValidator implements ConstraintValidator<Nested, Object> {
 	 * javax.validation.ConstraintValidator#initialize(java.lang.annotation.
 	 * Annotation)
 	 */
-	public void initialize(Nested constraintAnnotation) {
+	public void initialize(final Nested constraintAnnotation) {
 		classToValidate = constraintAnnotation.value();
 		validator = factory.getValidator();
 	}
@@ -51,8 +52,7 @@ public class NestedValidator implements ConstraintValidator<Nested, Object> {
 	 * @see javax.validation.ConstraintValidator#isValid(java.lang.Object,
 	 * javax.validation.ConstraintValidatorContext)
 	 */
-	public boolean isValid(final Object value,
-			final ConstraintValidatorContext context) {
+	public boolean isValid(final Object value, final ConstraintValidatorContext context) {
 		boolean valid = true;
 
 		if (value instanceof Iterable) {
@@ -71,7 +71,7 @@ public class NestedValidator implements ConstraintValidator<Nested, Object> {
 		return valid;
 	}
 
-	private boolean validate(Object validatee) {
+	private boolean validate(final Object validatee) {
 		if (validatee.getClass().isAssignableFrom(classToValidate)) {
 			Set<ConstraintViolation<Object>> violations = validator
 					.validate(validatee);

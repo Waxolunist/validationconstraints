@@ -1,18 +1,20 @@
 /**
+ * Copyright (C) 2012 Christian Sterzl <christian.sterzl@gmail.com>
+ *
  * This file is part of ValidationConstraints.
  *
- *  ValidationConstraints is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
+ * ValidationConstraints is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *  ValidationConstraints is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
+ * ValidationConstraints is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
  *
- *  You should have received a copy of the GNU General Public License
- *  along with ValidationConstraints.  If not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License
+ * along with ValidationConstraints.  If not, see <http://www.gnu.org/licenses/>.
  */
 package com.vcollaborate.validation.daterange;
 
@@ -36,7 +38,7 @@ public class DateRangeValidator implements
 
 	private static double MILLILSPERDAY = 86400000.0;
 
-	public boolean isValid(Object instance, ConstraintValidatorContext ctx) {
+	public boolean isValid(final Object instance, final ConstraintValidatorContext ctx) {
 		List<Field> startDateFields = new ArrayList<Field>();
 		List<Field> endDateFields = new ArrayList<Field>();
 
@@ -68,7 +70,7 @@ public class DateRangeValidator implements
 						expectedInterval, allowedRanges);
 			}
 		} catch (IllegalAccessException e) {
-			return true;
+		        throw new RuntimeException("This should never happen. If so, please report a bug!", e);
 		}
 
 		for (Interval interval : intervals.values()) {
@@ -80,8 +82,8 @@ public class DateRangeValidator implements
 		return true;
 	}
 
-	private void annotatedFields(Object instance, List<Field> startDateFields,
-			List<Field> endDateFields) {
+	private void annotatedFields(final Object instance, final List<Field> startDateFields,
+			final List<Field> endDateFields) {
 		Field[] allModelFields = instance.getClass().getDeclaredFields();
 		for (Field field : allModelFields) {
 			if (containsAnnotation(field, StartDate.class)) {
@@ -93,26 +95,26 @@ public class DateRangeValidator implements
 		}
 	}
 
-	private int idFromStartDate(Field field) {
+	private int idFromStartDate(final Field field) {
 		return field.getAnnotation(StartDate.class).id();
 	}
 
-	private int idFromEndDate(Field field) {
+	private int idFromEndDate(final Field field) {
 		return field.getAnnotation(EndDate.class).id();
 	}
 
-	private Object calendarInstanceFromField(Object instance, Field field)
+	private Object calendarInstanceFromField(final Object instance, final Field field)
 			throws IllegalAccessException {
 		field.setAccessible(true);
 		return field.get(instance);
 	}
 
-	private boolean containsAnnotation(Field field,
-			Class<? extends Annotation> annotation) {
+	private boolean containsAnnotation(final Field field,
+			final Class<? extends Annotation> annotation) {
 		return field.getAnnotation(annotation) != null;
 	}
 
-	public void initialize(DateRange annotation) {
+	public void initialize(final DateRange annotation) {
 
 	}
 
@@ -123,7 +125,7 @@ public class DateRangeValidator implements
 		private long[] allowedRanges = {};
 		private boolean duplicatedEndDate;
 
-		public Interval(Object startDate) {
+		public Interval(final Object startDate) {
 			if (startDate != null)
 				this.startDate = new DateTime(startDate);
 		}

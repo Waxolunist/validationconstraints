@@ -35,7 +35,7 @@ Siehe die GNU General Public License für weitere Details.
 Sie sollten eine Kopie der GNU General Public License zusammen mit diesem
 Programm erhalten haben. Wenn nicht, siehe <http://www.gnu.org/licenses/>.
 
-#Maven Commands
+#Maven Commands used
 
 ##Signing
 For signing your build with gpg use the profile -Prelease-sign-artifacts
@@ -49,3 +49,6 @@ mvn clean install ghDownloads:upload
 ##Generate site and upload to github
 mvn site
 mvn site -Pupload-github-site
+
+##License Header files
+mvn license:format

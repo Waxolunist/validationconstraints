@@ -1,20 +1,22 @@
 /**
+ * Copyright (C) 2012 Christian Sterzl <christian.sterzl@gmail.com>
+ *
  * This file is part of ValidationConstraints.
  *
- *  ValidationConstraints is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
+ * ValidationConstraints is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *  ValidationConstraints is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
+ * ValidationConstraints is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
  *
- *  You should have received a copy of the GNU General Public License
- *  along with ValidationConstraints.  If not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License
+ * along with ValidationConstraints.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.vcollaborate.validation.daterange.test;
+package com.vcollaborate.validation.daterange;
 
 import java.util.Date;
 import java.util.Set;
@@ -44,10 +46,15 @@ public class DateRangeValidatorTest {
 
     @Test
     public void shouldBeValidIfUsageIsWrong() throws Exception {
-        NoEndDateCase wrongUsageInstance = new NoEndDateCase();
+        NoEndDateCase wrongUsageInstance1 = new NoEndDateCase();
 
-        Assert.assertTrue(isValid(wrongUsageInstance));
-        Assert.assertTrue(isValidAccordingToBeanValidation(wrongUsageInstance));
+        Assert.assertTrue(isValid(wrongUsageInstance1));
+        Assert.assertTrue(isValidAccordingToBeanValidation(wrongUsageInstance1));
+        
+        NoStartDateCase wrongUsageInstance2 = new NoStartDateCase();
+
+        Assert.assertTrue(isValid(wrongUsageInstance2));
+        Assert.assertTrue(isValidAccordingToBeanValidation(wrongUsageInstance2));
     }
 
     @Test
@@ -56,6 +63,16 @@ public class DateRangeValidatorTest {
 
         Assert.assertTrue(isValid(standartCaseWithNullValuesInstance));
         Assert.assertTrue(isValidAccordingToBeanValidation(standartCaseWithNullValuesInstance));
+        
+        StantardCaseDaysRangeEquals5 standartCaseWithEndDateNull = new StantardCaseDaysRangeEquals5(datesToTest[0].toDate(), null);
+
+        Assert.assertTrue(isValid(standartCaseWithEndDateNull));
+        Assert.assertTrue(isValidAccordingToBeanValidation(standartCaseWithEndDateNull));
+        
+        StantardCaseDaysRangeEquals5 standartCaseWithStartDateNull = new StantardCaseDaysRangeEquals5(null, datesToTest[0].toDate());
+
+        Assert.assertTrue(isValid(standartCaseWithStartDateNull));
+        Assert.assertTrue(isValidAccordingToBeanValidation(standartCaseWithStartDateNull));
     }
 
     @Test
@@ -164,11 +181,11 @@ public class DateRangeValidatorTest {
     public void shouldBeValidIfIdFromStartDateAndEndDateAnnotationsUsageIsWrong() throws Exception {
         for (int i = 0; i < datesToTest.length; i++) {
             DateTime startDate = datesToTest[i];
-            DateTime endDateRageOneStartDateRangeTwo = startDate.plusDays(3);
-            DateTime endDateRangeTwo = endDateRageOneStartDateRangeTwo.minusDays(6);
+            DateTime endDateRangeOneStartDateRangeTwo = startDate.plusDays(3);
+            DateTime endDateRangeTwo = endDateRangeOneStartDateRangeTwo.minusDays(6);
 
             TwoDateIntervalsThreeFieldsWrongUsage threeFieldsAndTwoRangesWrongUsageInstance = new TwoDateIntervalsThreeFieldsWrongUsage(
-                    startDate.toDate(), endDateRageOneStartDateRangeTwo.toDate(), endDateRangeTwo.toDate());
+                    startDate.toDate(), endDateRangeOneStartDateRangeTwo.toDate(), endDateRangeTwo.toDate());
 
             Assert.assertTrue(isValid(threeFieldsAndTwoRangesWrongUsageInstance));
             Assert.assertTrue(isValidAccordingToBeanValidation(threeFieldsAndTwoRangesWrongUsageInstance));
@@ -236,6 +253,12 @@ public class DateRangeValidatorTest {
     @DateRange
     class NoEndDateCase {
         @StartDate
+        Date data;
+    }
+    
+    @DateRange
+    class NoStartDateCase {
+        @EndDate
         Date data;
     }
 
