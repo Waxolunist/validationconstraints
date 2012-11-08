@@ -1,15 +1,18 @@
 #About
 
+JSR-303 Validators to validate a daterange and other constraints.
+
 This is a fork of [erichegt/dateRangeValidator](https://github.com/erichegt/dateRangeValidator).
+
+#Examples 
+
+For examples please see the tests or this projects homepage: [http://waxolunist.github.com/validationconstraints/](http://waxolunist.github.com/validationconstraints/).
 
 #What is different
 
 The original version did only allow Calendar to validate. This fork uses the library [joda-time](http://joda-time.sourceforge.net/).
 Thus it supports validating every class which can be converted to [DateTime](http://joda-time.sourceforge.net/api-release/index.html).
 
-#Examples 
-
-For examples please see the tests or this projects homepage: [http://waxolunist.github.com/validationconstraints/](http://waxolunist.github.com/validationconstraints/).
 
 #License
 
