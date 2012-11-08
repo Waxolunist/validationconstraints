@@ -23,30 +23,35 @@ import javax.validation.ConstraintValidatorContext;
 
 import org.joda.time.DateTime;
 
+/**
+ * 
+ * @author Christian Sterzl
+ * @since 1.2.4
+ *
+ */
 public class FutureValidator implements ConstraintValidator<Future, Object> {
 
     private boolean today = false;
 
-    /*
-     * (non-Javadoc)
+    /**
+     * {@inheritDoc}
      * 
-     * @see
-     * javax.validation.ConstraintValidator#initialize(java.lang.annotation.
-     * Annotation)
+     * @see javax.validation.ConstraintValidator#initialize(java.lang.annotation.
+     *      Annotation)
      */
     public void initialize(final Future constraintAnnotation) {
-      this.today = constraintAnnotation.today();
+        this.today = constraintAnnotation.today();
     }
 
-    /*
-     * (non-Javadoc)
+    /**
+     * {@inheritDoc}
      * 
      * @see javax.validation.ConstraintValidator#isValid(java.lang.Object,
-     * javax.validation.ConstraintValidatorContext)
+     *      javax.validation.ConstraintValidatorContext)
      */
     public boolean isValid(final Object value, final ConstraintValidatorContext context) {
         DateTime dateTime = new DateTime(value);
-        if(!today) {
+        if (!today) {
             return dateTime.isAfterNow();
         }
         return dateTime.isAfter(new DateTime().toDateMidnight());

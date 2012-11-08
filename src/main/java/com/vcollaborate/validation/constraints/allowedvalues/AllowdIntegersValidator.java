@@ -54,11 +54,11 @@ public class AllowdIntegersValidator implements ConstraintValidator<AllowedInteg
     /**
      * {@inheritDoc}
      * 
-     * Test, if null is allowed ({@link AllowedIntegers#nullAllowed()}), if the value is 
-     * contained in the array {@link AllowedIntegers#value()}.
+     * Test, if null is allowed ({@link AllowedIntegers#nullAllowed()}), if the
+     * value is contained in the array {@link AllowedIntegers#value()}.
      * 
      * @see javax.validation.ConstraintValidator#isValid(java.lang.Object,
-     * javax.validation.ConstraintValidatorContext)
+     *      javax.validation.ConstraintValidatorContext)
      */
     public boolean isValid(final Object value, final ConstraintValidatorContext context) {
         boolean valid = false;

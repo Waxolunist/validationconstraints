@@ -28,6 +28,7 @@ import javax.validation.Payload;
 
 /**
  * @author Christian Sterzl
+ * @since 1.0
  */
 @Constraint(validatedBy = AllowdIntegersValidator.class)
 @Target(ElementType.FIELD)

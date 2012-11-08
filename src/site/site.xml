@@ -41,6 +41,9 @@
 		</fluidoSkin>
 	</custom>
 	<body>
+	<menu title="Overview">
+		
+	</menu>
     <menu ref="modules" inherit="top"/>
     <menu ref="reports" inherit="top"/>    
 	</body>
