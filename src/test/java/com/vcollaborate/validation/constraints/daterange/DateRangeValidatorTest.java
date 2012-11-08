@@ -88,6 +88,18 @@ public class DateRangeValidatorTest {
             Assert.assertTrue(isValidAccordingToBeanValidation(fiveDaysAfterCaseWhereIntervalEquals5));
         }
     }
+    
+    @Test
+    public void shouldBeValidIfDateRangeIsEqualChosenDateRangeWithTime() throws Exception {
+        //This should be possible, because these are 10 days.
+        DateTime startDate = new DateTime(2012, 11, 18, 0, 0, 0, 0);
+        DateTime endDate = new DateTime(2012, 11, 27, 23, 59, 59, 0);
+
+        StantardCaseDaysRangeEquals10 daterange = new StantardCaseDaysRangeEquals10(startDate.toDate(), endDate.toDate());
+
+        Assert.assertTrue(isValid(daterange));
+        Assert.assertTrue(isValidAccordingToBeanValidation(daterange));
+    }
 
     @Test
     public void shouldBeValidIfDateRangeIsGreaterThanChosenDateRange() throws Exception {
@@ -200,9 +212,14 @@ public class DateRangeValidatorTest {
 
             AllowedIntervalsStandardCase allowedIntervalsStandardCase = new AllowedIntervalsStandardCase(
                     startDate.toDate(), endDate.toDate());
+            AllowedIntervalsStandardCase2 allowedIntervalsStandardCase2 = new AllowedIntervalsStandardCase2(
+                    startDate.toDate(), endDate.toDate());
 
             Assert.assertTrue(isValid(allowedIntervalsStandardCase));
             Assert.assertTrue(isValidAccordingToBeanValidation(allowedIntervalsStandardCase));
+            
+            Assert.assertTrue(isValid(allowedIntervalsStandardCase2));
+            Assert.assertTrue(isValidAccordingToBeanValidation(allowedIntervalsStandardCase2));
         }
 
         for (int i = 0; i < datesToTest.length; i++) {
@@ -211,9 +228,14 @@ public class DateRangeValidatorTest {
 
             AllowedIntervalsStandardCase allowedIntervalsStandardCase = new AllowedIntervalsStandardCase(
                     startDate.toDate(), endDate.toDate());
+            AllowedIntervalsStandardCase2 allowedIntervalsStandardCase2 = new AllowedIntervalsStandardCase2(
+                    startDate.toDate(), endDate.toDate());
 
             Assert.assertTrue(isValid(allowedIntervalsStandardCase));
             Assert.assertTrue(isValidAccordingToBeanValidation(allowedIntervalsStandardCase));
+            
+            Assert.assertTrue(isValid(allowedIntervalsStandardCase2));
+            Assert.assertTrue(isValidAccordingToBeanValidation(allowedIntervalsStandardCase2));
         }
 
         for (int i = 0; i < datesToTest.length; i++) {
@@ -222,9 +244,14 @@ public class DateRangeValidatorTest {
 
             AllowedIntervalsStandardCase allowedIntervalsStandardCase = new AllowedIntervalsStandardCase(
                     startDate.toDate(), endDate.toDate());
+            AllowedIntervalsStandardCase2 allowedIntervalsStandardCase2 = new AllowedIntervalsStandardCase2(
+                    startDate.toDate(), endDate.toDate());
 
             Assert.assertTrue(isValid(allowedIntervalsStandardCase));
             Assert.assertTrue(isValidAccordingToBeanValidation(allowedIntervalsStandardCase));
+            
+            Assert.assertTrue(isValid(allowedIntervalsStandardCase2));
+            Assert.assertTrue(isValidAccordingToBeanValidation(allowedIntervalsStandardCase2));
         }
 
         for (int i = 0; i < datesToTest.length; i++) {
@@ -233,9 +260,14 @@ public class DateRangeValidatorTest {
 
             AllowedIntervalsStandardCase allowedIntervalsStandardCase = new AllowedIntervalsStandardCase(
                     startDate.toDate(), endDate.toDate());
+            AllowedIntervalsStandardCase2 allowedIntervalsStandardCase2 = new AllowedIntervalsStandardCase2(
+                    startDate.toDate(), endDate.toDate());
 
             Assert.assertFalse(isValid(allowedIntervalsStandardCase));
             Assert.assertFalse(isValidAccordingToBeanValidation(allowedIntervalsStandardCase));
+            
+            Assert.assertFalse(isValid(allowedIntervalsStandardCase2));
+            Assert.assertFalse(isValidAccordingToBeanValidation(allowedIntervalsStandardCase2));
         }
 
         for (int i = 0; i < datesToTest.length; i++) {
@@ -244,9 +276,14 @@ public class DateRangeValidatorTest {
 
             AllowedIntervalsStandardCase allowedIntervalsStandardCase = new AllowedIntervalsStandardCase(
                     startDate.toDate(), endDate.toDate());
+            AllowedIntervalsStandardCase2 allowedIntervalsStandardCase2 = new AllowedIntervalsStandardCase2(
+                    startDate.toDate(), endDate.toDate());
 
             Assert.assertFalse(isValid(allowedIntervalsStandardCase));
             Assert.assertFalse(isValidAccordingToBeanValidation(allowedIntervalsStandardCase));
+            
+            Assert.assertFalse(isValid(allowedIntervalsStandardCase2));
+            Assert.assertFalse(isValidAccordingToBeanValidation(allowedIntervalsStandardCase2));
         }
     }
 
@@ -271,6 +308,20 @@ public class DateRangeValidatorTest {
         Date endDate;
 
         public StantardCaseDaysRangeEquals5(Date startDate, Date endDate) {
+            this.startDate = startDate;
+            this.endDate = endDate;
+        }
+    }
+    
+    @DateRange
+    private class StantardCaseDaysRangeEquals10 {
+        @StartDate
+        Date startDate;
+
+        @EndDate(minimumDaysRange = 10)
+        Date endDate;
+
+        public StantardCaseDaysRangeEquals10(Date startDate, Date endDate) {
             this.startDate = startDate;
             this.endDate = endDate;
         }
@@ -347,6 +398,20 @@ public class DateRangeValidatorTest {
         private Date endDate;
 
         public AllowedIntervalsStandardCase(Date date1, Date date2) {
+            this.startDate = date1;
+            this.endDate = date2;
+        }
+    }
+    
+    @DateRange
+    private class AllowedIntervalsStandardCase2 {
+        @StartDate
+        private Date startDate;
+
+        @EndDate(allowedDayRanges = { 10, 15, 20 }, minimumDaysRange=25)
+        private Date endDate;
+
+        public AllowedIntervalsStandardCase2(Date date1, Date date2) {
             this.startDate = date1;
             this.endDate = date2;
         }

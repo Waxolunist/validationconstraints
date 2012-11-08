@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2012 Christian Sterzl <christian.sterzl@gmail.com>
+
+    This file is part of ValidationConstraints.
+
+    ValidationConstraints is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    ValidationConstraints is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with ValidationConstraints.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<document>
+    <properties>
+        <author>Christian Sterzl</author>
+        <title>JSR-303 validation constraints</title>
+    </properties>
+    <meta name="keyword" content="beanvalidation, java, jsr303"/>
+    <body>
+        <section name="Daterange">
+        	<subsection name="Summary">
+        	<p>
+        	Checks if two dates are within a defined range.
+        	</p>
+        	<p>
+			It supports every type which can be converted into <a href="http://joda-time.sourceforge.net/api-release/org/joda/time/DateTime.html">org.joda.time.DateTime</a>.<br/>
+        	Please check out joda-time 1.2.1 (see <a href="https://github.com/JodaOrg/joda-time/blob/v1.2_BRANCH/JodaTime/src/java/org/joda/time/DateTime.java">org.joda.time.DateTime (1.2.1)</a>).
+        	</p>
+        	</subsection>
+        	<subsection name="Usage">
+        	<p>
+        	The usage can be seen in the tests.
+        	</p>
+<!-- Example 1 -->
+        	<h4>Example 1 - Standard</h4>
+        	<source>@DateRange
+public class DateRangeExample1 {
+
+    @StartDate
+    Date startDate;
+
+    @EndDate(minimumDaysRange = 5)
+    Date endDate;
+}</source>
+        	<p>
+			The class will be valid if <code>endDate</code> is at least 5 days after <code>startDate</code>. 
+			If one date or both are <code>null</code> the class is valid too.
+        	</p>
+<!-- Example 2 -->
+        	<h4>Example 2 - Pairs</h4>
+        	<source>@DateRange
+public class DateRangeExample2 {
+
+    @StartDate
+    Date startDate1;
+
+    @EndDate(minimumDaysRange = 5)
+    Date endDate1;
+    
+    @StartDate(id = 1)
+    Date startDate2;
+
+    @EndDate(minimumDaysRange = 5, id = 1)
+    Date endDate2;
+}</source>
+        	<p>
+			This example shows how multiple end dates and start dates can be defined. 
+			Pairs are identified by their id. The default id is 0.
+        	</p>
+<!-- Example 3 -->
+        	<h4>Example 3 - Start and End on one field</h4>
+        	<source>@DateRange
+public class DateRangeExample3 {
+
+    @StartDate
+    Date date1;
+
+    @StartDate(id = 1)
+    @EndDate(minimumDaysRange = 5)
+    Date date2;
+    
+    @EndDate(minimumDaysRange = 5, id = 1)
+    Date date3;
+}</source>
+        	<p>
+			<code>@StartDate</code> and <code>@EndDate</code> can be defined on the same field. In this example
+			<code>date1</code> has to be at least 5 days before <code>date2</code> and <code>date2</code> 
+			at least 5 days before <code>date3</code>.
+        	</p>
+<!-- Example 4 -->
+        	<h4>Example 4 - Exact ranges</h4>
+        	<source>@DateRange
+public class DateRangeExample4 {
+
+    @StartDate
+    Date date1;
+
+    @EndDate(allowedDayRanges = { 10, 15, 20 }, minimumDaysRange = 25)
+    Date date2;
+}</source>
+        	<p>
+			<code>@StartDate</code> and <code>@EndDate</code> can be defined on the same field. In this example
+			<code>date1</code> has to be 10, 15 or 20 days before <code>date2</code>. <code>allowedDayRanges</code>
+			takes precedence over <code>minimumDaysRange</code>, thus has no influence on validation.
+        	</p>
+        	</subsection>
+        </section>
+    </body>
+</document>

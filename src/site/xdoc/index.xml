@@ -31,5 +31,32 @@
         	JSR-303 Validators to validate a daterange and other constraints.
         	</p>
         </section>
+        <section name="Constraints">
+        	<p>
+        	Following constraints are available for now:
+        	<dl>
+        	<dt><a href="allowedvalues.html">AllowedIntegers</a></dt>
+        	<dd>Validate an integer value against a list of integers</dd>
+        	<dt><a href="allowedvalues.html">AllowedStrings</a></dt>
+        	<dd>Validate a string against a list of strings</dd>
+        	<dt><a href="daterange.html">DateRange</a></dt>
+        	<dd>Validate the interval of a begin and end date</dd>
+        	<dt><a href="future.html">Future</a></dt>
+        	<dd>Check if a date is in the future or if required today or in the future</dd>
+        	</dl>
+        	</p>
+        </section>
+        <section name="Dependencies">
+        	<p>
+        	The only dependency is <a href="http://joda-time.sourceforge.net/">joda-time 1.2.1</a>. This version is used to be compatible with the version
+        	delivered by Oracle in their Weblogic 10.3.x.  
+        	</p>
+        </section>
+        <section name="New Features">
+        	<p>
+        	If you need more features or see any bugs please report them at the github page 
+        	<a href="https://github.com/Waxolunist/validationconstraints/issues">https://github.com/Waxolunist/validationconstraints/issues</a>.
+        	</p>
+        </section>
     </body>
 </document>

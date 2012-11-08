@@ -7,6 +7,10 @@ This is a fork of [erichegt/dateRangeValidator](https://github.com/erichegt/date
 The original version did only allow Calendar to validate. This fork uses the library [joda-time](http://joda-time.sourceforge.net/).
 Thus it supports validating every class which can be converted to [DateTime](http://joda-time.sourceforge.net/api-release/index.html).
 
+#Examples 
+
+For examples please see the tests or this projects homepage: [http://waxolunist.github.com/validationconstraints/](http://waxolunist.github.com/validationconstraints/).
+
 #License
 
 ValidationConstraints is free software: you can redistribute it and/or modify
@@ -36,25 +40,3 @@ Siehe die GNU General Public License für weitere Details.
 
 Sie sollten eine Kopie der GNU General Public License zusammen mit diesem
 Programm erhalten haben. Wenn nicht, siehe <http://www.gnu.org/licenses/>.
-
-#Maven Commands used
-
-##Signing
-For signing your build with gpg use the profile -Prelease-sign-artifacts
-
-##Deployment
-mvn clean deploy
-mvn clean deploy -Prelease-sign-artifacts
-
-##Upload to Github
-mvn clean install ghDownloads:upload
-
-##Generate site and upload to github
-mvn site
-mvn site -Pupload-github-site
-
-##Generate javadoc
-mvn javadoc:javadoc
-
-##License Header files
-mvn license:format

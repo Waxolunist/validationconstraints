@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2012 Christian Sterzl <christian.sterzl@gmail.com>
+
+    This file is part of ValidationConstraints.
+
+    ValidationConstraints is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    ValidationConstraints is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with ValidationConstraints.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<document>
+    <properties>
+        <author>Christian Sterzl</author>
+        <title>JSR-303 validation constraints</title>
+    </properties>
+    <meta name="keyword" content="beanvalidation, java, jsr303"/>
+    <body>
+        <section name="Allowed Integers">
+        	<subsection name="Summary">
+        	<p>
+        	Validate an integer value against a list of integers.
+        	</p>
+        	</subsection>
+        	<subsection name="Usage">
+        	<p>
+        	The usage can be seen in the tests.
+        	</p>
+        	<source>public class AllowedIntegersExample {
+
+    @AllowedIntegers({ 0, 10, 20 })
+    private Integer value1;
+    		
+    @NotNull
+    @AllowedIntegers(value = { 0, 10, 20 }, nullAllowed = false)
+    private Integer value2;
+}</source>
+        	<p>
+			For <code>value1</code> valid values are <code>null</code>, 0, 10 and 20.<br/>
+			For <code>value2</code> valid values are 0, 10 and 20 but not <code>null</code>. 
+        	</p>
+        	</subsection>
+        </section>
+        <section name="Allowed Strings">
+        	<subsection name="Summary">
+        	<p>
+        	Validate a string against a list of strings.
+        	</p>
+        	</subsection>
+        	<subsection name="Usage">
+        	<p>
+        	The usage can be seen in the tests.
+        	</p>
+        	<source>public class AllowedStringsExample {
+
+    @AllowedStrings({ "a", "b", "c" })
+    private String value1;
+    		
+    @NotNull
+    @AllowedStrings(value = { "a", "b", "c" }, nullAllowed = false)
+    private String value2;
+}</source>
+        	<p>
+			For <code>value1</code> valid values are <code>null</code>, a, b and c.<br/>
+			For <code>value2</code> valid values are a, b and c but not <code>null</code>. 
+        	</p>
+        	</subsection>
+        </section>
+    </body>
+</document>

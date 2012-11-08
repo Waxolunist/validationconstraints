@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2012 Christian Sterzl <christian.sterzl@gmail.com>
+
+    This file is part of ValidationConstraints.
+
+    ValidationConstraints is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    ValidationConstraints is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with ValidationConstraints.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<document>
+    <properties>
+        <author>Christian Sterzl</author>
+        <title>JSR-303 validation constraints</title>
+    </properties>
+    <meta name="keyword" content="beanvalidation, java, jsr303"/>
+    <body>
+        <section name="Future">
+        	<subsection name="Summary">
+        	<p>
+        	Check if a date is in the future or if required today or in the future. 
+        	</p>
+        	<p>
+        	It supports every type which can be converted into <a href="http://joda-time.sourceforge.net/api-release/org/joda/time/DateTime.html">org.joda.time.DateTime</a>.<br/>
+        	Please check out joda-time 1.2.1 (see <a href="https://github.com/JodaOrg/joda-time/blob/v1.2_BRANCH/JodaTime/src/java/org/joda/time/DateTime.java">org.joda.time.DateTime (1.2.1)</a>).
+        	</p>
+        	</subsection>
+        	<subsection name="Usage">
+        	<p>
+        	The usage can be seen in the tests.
+        	</p>
+        	<source>public class FutureExample {
+
+    @Future(today = true)
+    private Date date1;
+
+    @Future
+    private Date date2;
+}</source>
+        	<p>
+			For <code>date1</code> valid values are every date in the future beginning from midnight.<br/>
+			For <code>date2</code> valid values are every date in the future. 
+        	</p>
+        	</subsection>
+        </section>
+    </body>
+</document>

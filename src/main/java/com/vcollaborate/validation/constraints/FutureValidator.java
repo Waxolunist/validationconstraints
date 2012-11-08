@@ -27,7 +27,7 @@ import org.joda.time.DateTime;
  * 
  * @author Christian Sterzl
  * @since 1.2.4
- *
+ * 
  */
 public class FutureValidator implements ConstraintValidator<Future, Object> {
 
@@ -36,8 +36,7 @@ public class FutureValidator implements ConstraintValidator<Future, Object> {
     /**
      * {@inheritDoc}
      * 
-     * @see javax.validation.ConstraintValidator#initialize(java.lang.annotation.
-     *      Annotation)
+     * @see javax.validation.ConstraintValidator#initialize(java.lang.annotation.Annotation)
      */
     public void initialize(final Future constraintAnnotation) {
         this.today = constraintAnnotation.today();
@@ -46,8 +45,8 @@ public class FutureValidator implements ConstraintValidator<Future, Object> {
     /**
      * {@inheritDoc}
      * 
-     * @see javax.validation.ConstraintValidator#isValid(java.lang.Object,
-     *      javax.validation.ConstraintValidatorContext)
+     * @see javax.validation.ConstraintValidator#isValid(java.lang.Object, 
+     *                  javax.validation.ConstraintValidatorContext)
      */
     public boolean isValid(final Object value, final ConstraintValidatorContext context) {
         DateTime dateTime = new DateTime(value);

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2012 Christian Sterzl <christian.sterzl@gmail.com>
+
+    This file is part of ValidationConstraints.
+
+    ValidationConstraints is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    ValidationConstraints is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with ValidationConstraints.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<document>
+    <properties>
+        <author>Christian Sterzl</author>
+        <title>JSR-303 validation constraints</title>
+    </properties>
+    <meta name="keyword" content="beanvalidation, java, jsr303"/>
+    <body>
+        <section name="Nested">
+        	<subsection name="Summary">
+        	<p>
+        	Validates a class constraint or a collection of it. Basically this constraint exists because 
+        	<code>@Valid</code> will be ignored by validateValue (see <a href="http://docs.jboss.org/hibernate/validator/4.0.1/reference/en/html_single/#d0e658">validateValue</a>).<br/>
+        	So basically it is an alternative to <code>@Valid</code>, but both constraints can be used together as well. 
+        	</p>
+        	</subsection>
+        	<subsection name="Usage">
+        	<p>
+        	The usage can be seen in the tests.
+        	</p>
+        	<source><![CDATA[public class ClassWithNestedDateRange {
+
+    @NotNull
+    @Nested(value = NestedDateRange.class)
+    private NestedDateRange nestedDateRange;
+    
+    @Nested(value = NestedDateRange.class)
+    private List<NestedDateRange> nestedDateRangeList;
+}
+
+@DateRange
+public class NestedDateRange {
+
+    @Future
+    @NotNull
+    @StartDate
+    private Date begin;
+
+    @Future
+    @NotNull
+    @EndDate(minimumDaysRange = 10)
+    private Date end;
+}]]>
+</source>
+        	<p>
+			If <code>nestedDateRange</code> is valid, the <code>ClassWithNestedDateRange</code> will also be valid. <br/>
+			Also every element in <code>nestedDateRangeList</code> must be valid.
+        	</p>
+        	</subsection>
+        </section>
+    </body>
+</document>

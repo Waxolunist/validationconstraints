@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2012 Christian Sterzl <christian.sterzl@gmail.com>
+
+    This file is part of ValidationConstraints.
+
+    ValidationConstraints is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    ValidationConstraints is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with ValidationConstraints.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<document>
+    <properties>
+        <author>Christian Sterzl</author>
+        <title>JSR-303 validation constraints</title>
+    </properties>
+    <meta name="keyword" content="beanvalidation, java, jsr303"/>
+    <body>
+        <section name="Important Maven Commands">
+        	<subsection name="Signing">
+				<p>
+				For signing your build with gpg use the profile <code>-Prelease-sign-artifacts</code>.
+        		</p>
+        	</subsection>
+			<subsection name="Deployment">
+				<p>
+				For deploying the site to <a href="http://oss.sonatype.org">Sonatype</a> use following command:
+        		</p>
+        		<source>mvn clean deploy -Prelease-sign-artifacts</source>
+        	</subsection>
+        	<subsection name="Github">
+				<p>
+				For deploying the site to the uploads section of github.com use:
+        		</p>
+        		<source>mvn clean install ghDownloads:upload</source>
+        		<p>
+        		For uploading the site to github pages use:
+        		</p>
+        		<source>mvn site -Pupload-github-site</source>
+        	</subsection>
+        	<subsection name="Site">
+				<p>
+				For site generation use:
+        		</p>
+        		<source>mvn site</source>
+        	</subsection>
+        	<subsection name="Javadoc">
+				<p>
+				For javadoc generation use:
+        		</p>
+        		<source>mvn javadoc:javadoc</source>
+        	</subsection>
+        	<subsection name="License Header Generation">
+				<p>
+				For generate the license headers use:
+        		</p>
+        		<source>mvn license:format</source>
+        	</subsection>
+        </section>
+    </body>
+</document>
