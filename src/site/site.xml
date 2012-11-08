@@ -36,7 +36,6 @@
 				<ribbonColor>black</ribbonColor>
 			</gitHub>
 			<googlePlusOne />
-			<facebookLike />
 			<sourceLineNumbersEnabled>true</sourceLineNumbersEnabled>
 		</fluidoSkin>
 	</custom>
