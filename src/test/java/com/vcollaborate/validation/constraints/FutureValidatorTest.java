@@ -11,10 +11,13 @@ import javax.validation.ValidatorFactory;
 import junit.framework.Assert;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 
+import org.joda.time.DateMidnight;
 import org.joda.time.DateTime;
 import org.junit.Test;
 
+@Slf4j
 public class FutureValidatorTest {
 
     @Test
@@ -24,6 +27,15 @@ public class FutureValidatorTest {
         Assert.assertFalse(isValidAccordingToBeanValidation(fd));
         
         FutureDateWithToday fdwt = new FutureDateWithToday(new Date());
+
+        Assert.assertTrue(isValidAccordingToBeanValidation(fdwt));
+    }
+
+    @Test
+    public void testsWithTodayAtMidnight() throws Exception {
+    	DateMidnight dateMidnight = new DateMidnight();
+    	log.info("dateMidnight: {}", dateMidnight);
+        FutureDateWithToday fdwt = new FutureDateWithToday(dateMidnight.toDate());
 
         Assert.assertTrue(isValidAccordingToBeanValidation(fdwt));
     }
@@ -66,7 +78,7 @@ public class FutureValidatorTest {
         private Date date;
     }
     
-    private boolean isValidAccordingToBeanValidation(Object instance) {
+    private boolean isValidAccordingToBeanValidation(final Object instance) {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
         Set<ConstraintViolation<Object>> errors = validator.validate(instance);

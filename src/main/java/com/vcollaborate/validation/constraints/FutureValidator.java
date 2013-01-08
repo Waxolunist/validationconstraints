@@ -21,6 +21,7 @@ package com.vcollaborate.validation.constraints;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
+import org.joda.time.DateMidnight;
 import org.joda.time.DateTime;
 
 /**
@@ -38,7 +39,7 @@ public class FutureValidator implements ConstraintValidator<Future, Object> {
      * 
      * @see javax.validation.ConstraintValidator#initialize(java.lang.annotation.Annotation)
      */
-    public void initialize(final Future constraintAnnotation) {
+    public final void initialize(final Future constraintAnnotation) {
         this.today = constraintAnnotation.today();
     }
 
@@ -48,11 +49,11 @@ public class FutureValidator implements ConstraintValidator<Future, Object> {
      * @see javax.validation.ConstraintValidator#isValid(java.lang.Object, 
      *                  javax.validation.ConstraintValidatorContext)
      */
-    public boolean isValid(final Object value, final ConstraintValidatorContext context) {
+    public final boolean isValid(final Object value, final ConstraintValidatorContext context) {
         DateTime dateTime = new DateTime(value);
         if (!today) {
             return dateTime.isAfterNow();
         }
-        return dateTime.isAfter(new DateTime().toDateMidnight());
+        return dateTime.isAfter(new DateMidnight()) || dateTime.isEqual(new DateMidnight());
     }
 }

@@ -27,13 +27,14 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 
 /**
- * This class is basically a copy of {@link javax.validation.constraints.Future}. 
+ * This class is basically a copy of {@link javax.validation.constraints.Future}
+ * .
  * 
- * The annotated element must be a date in the future or if {@link #today()} is set to
- * true, the date has to be in the future or today.
+ * The annotated element must be a date in the future or if {@link #today()} is
+ * set to true, the date has to be in the future or today.
  * 
  * <code>null</code> elements are considered valid.
- *
+ * 
  * @author Christian Sterzl
  * @since 1.2.4
  */
@@ -41,11 +42,11 @@ import javax.validation.Payload;
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Future {
-        String message() default "{javax.validation.constraints.Future.message}";
+	String message() default "{javax.validation.constraints.Future.message}";
 
-        Class<?>[] groups() default { };
+	Class<?>[] groups() default {};
 
-        Class<? extends Payload>[] payload() default {};
+	Class<? extends Payload>[] payload() default {};
 
-        boolean today() default false;
+	boolean today() default false;
 }

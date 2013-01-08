@@ -45,7 +45,7 @@ public class DateRangeValidator implements ConstraintValidator<DateRange, Object
      * @see javax.validation.ConstraintValidator#isValid(java.lang.Object,
      *      javax.validation.ConstraintValidatorContext)
      */
-    public boolean isValid(final Object instance, final ConstraintValidatorContext ctx) {
+    public final boolean isValid(final Object instance, final ConstraintValidatorContext ctx) {
         List<Field> startDateFields = new ArrayList<Field>();
         List<Field> endDateFields = new ArrayList<Field>();
 

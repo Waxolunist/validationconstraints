@@ -42,7 +42,7 @@ public class AllowdIntegersValidator implements ConstraintValidator<AllowedInteg
      * 
      * @see javax.validation.ConstraintValidator#initialize(java.lang.annotation.Annotation)
      */
-    public void initialize(final AllowedIntegers constraintAnnotation) {
+    public final void initialize(final AllowedIntegers constraintAnnotation) {
         allowedValues = new ArrayList<Integer>();
         for (int index = 0; index < constraintAnnotation.value().length; index++) {
             allowedValues.add(constraintAnnotation.value()[index]);
@@ -60,7 +60,7 @@ public class AllowdIntegersValidator implements ConstraintValidator<AllowedInteg
      * @see javax.validation.ConstraintValidator#isValid(java.lang.Object,
      *      javax.validation.ConstraintValidatorContext)
      */
-    public boolean isValid(final Object value, final ConstraintValidatorContext context) {
+    public final boolean isValid(final Object value, final ConstraintValidatorContext context) {
         boolean valid = false;
 
         if (nullAllowed && value == null) {

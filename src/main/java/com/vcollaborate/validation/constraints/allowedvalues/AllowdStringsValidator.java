@@ -42,7 +42,7 @@ public class AllowdStringsValidator implements ConstraintValidator<AllowedString
      * 
      * @see javax.validation.ConstraintValidator#initialize(java.lang.annotation.Annotation)
      */
-    public void initialize(final AllowedStrings constraintAnnotation) {
+    public final void initialize(final AllowedStrings constraintAnnotation) {
         allowedValues = new ArrayList<String>();
         for (int index = 0; index < constraintAnnotation.value().length; index++) {
             allowedValues.add(constraintAnnotation.value()[index]);
@@ -57,7 +57,7 @@ public class AllowdStringsValidator implements ConstraintValidator<AllowedString
      * @see javax.validation.ConstraintValidator#isValid(java.lang.Object,
      *      javax.validation.ConstraintValidatorContext)
      */
-    public boolean isValid(final Object value, final ConstraintValidatorContext context) {
+    public final boolean isValid(final Object value, final ConstraintValidatorContext context) {
         boolean valid = false;
 
         if (nullAllowed && value == null) {

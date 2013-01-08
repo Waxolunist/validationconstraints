@@ -41,7 +41,7 @@ public class NestedValidator implements ConstraintValidator<Nested, Object> {
 	 * javax.validation.ConstraintValidator#initialize(java.lang.annotation.
 	 * Annotation)
 	 */
-	public void initialize(final Nested constraintAnnotation) {
+	public final void initialize(final Nested constraintAnnotation) {
 		classToValidate = constraintAnnotation.value();
 		validator = factory.getValidator();
 	}
@@ -52,7 +52,7 @@ public class NestedValidator implements ConstraintValidator<Nested, Object> {
 	 * @see javax.validation.ConstraintValidator#isValid(java.lang.Object,
 	 * javax.validation.ConstraintValidatorContext)
 	 */
-	public boolean isValid(final Object value, final ConstraintValidatorContext context) {
+	public final boolean isValid(final Object value, final ConstraintValidatorContext context) {
 		boolean valid = true;
 
 		if (value instanceof Iterable) {
