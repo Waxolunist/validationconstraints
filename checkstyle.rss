@@ -6,11 +6,11 @@
     <link>http://waxolunist.github.com/validationconstraints</link>
     <description>JSR-303 validation constraints - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2012 Christian Sterzl</copyright>
+    <copyright>&#169;2012 - 2013 Christian Sterzl</copyright>
     <item>
       <title>File: 16,
              Errors: 0,
-             Warnings: 39,
+             Warnings: 40,
              Infos: 0
       </title>
             <link>http://waxolunist.github.com/validationconstraints/checkstyle.html</link>
@@ -203,7 +203,7 @@
                   0
                 </td>
                 <td>
-                  5
+                  6
                 </td>
                 <td>
                   0
