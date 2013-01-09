@@ -67,5 +67,26 @@
         		<source>mvn license:format</source>
         	</subsection>
         </section>
+        <section name="Making a release">
+        	<p>
+        		Prepare the release by setting the version in the pom.xml.
+        	</p>
+        	<p>
+        		Before creating the release first tag the current version.
+        		<source>git tag -a vX.Y.Z -m "Release Version X.Y.Z"</source>
+        		Control the creation of the tag by executing following commands:
+        		<source>git show vX.Y.Z</source>
+        		and
+        		<source>git describe --tags</source>
+        	</p>
+        	<p>
+        		If neccessary commit the last changes with 
+        		<source>git tag -a vX.Y.Z -m "Release Version X.Y.Z"</source>
+        	</p>
+        	<p>
+        		Now the tag can be pushed to github by invoking following command:
+        		<source>git push --tags</source>
+        	</p>
+        </section>
     </body>
 </document>
