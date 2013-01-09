@@ -13,6 +13,7 @@ For examples please see the tests or this projects homepage: [http://waxolunist.
 The original version did only allow Calendar to validate. This fork uses the library [joda-time](http://joda-time.sourceforge.net/).
 Thus it supports validating every class which can be converted to [DateTime](http://joda-time.sourceforge.net/api-release/index.html).
 
+Besides this fork will support a lot more constraints than its original.
 
 #License
 
@@ -28,18 +29,3 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with ValidationConstraints.  If not, see <http://www.gnu.org/licenses/>.
-
-
-
-ValidationConstraints ist Freie Software: Sie können es unter den Bedingungen
-der GNU General Public License, wie von der Free Software Foundation,
-Version 3 der Lizenz oder (nach Ihrer Option) jeder späteren
-veröffentlichten Version, weiterverbreiten und/oder modifizieren.
-
-ValidationConstraints wird in der Hoffnung, dass es nützlich sein wird, aber
-OHNE JEDE GEWÄHRLEISTUNG, bereitgestellt; sogar ohne die implizite
-Gewährleistung der MARKTFÄHIGKEIT oder EIGNUNG FÜR EINEN BESTIMMTEN ZWECK.
-Siehe die GNU General Public License für weitere Details.
-
-Sie sollten eine Kopie der GNU General Public License zusammen mit diesem
-Programm erhalten haben. Wenn nicht, siehe <http://www.gnu.org/licenses/>.
