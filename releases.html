@@ -77,12 +77,10 @@
         Introduction</a>
             </li>
                   
-      <li>
+      <li class="active">
     
-                          <a href="releases.html" title="Releases">
-          <i class="none"></i>
-        Releases</a>
-            </li>
+            <a href="#"><i class="none"></i>Releases</a>
+          </li>
                   
       <li>
     
@@ -121,10 +119,12 @@
             </li>
                               <li class="nav-header">Compiling</li>
                                 
-      <li class="active">
+      <li>
     
-            <a href="#"><i class="none"></i>Maven</a>
-          </li>
+                          <a href="maven.html" title="Maven">
+          <i class="none"></i>
+        Maven</a>
+            </li>
                                         <li class="nav-header">Project Documentation</li>
                                                                                                                                                                                                                                                                                                           
       <li>
@@ -183,92 +183,23 @@
     You should have received a copy of the GNU General Public License
     along with ValidationConstraints.  If not, see <http://www.gnu.org/licenses/>. -->
     
-        <div class="section"><h2>Important Maven Commands<a name="Important_Maven_Commands"></a></h2>
-        	<div class="section"><h3>Signing<a name="Signing"></a></h3>
-				<p>
-				For signing your build with gpg use the profile <tt>-Prelease-sign-artifacts</tt>.
-        		</p>
-        	</div>
-			<div class="section"><h3>Deployment<a name="Deployment"></a></h3>
-				<p>
-				For deploying the site to <a class="externalLink" href="http://oss.sonatype.org">Sonatype</a> use following command:
-        		</p>
-        		<div class="source"><pre class="prettyprint linenums">mvn clean deploy -Prelease-sign-artifacts</pre></div>
-        	</div>
-        	<div class="section"><h3>Github<a name="Github"></a></h3>
-				<p>
-				For deploying the artifact to the uploads section of github.com use:
-        		</p>
-        		<div class="source"><pre class="prettyprint linenums">mvn clean install ghDownloads:upload</pre></div>
-        		<p>
-        		For uploading the site to github pages use:
-        		</p>
-        		<div class="source"><pre class="prettyprint linenums">mvn site -Pupload-github-site</pre></div>
-        	</div>
-        	<div class="section"><h3>Site<a name="Site"></a></h3>
-				<p>
-				For site generation use:
-        		</p>
-        		<div class="source"><pre class="prettyprint linenums">mvn site</pre></div>
-        	</div>
-        	<div class="section"><h3>Javadoc<a name="Javadoc"></a></h3>
-				<p>
-				For javadoc generation use:
-        		</p>
-        		<div class="source"><pre class="prettyprint linenums">mvn javadoc:javadoc</pre></div>
-        	</div>
-        	<div class="section"><h3>License Header Generation<a name="License_Header_Generation"></a></h3>
-				<p>
-				For generate the license headers use:
-        		</p>
-        		<div class="source"><pre class="prettyprint linenums">mvn license:format</pre></div>
+        <div class="section"><h2>Releases<a name="Releases"></a></h2>
+        	<div class="section"><h3>1.2.5<a name="a1.2.5"></a></h3>
+        	<p>
+        	Bugfix release.
+        	</p>
+        	<p>
+        	<b>Enhancements</b>:<br />
+        	</p><ul>
+        		<li>Less checkstyle violations.</li>
+        		<li>Better documentation.</li>
+        		<li>Code quality enhancements.</li>
+        	</ul>
+        	<b>Fixed issues</b>:<br />
+        	see <a class="externalLink" href="https://github.com/Waxolunist/validationconstraints/issues?milestone=1&amp;state=closed">Milestone v1.2.5</a>
+        	
         	</div>
         </div>
-        <div class="section"><h2>Making a release<a name="Making_a_release"></a></h2>
-        	<p>
-        		Prepare the release by setting the version in the pom.xml.
-        	</p>
-        	<p>
-        		Before creating the release first tag the current version.
-        		</p><div class="source"><pre class="prettyprint linenums">git tag -a vX.Y.Z -m &quot;Release Version X.Y.Z&quot;</pre></div>
-        		Control the creation of the tag by executing following commands:
-        		<div class="source"><pre class="prettyprint linenums">git show vX.Y.Z</pre></div>
-        		and
-        		<div class="source"><pre class="prettyprint linenums">git describe --tags</pre></div>
-        	
-        	<p>
-        		If neccessary commit the last changes with 
-        		</p><div class="source"><pre class="prettyprint linenums">git tag -a vX.Y.Z -m &quot;Release Version X.Y.Z&quot;</pre></div>
-        	
-        	<p>
-        		Now the tag can be pushed to github by invoking following command:
-        		</p><div class="source"><pre class="prettyprint linenums">git push --tags</pre></div>
-        	
-        	<p>
-        		For non-maven-users an upload at github should be provided and the page should be the current one,
-        		thus invoke following commands:
-</p><div class="source"><pre class="prettyprint linenums">mvn clean install ghDownloads:upload
-mvn site -Pupload-github-site</pre></div>
-
-In the future this step will be obsolete. Please read <a class="externalLink" href="https://github.com/blog/1302-goodbye-uploads">https://github.com/blog/1302-goodbye-uploads</a>.
-        	
-        	<p>
-        	Now you can finally sign and release the artifacts.
-        	</p><div class="source"><pre class="prettyprint linenums">mvn clean deploy -Prelease-sign-artifacts</pre></div>
-        	After this step log in to <a class="externalLink" href="https://oss.sonatype.org/">https://oss.sonatype.org/</a> and navigate to <i>Staging Repositories</i>.
-        	<br />
-        	Choose your just created repository and close it. Give a description to it like &quot;Release Version X.Y.Z&quot;.
-        	<br />
-        	Now choose your closed repository and release it. Give a description to it like &quot;Release Version X.Y.Z&quot;.
-        	
-        	<p>
-        	Now you're done. The artifact should be after about 2 hours be visible in the central repository.
-        	</p>
-        	<p>
-        	Now start the next version in the pom by incrementing the version and appending &quot;-SNAPSHOT&quot;.
-        	</p>
-        </div>
-        
     
 
                   </div>
