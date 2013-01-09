@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2012 Christian Sterzl <christian.sterzl@gmail.com>
+
+    This file is part of ValidationConstraints.
+
+    ValidationConstraints is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    ValidationConstraints is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with ValidationConstraints.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<document>
+    <properties>
+        <author>Christian Sterzl</author>
+        <title>JSR-303 validation constraints</title>
+    </properties>
+    <meta name="keyword" content="beanvalidation, java, jsr303"/>
+    <body>
+        <section name="Releases">
+        	<subsection name="1.2.5">
+        	<p>
+        	Bugfix release.
+        	</p>
+        	<p>
+        	<strong>Enhancements</strong>:<br/>
+        	<ul>
+        		<li>Less checkstyle violations.</li>
+        		<li>Better documentation.</li>
+        		<li>Code quality enhancements.</li>
+        	</ul>
+        	<strong>Fixed issues</strong>:<br/>
+        	see <a href="https://github.com/Waxolunist/validationconstraints/issues?milestone=1&state=closed">Milestone v1.2.5</a>
+        	</p>
+        	</subsection>
+			<p>
+			To download binary releases go to <a href="https://github.com/Waxolunist/validationconstraints/downloads">https://github.com/Waxolunist/validationconstraints/downloads</a>
+       		</p>
+       		<subsection name="Downloads may not work in the future anymore">
+       		For further information about binary downloads please read <a href="https://github.com/blog/1302-goodbye-uploads">https://github.com/blog/1302-goodbye-uploads</a>.
+       		<br/>
+       		Alternatively you can download binary releases directly from maven via <a href="http://mvnrepository.com/artifact/com.v-collaborate/validation.constraints">http://mvnrepository.com/artifact/com.v-collaborate/validation.constraints</a>.
+       		</subsection>
+        </section>
+    </body>
+</document>

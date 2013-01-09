@@ -42,6 +42,8 @@
 	<body>
 	<menu name="Overview">
 		<item name="Introduction" href="index.html"/>
+		<item name="Releases" href="releases.html"/>
+		<item name="Downloads" href="downloads.html"/>
 	</menu>
 	<menu name="Constraints">
 		<item name="Allowed Values" href="allowedvalues.html"/>
