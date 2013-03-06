@@ -45,6 +45,8 @@
         	<dd>Validates a class constraint or a collection of it</dd>
         	<dt><a href="future.html">Future</a></dt>
         	<dd>Check if a date is in the future or if required today or in the future</dd>
+        	<dt><a href="email.html">Email</a></dt>
+        	<dd>Check if a mail address is valid (with or without domain suffix)</dd>
         	</dl>
         	</p>
         </section>
