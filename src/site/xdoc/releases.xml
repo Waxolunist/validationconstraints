@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright (C) 2012 Christian Sterzl <christian.sterzl@gmail.com>
+    Copyright (C) 2012-2013 Christian Sterzl <christian.sterzl@gmail.com>
 
     This file is part of ValidationConstraints.
 
@@ -27,6 +27,19 @@
     <meta name="keyword" content="beanvalidation, java, jsr303"/>
     <body>
         <section name="Releases">
+        	<subsection name="1.2.6">
+        	<p>
+        	Feature release.
+        	</p>
+        	<p>
+        	<strong>New Constraint</strong>:<br/>
+        	<ul>
+        		<li>Email validation.</li>
+        	</ul>
+        	<strong>Fixed issues</strong>:<br/>
+        	see <a href="https://github.com/Waxolunist/validationconstraints/issues?milestone=1&amp;state=closed">Milestone v1.2.5</a>
+        	</p>
+        	</subsection>
         	<subsection name="1.2.5">
         	<p>
         	Bugfix release.

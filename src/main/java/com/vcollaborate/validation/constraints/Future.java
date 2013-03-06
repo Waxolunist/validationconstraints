@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2012 Christian Sterzl <christian.sterzl@gmail.com>
+ * Copyright (C) 2012-2013 Christian Sterzl <christian.sterzl@gmail.com>
  *
  * This file is part of ValidationConstraints.
  *

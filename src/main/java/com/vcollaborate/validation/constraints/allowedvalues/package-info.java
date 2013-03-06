@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2012 Christian Sterzl <christian.sterzl@gmail.com>
+ * Copyright (C) 2012-2013 Christian Sterzl <christian.sterzl@gmail.com>
  *
  * This file is part of ValidationConstraints.
  *
@@ -16,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with ValidationConstraints.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 /**
  * This package contains classes to check for allowed values.
  * 

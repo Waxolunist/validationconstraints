@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright (C) 2012 Christian Sterzl <christian.sterzl@gmail.com>
+    Copyright (C) 2012-2013 Christian Sterzl <christian.sterzl@gmail.com>
 
     This file is part of ValidationConstraints.
 
@@ -50,6 +50,7 @@
 		<item name="Daterange" href="daterange.html"/>
 		<item name="Nested" href="nested.html"/>
 		<item name="Future" href="future.html"/>
+		<item name="Email" href="email.html"/>
 	</menu>
 	<menu name="Compiling">
 		<item name="Maven" href="maven.html"/>

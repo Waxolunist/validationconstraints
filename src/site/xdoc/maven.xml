@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright (C) 2012 Christian Sterzl <christian.sterzl@gmail.com>
+    Copyright (C) 2012-2013 Christian Sterzl <christian.sterzl@gmail.com>
 
     This file is part of ValidationConstraints.
 
@@ -105,7 +105,7 @@ In the future this step will be obsolete. Please read <a href="https://github.co
         	Now choose your closed repository and release it. Give a description to it like "Release Version X.Y.Z".
         	</p>
         	<p>
-        	Now you're done. The artifact should be after about 2 hours be visible in the central repository.
+        	You're done. The artifact should be after about 2 hours be visible in the central repository.
         	</p>
         	<p>
         	Now start the next version in the pom by incrementing the version and appending "-SNAPSHOT".
