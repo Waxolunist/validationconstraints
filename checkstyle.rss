@@ -8,9 +8,9 @@
     <language>en-us</language>
     <copyright>&#169;2012 - 2013 Christian Sterzl</copyright>
     <item>
-      <title>File: 16,
+      <title>File: 18,
              Errors: 0,
-             Warnings: 40,
+             Warnings: 69,
              Infos: 0
       </title>
             <link>http://waxolunist.github.com/validationconstraints/checkstyle.html</link>
@@ -127,6 +127,20 @@
               </tr>
                           <tr>
                 <td>
+                  <a href="http://waxolunist.github.com/validationconstraints/checkstyle.html#com.vcollaborate.validation.constraints.EmailValidator.java">com/vcollaborate/validation/constraints/EmailValidator.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  22
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="http://waxolunist.github.com/validationconstraints/checkstyle.html#com.vcollaborate.validation.constraints.package-info.java">com/vcollaborate/validation/constraints/package-info.java</a>
                 </td>
                 <td>
@@ -183,6 +197,20 @@
               </tr>
                           <tr>
                 <td>
+                  <a href="http://waxolunist.github.com/validationconstraints/checkstyle.html#com.vcollaborate.validation.constraints.Email.java">com/vcollaborate/validation/constraints/Email.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  7
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="http://waxolunist.github.com/validationconstraints/checkstyle.html#com.vcollaborate.validation.constraints.allowedvalues.AllowedIntegers.java">com/vcollaborate/validation/constraints/allowedvalues/AllowedIntegers.java</a>
                 </td>
                 <td>
@@ -225,20 +253,6 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="http://waxolunist.github.com/validationconstraints/checkstyle.html#com.vcollaborate.validation.constraints.allowedvalues.package-info.java">com/vcollaborate/validation/constraints/allowedvalues/package-info.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="http://waxolunist.github.com/validationconstraints/checkstyle.html#com.vcollaborate.validation.constraints.daterange.DateRange.java">com/vcollaborate/validation/constraints/daterange/DateRange.java</a>
                 </td>
                 <td>
@@ -246,6 +260,20 @@
                 </td>
                 <td>
                   5
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://waxolunist.github.com/validationconstraints/checkstyle.html#com.vcollaborate.validation.constraints.allowedvalues.package-info.java">com/vcollaborate/validation/constraints/allowedvalues/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
                 </td>
                 <td>
                   0
