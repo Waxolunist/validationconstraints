@@ -32,6 +32,7 @@
 		<maven-source-plugin.version>2.4</maven-source-plugin.version>
 		<maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
 		<site-maven-plugin.version>0.11</site-maven-plugin.version>
+		<maven-jxr-plugin.version>2.5</maven-jxr-plugin.version>
 
 		<joda-time.version>1.2.1</joda-time.version>
 		<validation-api.version>1.0.0.GA</validation-api.version>
@@ -42,6 +43,31 @@
 		<project.copyrightYear>2012-2015</project.copyrightYear>
 	</properties>
 	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>${maven-javadoc-plugin.version}</version>
+					<configuration>
+						<links>
+							<link>http://docs.oracle.com/javase/6/docs/api</link>
+							<link>https://docs.jboss.org/hibernate/validator/4.3/api</link>
+						</links>
+						<show>protected</show>
+						<additionalparam>-Xdoclint:none</additionalparam>
+					</configuration>
+					<executions>
+						<execution>
+							<id>attach-javadocs</id>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -75,6 +101,9 @@
 				<version>${license-maven-plugin.version}</version>
 				<configuration>
 					<header>src/main/resources/header.txt</header>
+					<headerDefinitions>
+						<headerDefinition>src/main/resources/headerdefinitions.xml</headerDefinition>
+					</headerDefinitions>
 					<properties>
 						<year>${project.copyrightYear}</year>
 						<email>christian.sterzl@gmail.com</email>
@@ -91,80 +120,6 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-site-plugin</artifactId>
 				<version>${maven-site-plugin.version}</version>
-				<configuration>
-					<reportPlugins>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-project-info-reports-plugin</artifactId>
-							<version>${maven-project-info-reports-plugin.version}</version>
-							<configuration>
-								<dependencyDetailsEnabled>true</dependencyDetailsEnabled>
-								<dependencyLocationsEnabled>true</dependencyLocationsEnabled>
-							</configuration>
-						</plugin>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-javadoc-plugin</artifactId>
-							<version>${maven-javadoc-plugin.version}</version>
-							<configuration>
-								<links>
-									<link>http://docs.oracle.com/javase/6/docs/api/</link>
-								</links>
-								<show>protected</show>
-								<stylesheet>maven</stylesheet>
-								<additionalparam>-Xdoclint:none</additionalparam>
-							</configuration>
-							<reportSets>
-								<reportSet>
-									<id>default</id>
-									<reports>
-										<report>javadoc</report>
-									</reports>
-								</reportSet>
-							</reportSets>
-						</plugin>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-surefire-report-plugin</artifactId>
-							<version>${maven-surefire-report-plugin.version}</version>
-						</plugin>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-checkstyle-plugin</artifactId>
-							<version>${maven-checkstyle-plugin.version}</version>
-							<configuration>
-								<sourceDirectory>${project.build.sourceDirectory}</sourceDirectory>
-								<configLocation>checkstyle.xml</configLocation>
-							</configuration>
-							<reportSets>
-								<reportSet>
-									<reports>
-										<report>checkstyle</report>
-									</reports>
-								</reportSet>
-							</reportSets>
-						</plugin>
-						<plugin>
-							<groupId>org.codehaus.mojo</groupId>
-							<artifactId>cobertura-maven-plugin</artifactId>
-							<version>${cobertura-maven-plugin.version}</version>
-						</plugin>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-pmd-plugin</artifactId>
-							<version>${maven-pmd-plugin.version}</version>
-							<configuration>
-								<linkXref>true</linkXref>
-								<sourceEncoding>utf-8</sourceEncoding>
-								<minimumTokens>100</minimumTokens>
-								<targetJdk>${jdk.version}</targetJdk>
-								<excludes>
-									<exclude>**/*Test.java</exclude>
-								</excludes>
-							</configuration>
-						</plugin>
-					</reportPlugins>
-				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -183,16 +138,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>${maven-javadoc-plugin.version}</version>
-				<configuration>
-					<links>
-						<link>http://docs.oracle.com/javase/6/docs/api</link>
-						<link>https://docs.jboss.org/hibernate/validator/4.3/api</link>
-					</links>
-					<show>protected</show>
-					<stylesheet>maven</stylesheet>
-					<additionalparam>-Xdoclint:none</additionalparam>
-				</configuration>
 				<executions>
 					<execution>
 						<id>attach-javadocs</id>
@@ -229,6 +174,63 @@
 			</plugin>
 		</plugins>
 	</build>
+	<reporting>
+		<excludeDefaults>true</excludeDefaults>
+		<outputDirectory>${project.build.directory}/site</outputDirectory>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>${maven-project-info-reports-plugin.version}</version>
+				<configuration>
+					<dependencyDetailsEnabled>true</dependencyDetailsEnabled>
+					<dependencyLocationsEnabled>true</dependencyLocationsEnabled>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+				<version>${maven-surefire-report-plugin.version}</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>${maven-checkstyle-plugin.version}</version>
+				<configuration>
+					<sourceDirectory>${project.build.sourceDirectory}</sourceDirectory>
+					<configLocation>checkstyle.xml</configLocation>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<version>${cobertura-maven-plugin.version}</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>${maven-pmd-plugin.version}</version>
+				<configuration>
+					<linkXref>true</linkXref>
+					<sourceEncoding>utf-8</sourceEncoding>
+					<minimumTokens>100</minimumTokens>
+					<targetJdk>${jdk.version}</targetJdk>
+					<excludes>
+						<exclude>**/*Test.java</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jxr-plugin</artifactId>
+				<version>${maven-jxr-plugin.version}</version>
+			</plugin>
+		</plugins>
+	</reporting>
 
 	<dependencies>
 		<dependency>

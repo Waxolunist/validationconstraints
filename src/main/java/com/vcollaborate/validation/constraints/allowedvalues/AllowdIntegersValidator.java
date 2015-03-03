@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2012-2015 Christian Sterzl <christian.sterzl@gmail.com>
  *
  * This file is part of ValidationConstraints.
@@ -16,6 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with ValidationConstraints.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 package com.vcollaborate.validation.constraints.allowedvalues;
 
 import java.util.ArrayList;
@@ -33,44 +34,44 @@ import javax.validation.ConstraintValidatorContext;
  */
 public class AllowdIntegersValidator implements ConstraintValidator<AllowedIntegers, Object> {
 
-    private List<Integer> allowedValues;
+  private List<Integer> allowedValues;
 
-    private boolean nullAllowed = true;
+  private boolean nullAllowed = true;
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see javax.validation.ConstraintValidator#initialize(java.lang.annotation.Annotation)
-     */
-    public final void initialize(final AllowedIntegers constraintAnnotation) {
-        allowedValues = new ArrayList<Integer>();
-        for (int index = 0; index < constraintAnnotation.value().length; index++) {
-            allowedValues.add(constraintAnnotation.value()[index]);
-        }
-
-        nullAllowed = constraintAnnotation.nullAllowed();
+  /**
+   * {@inheritDoc}
+   * 
+   * @see javax.validation.ConstraintValidator#initialize(java.lang.annotation.Annotation)
+   */
+  public final void initialize(final AllowedIntegers constraintAnnotation) {
+    allowedValues = new ArrayList<Integer>();
+    for (int index = 0; index < constraintAnnotation.value().length; index++) {
+      allowedValues.add(constraintAnnotation.value()[index]);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * Test, if null is allowed ({@link AllowedIntegers#nullAllowed()}), if the
-     * value is contained in the array {@link AllowedIntegers#value()}.
-     * 
-     * @see javax.validation.ConstraintValidator#isValid(java.lang.Object,
-     *      javax.validation.ConstraintValidatorContext)
-     */
-    public final boolean isValid(final Object value, final ConstraintValidatorContext context) {
-        boolean valid = false;
+    nullAllowed = constraintAnnotation.nullAllowed();
+  }
 
-        if (nullAllowed && value == null) {
-            return true;
-        }
+  /**
+   * {@inheritDoc}
+   * 
+   * Test, if null is allowed ({@link AllowedIntegers#nullAllowed()}), if the value is contained in
+   * the array {@link AllowedIntegers#value()}.
+   * 
+   * @see javax.validation.ConstraintValidator#isValid(java.lang.Object,
+   *      javax.validation.ConstraintValidatorContext)
+   */
+  public final boolean isValid(final Object value, final ConstraintValidatorContext context) {
+    boolean valid = false;
 
-        if (value instanceof Integer) {
-            valid = allowedValues.contains(value);
-        }
-
-        return valid;
+    if (nullAllowed && value == null) {
+      return true;
     }
+
+    if (value instanceof Integer) {
+      valid = allowedValues.contains(value);
+    }
+
+    return valid;
+  }
 }

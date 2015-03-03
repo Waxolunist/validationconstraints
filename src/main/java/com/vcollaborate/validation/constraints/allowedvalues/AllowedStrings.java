@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2012-2015 Christian Sterzl <christian.sterzl@gmail.com>
  *
  * This file is part of ValidationConstraints.
@@ -16,6 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with ValidationConstraints.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 package com.vcollaborate.validation.constraints.allowedvalues;
 
 import java.lang.annotation.ElementType;
@@ -34,13 +35,13 @@ import javax.validation.Payload;
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface AllowedStrings {
-	Class<?>[] groups() default {};
+  Class<?>[] groups() default {};
 
-	Class<? extends Payload>[] payload() default {};
+  Class<? extends Payload>[] payload() default {};
 
-	String message() default "Invalid value";
+  String message() default "Invalid value";
 
-	String[] value();
+  String[] value();
 
-	boolean nullAllowed() default true;
+  boolean nullAllowed() default true;
 }

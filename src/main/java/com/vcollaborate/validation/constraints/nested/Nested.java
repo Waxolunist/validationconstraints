@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2012-2015 Christian Sterzl <christian.sterzl@gmail.com>
  *
  * This file is part of ValidationConstraints.
@@ -16,6 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with ValidationConstraints.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 package com.vcollaborate.validation.constraints.nested;
 
 import static java.lang.annotation.ElementType.*;
@@ -34,12 +35,12 @@ import javax.validation.Payload;
 @Documented
 public @interface Nested {
 
-	String message() default "{invalid.nested}";
+  String message() default "{invalid.nested}";
 
-	Class<?>[] groups() default {};
+  Class<?>[] groups() default {};
 
-	Class<? extends Payload>[] payload() default {};
+  Class<? extends Payload>[] payload() default {};
 
-	Class<?> value();
+  Class<?> value();
 
 }

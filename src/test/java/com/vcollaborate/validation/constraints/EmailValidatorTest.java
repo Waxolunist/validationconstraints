@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2012-2015 Christian Sterzl <christian.sterzl@gmail.com>
  *
  * This file is part of ValidationConstraints.
@@ -16,56 +16,56 @@
  * You should have received a copy of the GNU General Public License
  * along with ValidationConstraints.  If not, see <http://www.gnu.org/licenses/>.
  */
+        
 package com.vcollaborate.validation.constraints;
-
-import javax.validation.Validation;
 
 import junit.framework.Assert;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.val;
-
 import org.junit.Test;
+
+import javax.validation.Validation;
 
 public class EmailValidatorTest {
 
-	@Test
-	public void testEmailWithoutSuffix() {
-		val email = new EmailWithoutSuffix("test@v-collaborate");
-		Assert.assertTrue(isValidAccordingToBeanValidation(email));
-	}
-	
-	@Test
-	public void testEmailWithSuffix() {
-		val email1 = new EmailWithSuffix("test@v-collaborate");
-		Assert.assertFalse(isValidAccordingToBeanValidation(email1));
-		
-		val email2 = new EmailWithSuffix("test@v-collaborate.com");
-		Assert.assertTrue(isValidAccordingToBeanValidation(email2));
-	}
-	
-    @Data
-    @AllArgsConstructor
-    private class EmailWithoutSuffix {
-        @Email(requiressuffix=false)
-        private String email;
-    }
-    
-    @Data
-    @AllArgsConstructor
-    private class EmailWithSuffix {
-        @Email
-        private String email;
-    }
-    
-    private boolean isValidAccordingToBeanValidation(final Object instance) {
-        val factory = Validation.buildDefaultValidatorFactory();
-        val validator = factory.getValidator();
-        val errors = validator.validate(instance);
+  @Test
+  public void testEmailWithoutSuffix() {
+    val email = new EmailWithoutSuffix("test@v-collaborate");
+    Assert.assertTrue(isValidAccordingToBeanValidation(email));
+  }
 
-        for (val error : errors) {
-            System.out.println(error.getMessage());
-        }
-        return errors.isEmpty();
+  @Test
+  public void testEmailWithSuffix() {
+    val email1 = new EmailWithSuffix("test@v-collaborate");
+    Assert.assertFalse(isValidAccordingToBeanValidation(email1));
+
+    val email2 = new EmailWithSuffix("test@v-collaborate.com");
+    Assert.assertTrue(isValidAccordingToBeanValidation(email2));
+  }
+
+  @Data
+  @AllArgsConstructor
+  private class EmailWithoutSuffix {
+    @Email(requiressuffix = false)
+    private String email;
+  }
+
+  @Data
+  @AllArgsConstructor
+  private class EmailWithSuffix {
+    @Email
+    private String email;
+  }
+
+  private boolean isValidAccordingToBeanValidation(final Object instance) {
+    val factory = Validation.buildDefaultValidatorFactory();
+    val validator = factory.getValidator();
+    val errors = validator.validate(instance);
+
+    for (val error : errors) {
+      System.out.println(error.getMessage());
     }
+    return errors.isEmpty();
+  }
 }

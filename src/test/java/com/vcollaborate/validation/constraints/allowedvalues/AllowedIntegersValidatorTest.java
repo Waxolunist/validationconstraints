@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2012-2015 Christian Sterzl <christian.sterzl@gmail.com>
  *
  * This file is part of ValidationConstraints.
@@ -16,7 +16,14 @@
  * You should have received a copy of the GNU General Public License
  * along with ValidationConstraints.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 package com.vcollaborate.validation.constraints.allowedvalues;
+
+import junit.framework.Assert;
+import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.Set;
 
@@ -26,103 +33,91 @@ import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 import javax.validation.constraints.NotNull;
 
-import junit.framework.Assert;
-import lombok.Data;
-import lombok.extern.slf4j.Slf4j;
-
-import org.junit.Before;
-import org.junit.Test;
-
-import com.vcollaborate.validation.constraints.allowedvalues.AllowedIntegers;
-
 @Slf4j
 public class AllowedIntegersValidatorTest {
 
-    private ValidatorFactory factory;
-    private Validator validator;
+  private ValidatorFactory factory;
+  private Validator validator;
 
-    /**
-     * @throws java.lang.Exception
-     */
-    @Before
-    public void setUp() throws Exception {
-        this.factory = Validation.buildDefaultValidatorFactory();
-        this.validator = factory.getValidator();
+  @Before
+  public void setUp() throws Exception {
+    this.factory = Validation.buildDefaultValidatorFactory();
+    this.validator = factory.getValidator();
+  }
+
+  @Data
+  private class ClassWithAllowedIntegers {
+
+    @AllowedIntegers({ 0, 10, 20 })
+    private Integer value;
+  }
+
+  @Data
+  private class ClassWithAllowedIntegersNotNull {
+
+    @NotNull
+    @AllowedIntegers(value = { 0, 10, 20 }, nullAllowed = false)
+    private Integer value;
+  }
+
+  @Test
+  public void testAllowedValue() {
+    log.info("testAllowedValue");
+    ClassWithAllowedIntegers instance = new ClassWithAllowedIntegers();
+    instance.setValue(0);
+
+    Set<ConstraintViolation<ClassWithAllowedIntegers>> errors = validator.validate(instance);
+
+    for (ConstraintViolation<ClassWithAllowedIntegers> error : errors) {
+      log.info("{}: {}", error.getPropertyPath(), error.getMessage());
     }
 
-    @Data
-    private class ClassWithAllowedIntegers {
+    Assert.assertTrue(errors.isEmpty());
+  }
 
-        @AllowedIntegers({ 0, 10, 20 })
-        private Integer value;
+  @Test
+  public void testAllowedNullValue() {
+    log.info("testAllowedNullValue");
+    ClassWithAllowedIntegers instance = new ClassWithAllowedIntegers();
+    instance.setValue(null);
+
+    Set<ConstraintViolation<ClassWithAllowedIntegers>> errors = validator.validate(instance);
+
+    for (ConstraintViolation<ClassWithAllowedIntegers> error : errors) {
+      log.info("{}: {}", error.getPropertyPath(), error.getMessage());
     }
 
-    @Data
-    private class ClassWithAllowedIntegersNotNull {
+    Assert.assertTrue(errors.isEmpty());
+  }
 
-        @NotNull
-        @AllowedIntegers(value = { 0, 10, 20 }, nullAllowed = false)
-        private Integer value;
+  @Test
+  public void testNotAllowedNullValue() {
+    log.info("testNotAllowedNullValue");
+    ClassWithAllowedIntegersNotNull instance = new ClassWithAllowedIntegersNotNull();
+    instance.setValue(null);
+
+    Set<ConstraintViolation<ClassWithAllowedIntegersNotNull>> errors = validator.validate(instance);
+
+    for (ConstraintViolation<ClassWithAllowedIntegersNotNull> error : errors) {
+      log.info("{}: {}", error.getPropertyPath(), error.getMessage());
     }
 
-    @Test
-    public void testAllowedValue() {
-        log.info("testAllowedValue");
-        ClassWithAllowedIntegers instance = new ClassWithAllowedIntegers();
-        instance.setValue(0);
+    Assert.assertFalse(errors.isEmpty());
+  }
 
-        Set<ConstraintViolation<ClassWithAllowedIntegers>> errors = validator.validate(instance);
+  @Test
+  public void testNotAllowedValue() {
+    log.info("testNotAllowedValue");
+    ClassWithAllowedIntegers instance = new ClassWithAllowedIntegers();
+    instance.setValue(5);
 
-        for (ConstraintViolation<ClassWithAllowedIntegers> error : errors) {
-            log.info("{}: {}", error.getPropertyPath(), error.getMessage());
-        }
+    Set<ConstraintViolation<ClassWithAllowedIntegers>> errors = validator.validate(instance);
 
-        Assert.assertTrue(errors.isEmpty());
+    for (ConstraintViolation<ClassWithAllowedIntegers> error : errors) {
+      log.info("{}: {}", error.getPropertyPath(), error.getMessage());
     }
 
-    @Test
-    public void testAllowedNullValue() {
-        log.info("testAllowedNullValue");
-        ClassWithAllowedIntegers instance = new ClassWithAllowedIntegers();
-        instance.setValue(null);
-
-        Set<ConstraintViolation<ClassWithAllowedIntegers>> errors = validator.validate(instance);
-
-        for (ConstraintViolation<ClassWithAllowedIntegers> error : errors) {
-            log.info("{}: {}", error.getPropertyPath(), error.getMessage());
-        }
-
-        Assert.assertTrue(errors.isEmpty());
-    }
-
-    @Test
-    public void testNotAllowedNullValue() {
-        log.info("testNotAllowedNullValue");
-        ClassWithAllowedIntegersNotNull instance = new ClassWithAllowedIntegersNotNull();
-        instance.setValue(null);
-
-        Set<ConstraintViolation<ClassWithAllowedIntegersNotNull>> errors = validator.validate(instance);
-
-        for (ConstraintViolation<ClassWithAllowedIntegersNotNull> error : errors) {
-            log.info("{}: {}", error.getPropertyPath(), error.getMessage());
-        }
-
-        Assert.assertFalse(errors.isEmpty());
-    }
-
-    @Test
-    public void testNotAllowedValue() {
-        log.info("testNotAllowedValue");
-        ClassWithAllowedIntegers instance = new ClassWithAllowedIntegers();
-        instance.setValue(5);
-
-        Set<ConstraintViolation<ClassWithAllowedIntegers>> errors = validator.validate(instance);
-
-        for (ConstraintViolation<ClassWithAllowedIntegers> error : errors) {
-            log.info("{}: {}", error.getPropertyPath(), error.getMessage());
-        }
-
-        Assert.assertFalse(errors.isEmpty());
-    }
+    Assert.assertFalse(errors.isEmpty());
+  }
 
 }
