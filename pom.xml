@@ -1,12 +1,3 @@
-<!-- This file is part of DateRangeValidator. DateRangeValidator is free 
-	software: you can redistribute it and/or modify it under the terms of the 
-	GNU General Public License as published by the Free Software Foundation, 
-	either version 3 of the License, or (at your option) any later version. DateRangeValidator 
-	is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
-	without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR 
-	PURPOSE. See the GNU General Public License for more details. You should 
-	have received a copy of the GNU General Public License along with Foobar. 
-	If not, see <http://www.gnu.org/licenses />. -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
@@ -15,35 +6,34 @@
 	<version>1.2.7-SNAPSHOT</version>
 	<name>JSR-303 validation constraints</name>
 	<inceptionYear>2012</inceptionYear>
-	
+
 	<parent>
 		<groupId>org.sonatype.oss</groupId>
 		<artifactId>oss-parent</artifactId>
-		<version>7</version>
+		<version>9</version>
 	</parent>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		
+
 		<!-- versions -->
 		<jdk.version>1.7</jdk.version>
 		<maven-eclipse-plugin.version>2.9</maven-eclipse-plugin.version>
-		<maven-license-plugin.version>1.9.0</maven-license-plugin.version>
-		<downloads-maven-plugin.version>0.6</downloads-maven-plugin.version>
-		<maven-site-plugin.version>3.2</maven-site-plugin.version>
-		<maven-project-info-reports-plugin.version>2.6</maven-project-info-reports-plugin.version>
-		<maven-surefire-report-plugin.version>2.12.4</maven-surefire-report-plugin.version>
-		<maven-checkstyle-plugin.version>2.9.1</maven-checkstyle-plugin.version>
-		<cobertura-maven-plugin.version>2.5.2</cobertura-maven-plugin.version>
-		<maven-pmd-plugin.version>2.7.1</maven-pmd-plugin.version>
-		<maven-compiler-plugin.version>2.5.1</maven-compiler-plugin.version>
+		<license-maven-plugin.version>2.9</license-maven-plugin.version>
+		<maven-site-plugin.version>3.4</maven-site-plugin.version>
+		<maven-project-info-reports-plugin.version>2.8</maven-project-info-reports-plugin.version>
+		<maven-surefire-report-plugin.version>2.18.1</maven-surefire-report-plugin.version>
+		<maven-checkstyle-plugin.version>2.14</maven-checkstyle-plugin.version>
+		<cobertura-maven-plugin.version>2.6</cobertura-maven-plugin.version>
+		<maven-pmd-plugin.version>3.4</maven-pmd-plugin.version>
+		<maven-compiler-plugin.version>3.2</maven-compiler-plugin.version>
 		<maven-javadoc-plugin.version>2.10.1</maven-javadoc-plugin.version>
-		<maven-jar-plugin.version>2.4</maven-jar-plugin.version>
-		<maven-source-plugin.version>2.2.1</maven-source-plugin.version>
-		<maven-gpg-plugin.version>1.1</maven-gpg-plugin.version>
-		<site-maven-plugin.version>0.7</site-maven-plugin.version>
-		
-		<project.copyrightYear>2012-2013</project.copyrightYear>
+		<maven-jar-plugin.version>2.5</maven-jar-plugin.version>
+		<maven-source-plugin.version>2.4</maven-source-plugin.version>
+		<maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
+		<site-maven-plugin.version>0.11</site-maven-plugin.version>
+
+		<project.copyrightYear>2012-2015</project.copyrightYear>
 	</properties>
 	<build>
 		<plugins>
@@ -74,9 +64,9 @@
 			</plugin>
 
 			<plugin>
-				<groupId>com.mycila.maven-license-plugin</groupId>
-				<artifactId>maven-license-plugin</artifactId>
-				<version>${maven-license-plugin.version}</version>
+				<groupId>com.mycila</groupId>
+				<artifactId>license-maven-plugin</artifactId>
+				<version>${license-maven-plugin.version}</version>
 				<configuration>
 					<header>src/main/resources/header.txt</header>
 					<properties>

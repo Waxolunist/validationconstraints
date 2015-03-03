@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2012-2013 Christian Sterzl <christian.sterzl@gmail.com>
+ * Copyright (C) 2012-2015 Christian Sterzl <christian.sterzl@gmail.com>
  *
  * This file is part of ValidationConstraints.
  *
@@ -32,7 +32,6 @@ import javax.validation.constraints.NotNull;
 
 import junit.framework.Assert;
 import lombok.Data;
-import lombok.Delegate;
 import lombok.extern.slf4j.Slf4j;
 
 import org.joda.time.DateTime;
@@ -60,28 +59,31 @@ public class NestedValidatorTest {
     }
 
     @Data
+    @SuppressWarnings("deprecation")
     private class ClassWithNestedDateRange {
 
         @NotNull
         @Nested(value = NestedDateRange.class, message = "{invalid.daterange}")
-        @Delegate
+        @lombok.Delegate
         private NestedDateRange nestedDateRange = new NestedDateRange();
     }
 
     @Data
+    @SuppressWarnings("deprecation")
     private class ClassWithListOfNestedDateRanges {
 
         @NotNull
         @Nested(value = NestedDateRange.class, message = "{invalid.daterange}")
-        @Delegate
+        @lombok.Delegate
         private List<NestedDateRange> nestedDateRangeList = new ArrayList<NestedDateRange>();
     }
 
     @Data
+    @SuppressWarnings("deprecation")
     private class ClassWithNestedDateRange2 {
 
         @Nested(value = NestedDateRangeNullAllowed.class, message = "{invalid.daterange}")
-        @Delegate
+        @lombok.Delegate
         private NestedDateRangeNullAllowed nestedDateRange = new NestedDateRangeNullAllowed();
     }
 

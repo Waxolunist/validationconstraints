@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2012-2013 Christian Sterzl <christian.sterzl@gmail.com>
+ * Copyright (C) 2012-2015 Christian Sterzl <christian.sterzl@gmail.com>
  *
  * This file is part of ValidationConstraints.
  *
@@ -18,22 +18,15 @@
  */
 package com.vcollaborate.validation.constraints;
 
-import java.util.Set;
-
-import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
 
 import junit.framework.Assert;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.val;
-import lombok.extern.slf4j.Slf4j;
 
 import org.junit.Test;
 
-@Slf4j
 public class EmailValidatorTest {
 
 	@Test
