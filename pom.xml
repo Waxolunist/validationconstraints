@@ -37,7 +37,7 @@
 		<validation-api.version>1.0.0.GA</validation-api.version>
 		<junit.version>4.10</junit.version>
 		<hibernate-validator.version>4.3.0.Final</hibernate-validator.version>
-		<slf4j.version>1.7.2</slf4j.version>
+		<slf4j.version>1.7.10</slf4j.version>
 		<lombok.version>1.16.2</lombok.version>
 		<project.copyrightYear>2012-2015</project.copyrightYear>
 	</properties>
