@@ -33,6 +33,12 @@
 		<maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
 		<site-maven-plugin.version>0.11</site-maven-plugin.version>
 
+		<joda-time.version>1.2.1</joda-time.version>
+		<validation-api.version>1.0.0.GA</validation-api.version>
+		<junit.version>4.10</junit.version>
+		<hibernate-validator.version>4.3.0.Final</hibernate-validator.version>
+		<slf4j.version>1.7.2</slf4j.version>
+		<lombok.version>1.16.2</lombok.version>
 		<project.copyrightYear>2012-2015</project.copyrightYear>
 	</properties>
 	<build>
@@ -228,41 +234,41 @@
 		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
-			<version>1.2.1</version>
+			<version>${joda-time.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
-			<version>1.0.0.GA</version>
+			<version>${validation-api.version}</version>
 			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.10</version>
+			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
-			<version>4.3.0.Final</version>
+			<version>${hibernate-validator.version}</version>
 			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-simple</artifactId>
-			<version>1.7.2</version>
+			<version>${slf4j.version}</version>
 			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.16.2</version>
+			<version>${lombok.version}</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
