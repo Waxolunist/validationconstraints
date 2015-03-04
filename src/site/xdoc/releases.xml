@@ -27,6 +27,15 @@
     <meta name="keyword" content="beanvalidation, java, jsr303"/>
     <body>
         <section name="Releases">
+        	<subsection name="1.2.7">
+        	<p>
+        	Maintenance release.
+        	</p>
+        	<p>
+        	<strong>Fixed issues</strong>:<br/>
+        	see <a href="https://github.com/Waxolunist/validationconstraints/issues?milestone=3&amp;state=closed">Milestone v1.2.7</a>
+        	</p>
+        	</subsection>
         	<subsection name="1.2.6">
         	<p>
         	Feature release.
@@ -37,7 +46,7 @@
         		<li>Email validation.</li>
         	</ul>
         	<strong>Fixed issues</strong>:<br/>
-        	see <a href="https://github.com/Waxolunist/validationconstraints/issues?milestone=1&amp;state=closed">Milestone v1.2.5</a>
+        	see <a href="https://github.com/Waxolunist/validationconstraints/issues?milestone=2&amp;state=closed">Milestone v1.2.6</a>
         	</p>
         	</subsection>
         	<subsection name="1.2.5">

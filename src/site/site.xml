@@ -33,7 +33,7 @@
 			<gitHub>
 				<projectId>Waxolunist/validationconstraints</projectId>
 				<ribbonOrientation>right</ribbonOrientation>
-				<ribbonColor>aqua</ribbonColor>
+				<ribbonColor>darkblue</ribbonColor>
 			</gitHub>
 			<googlePlusOne />
 			<sourceLineNumbersEnabled>true</sourceLineNumbersEnabled>

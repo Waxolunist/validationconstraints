@@ -39,10 +39,6 @@
         		<source>mvn clean deploy -Prelease-sign-artifacts</source>
         	</subsection>
         	<subsection name="Github">
-				<p>
-				For deploying the artifact to the uploads section of github.com use:
-        		</p>
-        		<source>mvn clean install ghDownloads:upload</source>
         		<p>
         		For uploading the site to github pages use:
         		</p>
@@ -87,15 +83,7 @@
         		Now the tag can be pushed to github by invoking following command:
         		<source>git push --tags</source>
         	</p>
-        	<p>
-        		For non-maven-users an upload at github should be provided and the page should be the current one,
-        		thus invoke following commands:
-<source>mvn clean install ghDownloads:upload
-mvn site -Pupload-github-site</source>
-
-In the future this step will be obsolete. Please read <a href="https://github.com/blog/1302-goodbye-uploads">https://github.com/blog/1302-goodbye-uploads</a>.
-        	</p>
-        	<p>
+           	<p>
         	Now you can finally sign and release the artifacts.
         	<source>mvn clean deploy -Prelease-sign-artifacts</source>
         	After this step log in to <a href="https://oss.sonatype.org/">https://oss.sonatype.org/</a> and navigate to <em>Staging Repositories</em>.

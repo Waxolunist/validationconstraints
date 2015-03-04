@@ -86,7 +86,7 @@ public @interface Email {
   @Retention(RUNTIME)
   @Documented
   public @interface List {
-    //CHECKSTYLE:OFF: h
+    //CHECKSTYLE:OFF: 
     Email[] value();
     //CHECKSTYLE:ON:
   }

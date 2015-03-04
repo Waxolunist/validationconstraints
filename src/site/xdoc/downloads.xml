@@ -27,14 +27,7 @@
     <meta name="keyword" content="beanvalidation, java, jsr303"/>
     <body>
         <section name="Release downloads">
-			<p>
-			To download binary releases go to <a href="https://github.com/Waxolunist/validationconstraints/downloads">https://github.com/Waxolunist/validationconstraints/downloads</a>
-       		</p>
-       		<subsection name="Downloads may not work in the future anymore">
-       		For further information about binary downloads please read <a href="https://github.com/blog/1302-goodbye-uploads">https://github.com/blog/1302-goodbye-uploads</a>.
-       		<br/>
-       		Alternatively you can download binary releases directly from maven via <a href="http://mvnrepository.com/artifact/com.v-collaborate/validation.constraints">http://mvnrepository.com/artifact/com.v-collaborate/validation.constraints</a>.
-       		</subsection>
+       		Binary releases can be downloaded directly from maven via <a href="http://mvnrepository.com/artifact/com.v-collaborate/validation.constraints">http://mvnrepository.com/artifact/com.v-collaborate/validation.constraints</a>.
         </section>
     </body>
 </document>

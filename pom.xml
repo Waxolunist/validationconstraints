@@ -14,8 +14,8 @@
 	</parent>
 
 	<properties>
+		<project.organization.email>christian.sterzl@gmail.com</project.organization.email>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
 		<!-- versions -->
 		<jdk.version>1.7</jdk.version>
 		<maven-eclipse-plugin.version>2.9</maven-eclipse-plugin.version>
@@ -36,7 +36,7 @@
 
 		<joda-time.version>1.2.1</joda-time.version>
 		<validation-api.version>1.0.0.GA</validation-api.version>
-		<junit.version>4.10</junit.version>
+		<junit.version>4.12</junit.version>
 		<hibernate-validator.version>4.3.0.Final</hibernate-validator.version>
 		<slf4j.version>1.7.10</slf4j.version>
 		<lombok.version>1.16.2</lombok.version>
@@ -66,14 +66,77 @@
 						</execution>
 					</executions>
 				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-eclipse-plugin</artifactId>
+					<version>${maven-eclipse-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>com.mycila</groupId>
+					<artifactId>license-maven-plugin</artifactId>
+					<version>${license-maven-plugin.version}</version>
+					<configuration>
+						<header>src/main/resources/header.txt</header>
+						<headerDefinitions>
+							<headerDefinition>src/main/resources/headerdefinitions.xml</headerDefinition>
+						</headerDefinitions>
+						<properties>
+							<year>${project.copyrightYear}</year>
+							<email>${project.organization.email}</email>
+							<name>${project.organization.name}</name>
+						</properties>
+						<includes>
+							<include>src/**/*.java</include>
+							<include>src/**/*.xml</include>
+						</includes>
+						<strictCheck>true</strictCheck>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>${maven-site-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${maven-compiler-plugin.version}</version>
+					<configuration>
+						<source>${jdk.version}</source>
+						<target>${jdk.version}</target>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>${maven-jar-plugin.version}</version>
+					<configuration>
+						<archive>
+							<manifest>
+								<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+								<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+							</manifest>
+						</archive>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>${maven-source-plugin.version}</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-eclipse-plugin</artifactId>
-				<version>${maven-eclipse-plugin.version}</version>
-
 				<configuration>
 					<downloadSources>true</downloadSources>
 					<downloadJavadocs>true</downloadJavadocs>
@@ -98,82 +161,34 @@
 			<plugin>
 				<groupId>com.mycila</groupId>
 				<artifactId>license-maven-plugin</artifactId>
-				<version>${license-maven-plugin.version}</version>
-				<configuration>
-					<header>src/main/resources/header.txt</header>
-					<headerDefinitions>
-						<headerDefinition>src/main/resources/headerdefinitions.xml</headerDefinition>
-					</headerDefinitions>
-					<properties>
-						<year>${project.copyrightYear}</year>
-						<email>christian.sterzl@gmail.com</email>
-						<name>${project.organization.name}</name>
-					</properties>
-					<includes>
-						<include>src/**/*.java</include>
-						<include>src/**/*.xml</include>
-					</includes>
-					<strictCheck>true</strictCheck>
-				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-site-plugin</artifactId>
-				<version>${maven-site-plugin.version}</version>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${maven-compiler-plugin.version}</version>
-				<configuration>
-					<source>${jdk.version}</source>
-					<target>${jdk.version}</target>
-				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
-				<!-- version inherited from parent -->
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>attach-javadocs</id>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
-				<version>${maven-jar-plugin.version}</version>
-				<configuration>
-					<archive>
-						<manifest>
-							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
-						</manifest>
-					</archive>
-				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
-				<version>${maven-source-plugin.version}</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>
 	</build>
+	
 	<reporting>
 		<excludeDefaults>true</excludeDefaults>
 		<outputDirectory>${project.build.directory}/site</outputDirectory>
@@ -232,46 +247,80 @@
 		</plugins>
 	</reporting>
 
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>joda-time</groupId>
+				<artifactId>joda-time</artifactId>
+				<version>${joda-time.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>javax.validation</groupId>
+				<artifactId>validation-api</artifactId>
+				<version>${validation-api.version}</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-validator</artifactId>
+				<version>${hibernate-validator.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-simple</artifactId>
+				<version>${slf4j.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>${lombok.version}</version>
+				<scope>provided</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 	<dependencies>
 		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
-			<version>${joda-time.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
-			<version>${validation-api.version}</version>
-			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
-			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
-			<version>${hibernate-validator.version}</version>
-			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-simple</artifactId>
-			<version>${slf4j.version}</version>
-			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>${lombok.version}</version>
-			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 
@@ -280,14 +329,15 @@
 		<system>GitHub Issues</system>
 	</issueManagement>
 	<scm>
-		<connection>scm:git:git@github.com:Waxolunist/validationconstraints.git</connection>
-		<url>scm:git:git@github.com:Waxolunist/validationconstraints.git</url>
+		<connection>scm:git:git://github.com/Waxolunist/validationconstraints.git</connection>
+		<url>https://github.com/Waxolunist/validationconstraints</url>
 		<developerConnection>scm:git:git@github.com:Waxolunist/validationconstraints.git</developerConnection>
+		<tag>HEAD</tag>
 	</scm>
 	<organization>
 		<name>Christian Sterzl</name>
 		<!-- <name>V-Collaborate.com</name> -->
-		<url>http://www.v-collaborate.com</url>
+		<url>http://christian.sterzl.info</url>
 	</organization>
 	<url>http://waxolunist.github.com/validationconstraints</url>
 	<description>JSR-303 Validator to validate a Daterange and other range constraints.</description>
@@ -361,5 +411,13 @@
 			</build>
 		</profile>
 	</profiles>
+
+	<repositories>
+		<repository>
+			<id>egit</id>
+			<name>Eclipse egit</name>
+			<url>https://repo.eclipse.org/content/repositories/egit-releases/</url>
+		</repository>
+	</repositories>
 
 </project>
