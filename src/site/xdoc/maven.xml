@@ -77,7 +77,7 @@
         	</p>
         	<p>
         		If neccessary commit the last changes with 
-        		<source>git tag -a vX.Y.Z -m "Release Version X.Y.Z"</source>
+        		<source>git commit -m "Release Version X.Y.Z"</source>
         	</p>
         	<p>
         		Now the tag can be pushed to github by invoking following command:
