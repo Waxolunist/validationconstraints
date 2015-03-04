@@ -99,6 +99,55 @@
         	Now start the next version in the pom by incrementing the version and appending "-SNAPSHOT".
         	</p>
         </section>
+        <section name="Prerequists for releasing">
+        	<subsection name="~/.m2/settings.xml">
+<!-- http://tohtml.com/xml/ -->
+<pre style='color:#000000;background:#ffffff;'>
+<span style='color:#7f0055; '>&lt;?</span><span style='color:#7f0055; font-weight:bold; '>xml</span><span style='color:#7f0055; '> </span><span style='color:#7f0055; '>version</span><span style='color:#7f0055; '>=</span><span style='color:#2a00ff; '>"</span><span style='color:#7f0055; font-weight:bold; '>1.0</span><span style='color:#2a00ff; '>"</span><span style='color:#7f0055; '>?></span>
+<span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>settings</span> xmlns=<span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>http</span><span style='color:#2a00ff; '>:</span><span style='color:#7f0055; font-weight:bold; '>//</span><span style='color:#3f3fbf; '>maven.apache.org</span><span style='color:#3f3fbf; '>/SETTINGS/1.0.0</span><span style='color:#2a00ff; '>"</span> xmlns:xsi=<span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>http</span><span style='color:#2a00ff; '>:</span><span style='color:#7f0055; font-weight:bold; '>//</span><span style='color:#3f3fbf; '>www.w3.org</span><span style='color:#3f3fbf; '>/2001/XMLSchema-instance</span><span style='color:#2a00ff; '>"</span> xsi:schemaLocation=<span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>http</span><span style='color:#2a00ff; '>:</span><span style='color:#7f0055; font-weight:bold; '>//</span><span style='color:#3f3fbf; '>maven.apache.org</span><span style='color:#3f3fbf; '>/SETTINGS/1.0.0</span><span style='color:#2a00ff; '> </span><span style='color:#2a00ff; '>http</span><span style='color:#2a00ff; '>:</span><span style='color:#7f0055; font-weight:bold; '>//</span><span style='color:#3f3fbf; '>maven.apache.org</span><span style='color:#3f3fbf; '>/xsd/settings-1.0.0.xsd</span><span style='color:#2a00ff; '>"</span><span style='color:#7f0055; '>></span>
+  <span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>localRepository</span><span style='color:#7f0055; '>/></span>
+  <span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>interactiveMode</span><span style='color:#7f0055; '>/></span>
+  <span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>usePluginRegistry</span><span style='color:#7f0055; '>/></span>
+  <span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>offline</span><span style='color:#7f0055; '>/></span>
+  <span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>pluginGroups</span><span style='color:#7f0055; '>/></span>
+  <span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>servers</span><span style='color:#7f0055; '>></span>
+    <span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>server</span><span style='color:#7f0055; '>></span>
+      <span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>id</span><span style='color:#7f0055; '>></span>sonatype-nexus-staging<span style='color:#7f0055; '>&lt;/</span><span style='color:#7f0055; '>id</span><span style='color:#7f0055; '>></span>
+      <span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>username</span><span style='color:#7f0055; '>></span>username<span style='color:#7f0055; '>&lt;/</span><span style='color:#7f0055; '>username</span><span style='color:#7f0055; '>></span>
+      <span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>password</span><span style='color:#7f0055; '>></span>{encryptedpassword}<span style='color:#7f0055; '>&lt;/</span><span style='color:#7f0055; '>password</span><span style='color:#7f0055; '>></span>
+    <span style='color:#7f0055; '>&lt;/</span><span style='color:#7f0055; '>server</span><span style='color:#7f0055; '>></span>
+    <span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>server</span><span style='color:#7f0055; '>></span>
+      <span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>id</span><span style='color:#7f0055; '>></span>sonatype-nexus-snapshots<span style='color:#7f0055; '>&lt;/</span><span style='color:#7f0055; '>id</span><span style='color:#7f0055; '>></span>
+      <span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>username</span><span style='color:#7f0055; '>></span>username<span style='color:#7f0055; '>&lt;/</span><span style='color:#7f0055; '>username</span><span style='color:#7f0055; '>></span>
+      <span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>password</span><span style='color:#7f0055; '>></span>{encryptedpassword}<span style='color:#7f0055; '>&lt;/</span><span style='color:#7f0055; '>password</span><span style='color:#7f0055; '>></span>
+    <span style='color:#7f0055; '>&lt;/</span><span style='color:#7f0055; '>server</span><span style='color:#7f0055; '>></span>
+    <span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>server</span><span style='color:#7f0055; '>></span>
+      <span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>id</span><span style='color:#7f0055; '>></span>github<span style='color:#7f0055; '>&lt;/</span><span style='color:#7f0055; '>id</span><span style='color:#7f0055; '>></span>
+      <span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>username</span><span style='color:#7f0055; '>></span>username<span style='color:#7f0055; '>&lt;/</span><span style='color:#7f0055; '>username</span><span style='color:#7f0055; '>></span>
+      <span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>password</span><span style='color:#7f0055; '>></span>{encryptedpassword}<span style='color:#7f0055; '>&lt;/</span><span style='color:#7f0055; '>password</span><span style='color:#7f0055; '>></span>
+    <span style='color:#7f0055; '>&lt;/</span><span style='color:#7f0055; '>server</span><span style='color:#7f0055; '>></span>
+  <span style='color:#7f0055; '>&lt;/</span><span style='color:#7f0055; '>servers</span><span style='color:#7f0055; '>></span>
+  <span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>mirrors</span><span style='color:#7f0055; '>></span>
+  <span style='color:#7f0055; '>&lt;/</span><span style='color:#7f0055; '>mirrors</span><span style='color:#7f0055; '>></span>
+  <span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>proxies</span><span style='color:#7f0055; '>/></span>
+  <span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>profiles</span><span style='color:#7f0055; '>></span>
+    <span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>profile</span><span style='color:#7f0055; '>></span>
+      <span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>id</span><span style='color:#7f0055; '>></span>ossrh<span style='color:#7f0055; '>&lt;/</span><span style='color:#7f0055; '>id</span><span style='color:#7f0055; '>></span>
+      <span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>activation</span><span style='color:#7f0055; '>></span>
+        <span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>activeByDefault</span><span style='color:#7f0055; '>></span>true<span style='color:#7f0055; '>&lt;/</span><span style='color:#7f0055; '>activeByDefault</span><span style='color:#7f0055; '>></span>
+      <span style='color:#7f0055; '>&lt;/</span><span style='color:#7f0055; '>activation</span><span style='color:#7f0055; '>></span>
+      <span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>properties</span><span style='color:#7f0055; '>></span>
+        <span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>gpg.executable</span><span style='color:#7f0055; '>></span>gpg2<span style='color:#7f0055; '>&lt;/</span><span style='color:#7f0055; '>gpg.executable</span><span style='color:#7f0055; '>></span>
+      <span style='color:#7f0055; '>&lt;/</span><span style='color:#7f0055; '>properties</span><span style='color:#7f0055; '>></span>
+    <span style='color:#7f0055; '>&lt;/</span><span style='color:#7f0055; '>profile</span><span style='color:#7f0055; '>></span>
+  <span style='color:#7f0055; '>&lt;/</span><span style='color:#7f0055; '>profiles</span><span style='color:#7f0055; '>></span>
+  <span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>activeProfiles</span><span style='color:#7f0055; '>></span>
+  <span style='color:#7f0055; '>&lt;/</span><span style='color:#7f0055; '>activeProfiles</span><span style='color:#7f0055; '>></span>
+<span style='color:#7f0055; '>&lt;/</span><span style='color:#7f0055; '>settings</span><span style='color:#7f0055; '>></span>
+</pre>
+        	</subsection>
+        	<p></p>
+        </section>
         
     </body>
 </document>
