@@ -1,28 +1,29 @@
 -classpath
-'/home/cst/Development/workspaces/com.v-collaborate/validationconstraints/target/classes:/opt/maven/localrepo/joda-time/joda-time/1.2.1/joda-time-1.2.1.jar:/opt/maven/localrepo/javax/validation/validation-api/1.0.0.GA/validation-api-1.0.0.GA.jar'
+'/Users/cst/.m2/repository/joda-time/joda-time/1.2.1/joda-time-1.2.1.jar:/Users/cst/.m2/repository/org/projectlombok/lombok/1.16.2/lombok-1.16.2.jar:/Users/cst/.m2/repository/javax/validation/validation-api/1.0.0.GA/validation-api-1.0.0.GA.jar'
 -encoding
 'UTF-8'
 -protected
 -sourcepath
-'/home/cst/Development/workspaces/com.v-collaborate/validationconstraints/src/main/java'
+'/Users/cst/Development/workspaces/vcollaborate/validationconstraints/src/main/java:/Users/cst/Development/workspaces/vcollaborate/validationconstraints/target/generated-sources/annotations'
+-Xdoclint:none
 -author
 -bottom
-'Copyright &#169; 2012-2013 <a href="http://www.v-collaborate.com">Christian Sterzl</a>. All Rights Reserved.'
+'Copyright &#169; 2012&#x2013;2015 <a href="http://christian.sterzl.info">Christian Sterzl</a>. All rights reserved.'
 -charset
 'UTF-8'
 -d
-'/home/cst/Development/workspaces/com.v-collaborate/validationconstraints/target/site/apidocs'
+'/Users/cst/Development/workspaces/vcollaborate/validationconstraints/target/site/apidocs'
 -docencoding
 'UTF-8'
 -doctitle
-'JSR-303 validation constraints 1.2.6 API'
+'JSR-303 validation constraints 1.2.7 API'
 -link
-'http://docs.oracle.com/javaee/6/api'
+'http://docs.oracle.com/javase/6/docs/api'
+-link
+'https://docs.jboss.org/hibernate/validator/4.3/api'
 -linkoffline
-'http://docs.oracle.com/javase/1.5.0/docs/api' '/home/cst/Development/workspaces/com.v-collaborate/validationconstraints/target/javadoc-bundle-options'
--stylesheetfile
-'/home/cst/Development/workspaces/com.v-collaborate/validationconstraints/target/site/apidocs/stylesheet.css'
+'http://docs.oracle.com/javase/7/docs/api' '/Users/cst/Development/workspaces/vcollaborate/validationconstraints/target/javadoc-bundle-options'
 -use
 -version
 -windowtitle
-'JSR-303 validation constraints 1.2.6 API'
+'JSR-303 validation constraints 1.2.7 API'

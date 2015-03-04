@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<pmd version="4.3" timestamp="2013-03-06T14:02:50.994">
-<file name="/home/cst/Development/workspaces/com.v-collaborate/validationconstraints/src/main/java/com/vcollaborate/validation/constraints/Email.java">
-<violation beginline="19" endline="82" begincolumn="1" endcolumn="2" rule="TooManyStaticImports" ruleset="Import Statement Rules" package="com.vcollaborate.validation.constraints" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#TooManyStaticImports" priority="3">
-Too many static imports may lead to messy code
-</violation>
-</file>
-</pmd>
