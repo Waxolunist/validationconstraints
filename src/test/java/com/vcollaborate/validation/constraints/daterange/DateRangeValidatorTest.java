@@ -19,8 +19,8 @@
 
 package com.vcollaborate.validation.constraints.daterange;
 
-import junit.framework.Assert;
 import org.joda.time.DateTime;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Date;
