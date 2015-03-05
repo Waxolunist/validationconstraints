@@ -4,12 +4,14 @@
 	<artifactId>validation.constraints</artifactId>
 	<version>1.2.8-SNAPSHOT</version>
 	<name>JSR-303 validation constraints</name>
+	<url>http://waxolunist.github.com/validationconstraints</url>
+	<description>JSR-303 Validator to validate a Daterange and other range constraints.</description>
 	<inceptionYear>2012</inceptionYear>
 
 	<parent>
 		<groupId>com.v-collaborate</groupId>
 		<artifactId>v-collaborate.parent</artifactId>
-		<version>1.0.0</version>
+		<version>1.0.1</version>
 	</parent>
 
 	<build>
@@ -111,8 +113,6 @@
 		<developerConnection>scm:git:git@github.com:Waxolunist/validationconstraints.git</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
-	<url>http://waxolunist.github.com/validationconstraints</url>
-	<description>JSR-303 Validator to validate a Daterange and other range constraints.</description>
 	<licenses>
 		<license>
 			<name>GNU GENERAL PUBLIC LICENSE, Version 3</name>
