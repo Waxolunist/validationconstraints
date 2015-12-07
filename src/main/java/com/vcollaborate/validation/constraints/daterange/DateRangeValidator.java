@@ -155,6 +155,7 @@ public class DateRangeValidator implements ConstraintValidator<DateRange, Object
         return true;
       }
       Duration duration = new Duration(startDate, endDate);
+      if(duration.getMillis() < 0) return false;
 
       // Rounding fixes #1
       long durationInDays = Math.round(duration.getMillis() / MILLILSPERDAY);
