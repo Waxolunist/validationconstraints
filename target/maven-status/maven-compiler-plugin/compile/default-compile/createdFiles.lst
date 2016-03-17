@@ -1,0 +1,16 @@
+com/vcollaborate/validation/constraints/daterange/EndDate.class
+com/vcollaborate/validation/constraints/daterange/DateRange.class
+com/vcollaborate/validation/constraints/nested/Nested.class
+com/vcollaborate/validation/constraints/allowedvalues/AllowdIntegersValidator.class
+com/vcollaborate/validation/constraints/allowedvalues/AllowedStrings.class
+com/vcollaborate/validation/constraints/daterange/DateRangeValidator$Interval.class
+com/vcollaborate/validation/constraints/nested/NestedValidator.class
+com/vcollaborate/validation/constraints/Email$List.class
+com/vcollaborate/validation/constraints/allowedvalues/AllowdStringsValidator.class
+com/vcollaborate/validation/constraints/allowedvalues/AllowedIntegers.class
+com/vcollaborate/validation/constraints/Email.class
+com/vcollaborate/validation/constraints/EmailValidator.class
+com/vcollaborate/validation/constraints/FutureValidator.class
+com/vcollaborate/validation/constraints/daterange/StartDate.class
+com/vcollaborate/validation/constraints/Future.class
+com/vcollaborate/validation/constraints/daterange/DateRangeValidator.class

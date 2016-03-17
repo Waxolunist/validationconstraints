@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="11" failures="0" name="com.vcollaborate.validation.constraints.daterange.CalendarRangeValidatorTest" time="0.176" errors="0" skipped="0">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre/lib"/>
+    <property name="java.vm.version" value="25.66-b17"/>
+    <property name="user.country.format" value="CH"/>
+    <property name="gopherProxySet" value="false"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=":"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="/Users/cst/Development/projects/validationconstraints"/>
+    <property name="java.runtime.version" value="1.8.0_66-b17"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre/lib/endorsed"/>
+    <property name="os.arch" value="x86_64"/>
+    <property name="java.io.tmpdir" value="/var/folders/1t/7vltthws3rj474875hpjxskh0000gn/T/"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="https.proxyHost" value="a-webproxy.sympany-test.ads"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="classworlds.conf" value="/Users/cst/development/tools/apache-maven-3/apache-maven-current/bin/m2.conf"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/Users/cst/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="http.proxyPort" value="8080"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="10.11.1"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16|172.16.0.0/12|*.172.16.0.0/12|localhost|*.localhost|united|*.united|piazza|*.piazza|sympany-test.ads|*.sympany-test.ads|sympany.ads|*.sympany.ads|developer.mozilla.org|*.developer.mozilla.org|0.0.0.0|kunden-app.sympany.ch|*.kunden-app.sympany.ch|kunden-app.sympany-test.ch|*.kunden-app.sympany-test.ch|customelements.io|*.customelements.io|polygit.org|*.polygit.org|vagrant.f8|*.vagrant.f8|vagrant.f8|*.vagrant.f8"/>
+    <property name="user.home" value="/Users/cst"/>
+    <property name="user.timezone" value="Europe/Zurich"/>
+    <property name="java.awt.printerjob" value="sun.lwawt.macosx.CPrinterJob"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="user.name" value="cst"/>
+    <property name="java.class.path" value="/Users/cst/development/tools/apache-maven-3/apache-maven-current/boot/plexus-classworlds-2.5.1.jar"/>
+    <property name="org.slf4j.simpleLogger.defaultLogLevel" value="info"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher clean deploy -Prelease-sign-artifacts"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="en"/>
+    <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.8.0_66"/>
+    <property name="java.ext.dirs" value="/Users/cst/Library/Java/Extensions:/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre/lib/ext:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java"/>
+    <property name="http.proxyHost" value="a-webproxy.sympany-test.ads"/>
+    <property name="sun.boot.class.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre/classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="/Users/cst/development/tools/apache-maven-3/apache-maven-current"/>
+    <property name="file.separator" value="/"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="https.proxyPort" value="8080"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16|172.16.0.0/12|*.172.16.0.0/12|localhost|*.localhost|united|*.united|piazza|*.piazza|sympany-test.ads|*.sympany-test.ads|sympany.ads|*.sympany.ads|developer.mozilla.org|*.developer.mozilla.org|0.0.0.0|kunden-app.sympany.ch|*.kunden-app.sympany.ch|kunden-app.sympany-test.ch|*.kunden-app.sympany-test.ch|customelements.io|*.customelements.io|polygit.org|*.polygit.org|vagrant.f8|*.vagrant.f8|vagrant.f8|*.vagrant.f8"/>
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16|172.16.0.0/12|*.172.16.0.0/12|localhost|*.localhost|united|*.united|piazza|*.piazza|sympany-test.ads|*.sympany-test.ads|sympany.ads|*.sympany.ads|developer.mozilla.org|*.developer.mozilla.org|0.0.0.0|kunden-app.sympany.ch|*.kunden-app.sympany.ch|kunden-app.sympany-test.ch|*.kunden-app.sympany-test.ch|customelements.io|*.customelements.io|polygit.org|*.polygit.org|vagrant.f8|*.vagrant.f8|vagrant.f8|*.vagrant.f8"/>
+    <property name="sun.cpu.isalist" value=""/>
+  </properties>
+  <testcase classname="com.vcollaborate.validation.constraints.daterange.CalendarRangeValidatorTest" name="shouldBeValidIfUsageIsWrong" time="0.034"/>
+  <testcase classname="com.vcollaborate.validation.constraints.daterange.CalendarRangeValidatorTest" name="shouldBeValidIfDateRangeIsEqualChosenDateRange" time="0.065"/>
+  <testcase classname="com.vcollaborate.validation.constraints.daterange.CalendarRangeValidatorTest" name="shouldBeValidAllowedRanges" time="0.029"/>
+  <testcase classname="com.vcollaborate.validation.constraints.daterange.CalendarRangeValidatorTest" name="shouldNotBeValidIfOnDateIntervalIsInvalidFor3FieldsAnd2Ranges" time="0.008"/>
+  <testcase classname="com.vcollaborate.validation.constraints.daterange.CalendarRangeValidatorTest" name="shouldNotBeValidIfDateIntervalIsLessThanChosenDateInterval" time="0.005"/>
+  <testcase classname="com.vcollaborate.validation.constraints.daterange.CalendarRangeValidatorTest" name="shouldBeValidIfDateRangeIsGreaterThanChosenDateRange" time="0.004"/>
+  <testcase classname="com.vcollaborate.validation.constraints.daterange.CalendarRangeValidatorTest" name="shouldBeValidIfDateIntervalIsValidFor3FieldsAnd2Ranges" time="0.004"/>
+  <testcase classname="com.vcollaborate.validation.constraints.daterange.CalendarRangeValidatorTest" name="shouldBeValidIfDateIntervalIsGreaterThanOrEqualChosenDateIntervalForPairsOfDates" time="0.01"/>
+  <testcase classname="com.vcollaborate.validation.constraints.daterange.CalendarRangeValidatorTest" name="shouldNotBeValidIfDateIntervalIsSmallerThanChosenDateIntervalForOneOfThePairsOfDates" time="0.007"/>
+  <testcase classname="com.vcollaborate.validation.constraints.daterange.CalendarRangeValidatorTest" name="shouldBeValidIfIdFromStartDateAndEndDateAnnotationsUsageIsWrong" time="0.008"/>
+  <testcase classname="com.vcollaborate.validation.constraints.daterange.CalendarRangeValidatorTest" name="shouldBeValidIfFieldValuesAreNull" time="0.002"/>
+</testsuite>

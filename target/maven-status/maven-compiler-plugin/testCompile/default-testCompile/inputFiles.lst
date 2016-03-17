@@ -1,0 +1,7 @@
+/Users/cst/Development/projects/validationconstraints/src/test/java/com/vcollaborate/validation/constraints/nested/NestedValidatorTest.java
+/Users/cst/Development/projects/validationconstraints/src/test/java/com/vcollaborate/validation/constraints/EmailValidatorTest.java
+/Users/cst/Development/projects/validationconstraints/src/test/java/com/vcollaborate/validation/constraints/allowedvalues/AllowedIntegersValidatorTest.java
+/Users/cst/Development/projects/validationconstraints/src/test/java/com/vcollaborate/validation/constraints/daterange/CalendarRangeValidatorTest.java
+/Users/cst/Development/projects/validationconstraints/src/test/java/com/vcollaborate/validation/constraints/daterange/DateRangeValidatorTest.java
+/Users/cst/Development/projects/validationconstraints/src/test/java/com/vcollaborate/validation/constraints/FutureValidatorTest.java
+/Users/cst/Development/projects/validationconstraints/src/test/java/com/vcollaborate/validation/constraints/allowedvalues/AllowedStringsValidatorTest.java
