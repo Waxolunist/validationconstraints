@@ -52,8 +52,8 @@
         </section>
         <section name="Dependencies">
         	<p>
-        	The only dependency is <a href="http://joda-time.sourceforge.net/">joda-time 1.2.1</a>. This version is used to be compatible with the version
-        	delivered by Oracle in their Weblogic 10.3.x.  
+        	The only dependency is <a href="http://joda-time.sourceforge.net/">joda-time 2.9.2</a>. This version is used to be compatible with the version
+        	delivered by Wildfly version 10.  
         	</p>
         </section>
         <section name="New Features">

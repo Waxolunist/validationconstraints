@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>validation.constraints</artifactId>
-	<version>1.2.8-SNAPSHOT</version>
+	<version>1.3.0</version>
 	<name>JSR-303 validation constraints</name>
 	<url>http://waxolunist.github.com/validationconstraints</url>
 	<description>JSR-303 Validator to validate a Daterange and other range constraints.</description>
@@ -11,7 +11,7 @@
 	<parent>
 		<groupId>com.v-collaborate</groupId>
 		<artifactId>v-collaborate.parent</artifactId>
-		<version>1.0.1</version>
+		<version>1.0.2</version>
 	</parent>
 
 	<build>

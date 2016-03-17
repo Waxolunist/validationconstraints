@@ -15,6 +15,16 @@ Thus it supports validating every class which can be converted to [DateTime](htt
 
 Besides this fork will support a lot more constraints than its original.
 
+#Versions
+
+##1.0.x - 1.2.x Series
+
+This series targets weblogic installations up to version 10.3.6, due to its dependency on joda-time Version 1.2.1.
+
+##1.3.x Series
+
+This series targets more modern application servers like wildfly 10, due to its dependency on joda-time Version 2.9.2.
+
 #License
 
 ValidationConstraints is free software: you can redistribute it and/or modify
