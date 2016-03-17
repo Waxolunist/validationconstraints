@@ -23,7 +23,7 @@ This series targets weblogic installations up to version 10.3.6, due to its depe
 
 ##1.3.x Series
 
-This series targets more modern application servers like wildfly 10, due to its dependency on joda-time Version 2.9.2.
+This series targets more modern application servers like wildfly 10, due to its dependency on joda-time Version 2.7.
 
 #License
 
