@@ -284,6 +284,45 @@ public class DateRangeValidatorTest {
       Assert.assertFalse(isValidAccordingToBeanValidation(allowedIntervalsStandardCase2));
     }
   }
+  
+  @Test
+  public void allDefaultDateCase() throws Exception {
+    AllDefaultDateCase testDatecase = new AllDefaultDateCase();
+    testDatecase.startdata = new Date();
+    testDatecase.enddata = testDatecase.startdata;
+
+    Assert.assertTrue(isValid(testDatecase));
+    Assert.assertTrue(isValidAccordingToBeanValidation(testDatecase));
+
+    AllDefaultDateCase testDatecase2 = new AllDefaultDateCase();
+    DateTime startDate =  new DateTime(2011, 1, 27, 0, 0, 0, 0);
+    DateTime endDate = new DateTime(2011, 1, 27, 0, 30, 0, 0);
+
+    testDatecase2.startdata = startDate.toDate();
+    testDatecase2.enddata = endDate.toDate();
+
+    Assert.assertTrue(isValid(testDatecase2));
+    Assert.assertTrue(isValidAccordingToBeanValidation(testDatecase2));
+    
+    
+    AllDefaultDateCase testDatecase3 = new AllDefaultDateCase();
+
+    testDatecase3.startdata = new DateTime(2011, 1, 27, 0, 0, 0, 0).toDate();
+    testDatecase3.enddata = new DateTime(2011, 1, 26, 0, 0, 0, 0).toDate();
+
+    Assert.assertFalse(isValid(testDatecase3));
+    Assert.assertFalse(isValidAccordingToBeanValidation(testDatecase3));
+    
+    
+    AllDefaultDateCase testDatecase4 = new AllDefaultDateCase();
+
+    testDatecase4.startdata = new DateTime(2011, 1, 27, 4, 0, 0, 0).toDate();
+    testDatecase4.enddata = new DateTime(2011, 1, 27, 3, 0, 0, 0).toDate();
+
+    Assert.assertFalse(isValid(testDatecase4));
+    Assert.assertFalse(isValidAccordingToBeanValidation(testDatecase4));
+  }
+
 
   @DateRange
   class NoEndDateCase {
@@ -296,6 +335,15 @@ public class DateRangeValidatorTest {
     @EndDate
     Date data;
   }
+
+  @DateRange
+  class AllDefaultDateCase {
+    @StartDate
+    Date startdata;
+    @EndDate(minimumDaysRange = 0)
+    Date enddata;
+  }
+
 
   @DateRange
   private class StantardCaseDaysRangeEquals5 {
