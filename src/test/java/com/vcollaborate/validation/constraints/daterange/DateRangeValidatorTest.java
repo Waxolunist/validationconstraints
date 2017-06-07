@@ -23,6 +23,8 @@ import org.joda.time.DateTime;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.Set;
 
@@ -323,6 +325,18 @@ public class DateRangeValidatorTest {
     Assert.assertFalse(isValidAccordingToBeanValidation(testDatecase4));
   }
 
+  @Test
+  public void allZonedDateTimeCase() throws Exception {
+	  ZonedDateTime start1 = ZonedDateTime.of(2011, 1, 10, 0, 0, 0, 0, ZoneId.systemDefault());
+	  ZonedDateTime end1 = ZonedDateTime.of(2011, 1, 20, 0, 0, 0, 0, ZoneId.systemDefault());
+	  ZonedDateTime end2 = ZonedDateTime.of(2011, 1, 11, 0, 0, 0, 0, ZoneId.systemDefault());
+
+	  AllowedIntervalsZonedDateTime testDate1 = new AllowedIntervalsZonedDateTime(start1, end1);
+	  Assert.assertTrue(isValid(testDate1));
+	  
+	  AllowedIntervalsZonedDateTime testDate2 = new AllowedIntervalsZonedDateTime(start1, end2);
+	  Assert.assertFalse(isValid(testDate2));
+  }
 
   @DateRange
   class NoEndDateCase {
@@ -463,6 +477,20 @@ public class DateRangeValidatorTest {
       this.endDate = date2;
     }
   }
+  
+  @DateRange
+  private class AllowedIntervalsZonedDateTime {
+    @StartDate
+    private ZonedDateTime startDate;
+
+    @EndDate(allowedDayRanges = { 10, 15, 20 }, minimumDaysRange = 25)
+    private ZonedDateTime endDate;
+
+    public AllowedIntervalsZonedDateTime(ZonedDateTime date1, ZonedDateTime date2) {
+      this.startDate = date1;
+      this.endDate = date2;
+    }
+  }  
 
   private boolean isValid(Object instance) {
     return new DateRangeValidator().isValid(instance, null);

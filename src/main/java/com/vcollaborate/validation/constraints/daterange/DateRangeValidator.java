@@ -21,6 +21,7 @@ package com.vcollaborate.validation.constraints.daterange;
 
 import org.joda.time.DateTime;
 import org.joda.time.Duration;
+import org.joda.time.convert.ConverterManager;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -40,6 +41,10 @@ public class DateRangeValidator implements ConstraintValidator<DateRange, Object
 
   private static final double MILLILSPERDAY = 86400000.0;
 
+  static {
+	ConverterManager.getInstance().addInstantConverter(new ZonedDateTimeConverter());
+  }
+  
   /**
    * {@inheritDoc}
    * 
