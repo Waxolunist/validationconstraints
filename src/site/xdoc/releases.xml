@@ -27,6 +27,18 @@
     <meta name="keyword" content="beanvalidation, java, jsr303"/>
     <body>
         <section name="Releases">
+			<subsection name="1.3.1">
+        	<p>
+        	Feature release.
+        	</p>
+        	<strong>New Typesupport for DateTime conversion</strong>:<br/>
+        	<ul>
+        		<li>Supports now ZonedDateTime.</li>
+        	</ul>
+        	<p>
+        	Updated dependencies.
+        	</p>
+        	</subsection>
         	<subsection name="1.3.0">
         	<p>
         	Updated dependencies.

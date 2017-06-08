@@ -32,8 +32,12 @@
         	Checks if two dates are within a defined range.
         	</p>
         	<p>
-			It supports every type which can be converted into <a href="http://joda-time.sourceforge.net/api-release/org/joda/time/DateTime.html">org.joda.time.DateTime</a>.<br/>
-        	Please check out joda-time 1.2.1 (see <a href="https://github.com/JodaOrg/joda-time/blob/v1.2_BRANCH/JodaTime/src/java/org/joda/time/DateTime.java">org.joda.time.DateTime (1.2.1)</a>).
+			It supports every type which can be converted into <a href="http://www.joda.org/joda-time/apidocs/org/joda/time/DateTime.html">org.joda.time.DateTime</a>.<br/>
+        	</p>
+        	</subsection>
+        	<subsection>
+        	<p>
+        	Since 1.3.1 it also supports <a href="https://docs.oracle.com/javase/8/docs/api/java/time/ZonedDateTime.html">java.time.ZonedDateTime</a>.
         	</p>
         	</subsection>
         	<subsection name="Usage">
